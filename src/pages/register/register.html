@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Create Account
+    </ion-title>
+  </ion-navbar>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</ion-header>
+
+<ion-content padding>
+
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="entreprise">
+        As Entreprise
+      </ion-segment-button>
+      <ion-segment-button value="student">
+        As Student
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'entreprise'">
+
+      <div class="container">
+
+            <form [formGroup]="registerFormEntreprise" (ngSubmit)="tryRegisterEntreprise(registerFormEntreprise.value)">
+
+              <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('nomEntreprise').errors &&
+               (registerFormEntreprise.get('nomEntreprise').touched||registerFormEntreprise.get('nomEntreprise').dirty)}">
+                <label>Nom d'Entreprise</label>
+                <input type="text" formControlName="nomEntreprise" class="form-control">
+                <span class="help-block" *ngIf="registerFormEntreprise.get('nomEntreprise').errors &&
+               (registerFormEntreprise.get('nomEntreprise').touched||registerFormEntreprise.get('nomEntreprise').dirty)">
+                  <span *ngIf="registerFormEntreprise.get('nomEntreprise').errors.required">*Nom d'Entreprise is required</span>
+                </span>
+              </div>
+
+
+              <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('email').errors &&
+               (registerFormEntreprise.get('email').touched||registerFormEntreprise.get('email').dirty)}">
+                <label>Email address</label>
+                <input type="email" formControlName="email" class="form-control">
+                <span class="help-block" *ngIf="registerFormEntreprise.get('email').errors &&
+               (registerFormEntreprise.get('email').touched||registerFormEntreprise.get('email').dirty)">
+                  <span *ngIf="registerFormEntreprise.get('email').errors.required">*Email is required</span>
+                </span>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('secteurActivite').errors &&
+               (registerFormEntreprise.get('secteurActivite').touched||registerFormEntreprise.get('secteurActivite').dirty)}">
+                <label>secteur d'Activité</label>
+                <input type="text" formControlName="secteurActivite" class="form-control">
+                <span class="help-block" *ngIf="registerFormEntreprise.get('secteurActivite').errors &&
+               (registerFormEntreprise.get('secteurActivite').touched||registerFormEntreprise.get('secteurActivite').dirty)">
+                  <span *ngIf="registerFormEntreprise.get('secteurActivite').errors.required">*Secteur d'activite is required</span>
+                </span>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('tel').errors &&
+               (registerFormEntreprise.get('tel').touched||registerFormEntreprise.get('tel').dirty)}">
+                <label>tel</label>
+                <input type="text" formControlName="tel" class="form-control">
+                <span class="help-block" *ngIf="registerFormEntreprise.get('tel').errors &&
+               (registerFormEntreprise.get('tel').touched||registerFormEntreprise.get('tel').dirty)">
+                  <span *ngIf="registerFormEntreprise.get('tel').errors.required">*tel is required</span>
+                  <span *ngIf="registerFormEntreprise.get('tel').errors.pattern">*only numbers</span>
+                  <span *ngIf="registerFormEntreprise.get('tel').errors.minlength">*tel must be greater than 10 numbers</span>
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label>Description </label><small id="optionnel">~optionnel</small>
+                <div class="form-group purple-border">
+                  <textarea class="form-control" rows="3" formControlName="description" class="form-control"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('password').errors &&
+               (registerFormEntreprise.get('password').touched||registerFormEntreprise.get('password').dirty)}">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <span class="help-block" *ngIf="registerFormEntreprise.get('password').errors &&
+               (registerFormEntreprise.get('password').touched||registerFormEntreprise.get('password').dirty)">
+                  <span *ngIf="registerFormEntreprise.get('password').errors.required">*Password is required</span>
+                  <span *ngIf="registerFormEntreprise.get('password').errors.minlength">*Password must be greater than 6 numbers</span>
+                </span>
+              </div>
+
+              <input type="submit" class="btn btn-primary" value="Register"/>
+            </form>
+      </div>
+    </ion-list>
+
+
+
+    <ion-list *ngSwitchCase="'student'">
+      <div class="container">
+
+            <form [formGroup]="registerFormEnsaiste" (ngSubmit)="tryRegisterEnsaiste(registerFormEnsaiste.value)">
+
+              <div class="form-group" [ngClass]="{'has-error' :registerFormEnsaiste.get('email').errors &&
+               (registerFormEnsaiste.get('email').touched||registerFormEnsaiste.get('email').dirty)}">
+                <label>Email address</label>
+                <input type="email" formControlName="email" class="form-control">
+                <span class="help-block" *ngIf="registerFormEnsaiste.get('email').errors &&
+               (registerFormEnsaiste.get('email').touched||registerFormEnsaiste.get('email').dirty)">
+                  <span *ngIf="registerFormEnsaiste.get('email').errors.required">*Email is required</span>
+                </span>
+              </div>
+
+              <div class="form-group" [ngClass]="{'has-error' :registerFormEnsaiste.get('password').errors &&
+               (registerFormEnsaiste.get('password').touched||registerFormEnsaiste.get('password').dirty)}">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <span class="help-block" *ngIf="registerFormEnsaiste.get('password').errors &&
+               (registerFormEnsaiste.get('password').touched||registerFormEnsaiste.get('password').dirty)">
+                  <span *ngIf="registerFormEnsaiste.get('password').errors.required">*Password is required</span>
+                  <span *ngIf="registerFormEnsaiste.get('password').errors.minlength">*Password must be greater than 6 numbers</span>
+                </span>
+              </div>
+              <input type="submit" class="btn btn-primary" value="Register"/>
+            </form>
+
+      </div>
+    </ion-list>
+  </div>
+
+</ion-content>

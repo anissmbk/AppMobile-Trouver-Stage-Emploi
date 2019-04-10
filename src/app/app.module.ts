@@ -1,0 +1,79 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import {LoginPage} from "../pages/login/login";
+import {RegisterPage} from "../pages/register/register";
+import {AngularFireModule} from "@angular/fire";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+import {AuthService} from "../services/auth.service";
+import {UserService} from "../services/user.service";
+import {EnsaistePage} from "../pages/ensaiste/ensaiste";
+import {AnnoncePage} from "../pages/annonce/annonce";
+import {UsersPage} from "../pages/users/users";
+import {DiscussionPage} from "../pages/discussion/discussion";
+import {MesAnnoncesPage} from "../pages/mes-annonces/mes-annonces";
+import {TabsPage} from "../pages/tabs/tabs";
+import {MyProfilePage} from "../pages/my-profile/my-profile";
+import {ModifyProfilePage} from "../pages/modify-profile/modify-profile";
+
+const firebase= {
+  apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
+  authDomain: "employemanagment-914b8.firebaseapp.com",
+  databaseURL: "https://employemanagment-914b8.firebaseio.com",
+  projectId: "employemanagment-914b8",
+  storageBucket: "employemanagment-914b8.appspot.com",
+  messagingSenderId: "662820019254"
+};
+
+
+@NgModule({
+  declarations: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    RegisterPage,
+    EnsaistePage,
+    AnnoncePage,
+    UsersPage,
+    DiscussionPage,
+    MesAnnoncesPage,
+    TabsPage,
+    MyProfilePage,
+    ModifyProfilePage
+  ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebase),
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    RegisterPage,
+    EnsaistePage,
+    AnnoncePage,
+    UsersPage,
+    DiscussionPage,
+    MesAnnoncesPage,
+    TabsPage,
+    MyProfilePage,
+    ModifyProfilePage
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    AuthService,//huum
+    UserService,//huum
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
+})
+export class AppModule {}

@@ -1,0 +1,70 @@
+page-home {
+  h5 {
+    color: #161930;
+  }
+
+  #text {
+    color: #fff;
+  }
+
+  .ion-page {
+    position: fixed !important;
+  }
+
+  #welcome {
+    background: url('../../assets/imgs/Emploi-Stage.png');
+    background-origin: border-box;
+    background-size: cover;
+    background-position: 30%;
+    background-repeat: no-repeat;
+    text-align: center;
+  }
+
+  .message {
+    width: 60%;
+    margin: 75% auto 10px auto;
+  }
+
+  .buttons {
+    margin-top: 15%;
+  }
+
+  .buttons button {
+    padding: 20px 70px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    color: #161954;
+    background: #fff;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  .buttons button:hover {
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    background: #161930;
+    color: #ddd
+  }
+
+  .buttons p {
+    color: #fff;
+  }
+
+  .buttons p a {
+    color: #fff;
+    font-size: 1em
+  }
+
+  #login {
+    margin-top: 15px !important;
+    font-weight: bold;
+    color: #46c6ac;
+    font-size: 16px;
+  }
+  #login:hover{
+    cursor: pointer;
+  }
+
+}
