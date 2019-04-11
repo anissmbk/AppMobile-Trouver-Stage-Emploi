@@ -19,21 +19,10 @@ export class UserService {
 
 
   getCurrentUser() {
-    //methode1
-/*    return new Promise<any>((resolve, reject) => {
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          resolve(user);
-        } else {
-          reject('No user logged in');
-        }
-      });
-    });*/
-//methode 2
     return firebase.auth().currentUser;
   }
 
-  ajoutEntrepriseUser(value:EntrepriseModel){
+  /*ajoutEntrepriseUser(value:EntrepriseModel){
     return new Promise<any>((resolve, reject) => {
       const userId=this.getCurrentUser().uid;
       const itemRef = this.db.object('/entreprise/'+userId);
@@ -41,9 +30,9 @@ export class UserService {
         resolve(res);
       }, err => reject(err));
     });
-  }
+  }*/
 
-  ajoutEnsaisteUser(value:EnsaisteModel){
+  /*ajoutEnsaisteUser(value:EnsaisteModel){
     return new Promise<any>((resolve, reject) => {
       const userId=this.getCurrentUser().uid;
       const itemRef = this.db.object('/ensaiste/'+userId);
@@ -52,6 +41,8 @@ export class UserService {
       }, err => reject(err));
     });
   }
+*/
+
   updateCurrentBasicProfile(value:string) {
     return new Promise<any>((resolve, reject) => {
       const user = this.getCurrentUser();

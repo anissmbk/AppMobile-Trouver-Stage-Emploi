@@ -1,20 +1,13 @@
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {AngularFireAuth} from "@angular/fire/auth";
 import {AuthService} from "../../services/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HomePage} from "../home/home";
-import {LoginPage} from "../login/login";
 import {UserService} from "../../services/user.service";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import * as firebase from 'firebase/app';
+import {AngularFireDatabase} from "@angular/fire/database";
 
 @IonicPage()
 @Component({
@@ -33,7 +26,8 @@ export class RegisterPage {
               public navParams: NavParams,
               public authService: AuthService,
               public fb: FormBuilder,
-              public userService: UserService
+              public userService: UserService,
+              public db: AngularFireDatabase,
               ) {this.createForm();}
 
 
@@ -66,7 +60,13 @@ export class RegisterPage {
       .then(res => {
         this.alert('Success! Your account has been created');
         this.ensaisteUser.email=value.email;
-        this.userService.ajoutEnsaisteUser(this.ensaisteUser);
+
+        //ajout l'objet this.entrepriseUser to firebase
+        const userId=firebase.auth().currentUser.uid;
+        const itemRef = this.db.object('/ensaiste/'+userId);
+        itemRef.set(this.entrepriseUser);
+
+        //set display name
         this.userService.updateCurrentBasicProfile('ensaiste');
         this.navCtrl.setRoot(HomePage);
       }, err => {
@@ -88,11 +88,18 @@ export class RegisterPage {
           photo: '',
           description: value.description
         };
-        this.userService.ajoutEntrepriseUser(this.entrepriseUser);
+
+        //ajout l'objet this.entrepriseUser to firebase
+        const userId=firebase.auth().currentUser.uid;
+        const itemRef = this.db.object('/entreprise/'+userId);
+        itemRef.set(this.entrepriseUser);
+
+        //set display name
         this.userService.updateCurrentBasicProfile('entreprise');
         this.navCtrl.push(HomePage);
       }, err => {
         this.alert(err.message);
       });
   }
+
 }
