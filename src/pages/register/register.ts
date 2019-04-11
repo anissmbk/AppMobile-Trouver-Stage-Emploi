@@ -3,6 +3,11 @@ import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angula
 import {AngularFireAuth} from "@angular/fire/auth";
 import {AuthService} from "../../services/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {HomePage} from "../home/home";
+import {LoginPage} from "../login/login";
+import {UserService} from "../../services/user.service";
+import {EntrepriseModel} from "../../UserClass/entrepriseModel";
+import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 
 /**
  * Generated class for the RegisterPage page.
@@ -20,11 +25,15 @@ export class RegisterPage {
   registerFormEnsaiste: FormGroup;
   registerFormEntreprise: FormGroup;
   pet: any;
+  entrepriseUser:EntrepriseModel=new EntrepriseModel();
+  ensaisteUser:EnsaisteModel=new EnsaisteModel();
+
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               public navParams: NavParams,
               public authService: AuthService,
-              private fb: FormBuilder
+              public fb: FormBuilder,
+              public userService: UserService
               ) {this.createForm();}
 
 
@@ -42,6 +51,7 @@ export class RegisterPage {
       email: ['',  [Validators.required,Validators.email]],
       password: ['', [Validators.required,Validators.minLength(6)]]
     });
+
     this.registerFormEntreprise=this.fb.group({
       nomEntreprise: ['', Validators.required ],
       email: ['', [Validators.required,Validators.email]],
@@ -52,19 +62,37 @@ export class RegisterPage {
     });
   }
   tryRegisterEnsaiste(value) {
-   /* this.authService.doRegister(value)
+    this.authService.doRegister(value)
       .then(res => {
         this.alert('Success! Your account has been created');
+        this.ensaisteUser.email=value.email;
+        this.userService.ajoutEnsaisteUser(this.ensaisteUser);
+        this.userService.updateCurrentBasicProfile('ensaiste');
+        this.navCtrl.setRoot(HomePage);
       }, err => {
         this.alert(err.message);
-      });*/
-   console.log("swaa7 email :"+this.registerFormEnsaiste.value.email);
-    console.log("heloo pass :"+this.registerFormEnsaiste.value.password);
+      });
   }
 
 
   tryRegisterEntreprise(value){
-    console.log("swaa7 email :"+this.registerFormEntreprise.value.email);
-    console.log("heloo pass :"+this.registerFormEntreprise.value.password);
+    this.authService.doRegister(value)
+      .then(res => {
+        this.alert('Success! Your account has been created');
+        this.entrepriseUser={
+          entrepriseName: value.nomEntreprise,
+          secteurActivite: value.secteurActivite,
+          email: value.email,
+          city:  '',
+          phone: value.tel,
+          photo: '',
+          description: value.description
+        };
+        this.userService.ajoutEntrepriseUser(this.entrepriseUser);
+        this.userService.updateCurrentBasicProfile('entreprise');
+        this.navCtrl.push(HomePage);
+      }, err => {
+        this.alert(err.message);
+      });
   }
 }

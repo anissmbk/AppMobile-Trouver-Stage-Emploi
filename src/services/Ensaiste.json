@@ -1,0 +1,43 @@
+{
+  "ensaiste" : {
+    "-Muh_aSRah7kJewq8C29": {
+      "firstName": "Aniss",
+      "lastName": "Mbarki",
+      "date_naissance": "29/12/1997",
+      "email": "aniss@gmail.com",
+      "city": "OuedZem",
+      "phone": "0610774610",
+      "photo": "C:\\Users\\hp\\Desktop\\AppMobile-Trouver-Stage-Emploi\\src\\assets\\imgs\\logo.png",
+      "formation": "Etudiant en GI2",
+      "experience": "nun",
+      "competence": "Web Developper",
+      "evaluation": "nun"
+    },
+    "-Muh_bZAvh7kiazx6D13": {
+      "firstName": "Anas",
+      "lastName": "Filah",
+      "date_naissance": "04/04/1996",
+      "email": "anass-filah@gmail.com",
+      "city": "Marrakech",
+      "phone": "0665595210",
+      "photo": "C:\\Users\\hp\\Desktop\\AppMobile-Trouver-Stage-Emploi\\src\\assets\\imgs\\logo.png",
+      "formation": "Etudiant en GI2",
+      "experience": "nun",
+      "competence": "Web Developper",
+      "evaluation": "nun"
+    },
+    "-Muh_bXAvh3sdfjk7S65": {
+      "firstName": "Zakaria",
+      "lastName": "Latarcha",
+      "date_naissance": "29/05/1997",
+      "email": "zakaria@gmail.com",
+      "city": "Marrakech",
+      "phone": "0610774650",
+      "photo": "C:\\Users\\hp\\Desktop\\AppMobile-Trouver-Stage-Emploi\\src\\assets\\imgs\\logo.png",
+      "formation": "Etudiant en GI2",
+      "experience": "nun",
+      "competence": "Web Developper",
+      "evaluation": "nun"
+    }
+  }
+}

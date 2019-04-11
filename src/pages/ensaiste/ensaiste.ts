@@ -1,14 +1,13 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, Platform} from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import {Nav} from "ionic-angular";
-import { NavController, NavParams } from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {NavController} from 'ionic-angular';
 import {MesAnnoncesPage} from "../mes-annonces/mes-annonces";
 import {TabsPage} from "../tabs/tabs";
-import {ModifyProfilePage} from "../modify-profile/modify-profile";
 import {AuthService} from "../../services/auth.service";
 import {HomePage} from "../home/home";
+import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profile-ensaiste";
 
 @Component({
   selector: 'page-ensaiste',
@@ -17,8 +16,8 @@ import {HomePage} from "../home/home";
 export class EnsaistePage {
 
   //@ViewChild(Nav) nav: Nav;
-  rootPage:any = TabsPage;
-  pages: Array<{title: string, component: any}>;
+  rootPage: any = TabsPage;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(platform: Platform,
               statusBar: StatusBar,
@@ -33,8 +32,8 @@ export class EnsaistePage {
       splashScreen.hide();
     });
     this.pages = [
-        { title: 'MesAnnonces', component: MesAnnoncesPage },
-        { title: 'Modifier Profile', component: ModifyProfilePage}
+      {title: 'MesAnnonces', component: MesAnnoncesPage},
+      {title: 'Modifier Profile', component: ModifyProfileEnsaistePage}
     ];
   }
 
@@ -55,15 +54,14 @@ export class EnsaistePage {
     this.navCtrl.push(page.component);
   }
 
-  logOut(){
-
+  logOut() {
     this.authService.doLogout()
-      .then( data => {
-      this.alert('Success! You\'re Deconnect');
+      .then(data => {
+        this.alert('Success! You\'re Deconnect');
 
-      this.navCtrl.setRoot( HomePage );
-    })
-      .catch( error => {
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch(error => {
         console.log('got an error');
       })
   }

@@ -19,7 +19,15 @@ import {DiscussionPage} from "../pages/discussion/discussion";
 import {MesAnnoncesPage} from "../pages/mes-annonces/mes-annonces";
 import {TabsPage} from "../pages/tabs/tabs";
 import {MyProfilePage} from "../pages/my-profile/my-profile";
-import {ModifyProfilePage} from "../pages/modify-profile/modify-profile";
+import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
+import {EntreprisePage} from "../pages/entreprise/entreprise";
+import {ModifyProfileEnsaistePage} from "../pages/modify-profile-ensaiste/modify-profile-ensaiste";
+import {CandidatsEnregistresPage} from "../pages/candidats-enregistres/candidats-enregistres";
+import {ModifyProfileEntreprisePage} from "../pages/modify-profile-entreprise/modify-profile-entreprise";
+import {EntrepriseProfilePage} from "../pages/entreprise-profile/entreprise-profile";
+import {PosterAnnocePage} from "../pages/poster-annoce/poster-annoce";
+import {TabsEntreprisePage} from "../pages/tabs-entreprise/tabs-entreprise";
+
 
 const firebase= {
   apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
@@ -44,11 +52,18 @@ const firebase= {
     MesAnnoncesPage,
     TabsPage,
     MyProfilePage,
-    ModifyProfilePage
+    ModifyProfileEnsaistePage,
+    EntreprisePage,
+    CandidatsEnregistresPage,
+    ModifyProfileEntreprisePage,
+    EntrepriseProfilePage,
+    PosterAnnocePage,
+    TabsEntreprisePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
 
@@ -66,9 +81,16 @@ const firebase= {
     MesAnnoncesPage,
     TabsPage,
     MyProfilePage,
-    ModifyProfilePage
+    ModifyProfileEnsaistePage,
+    EntreprisePage,
+    CandidatsEnregistresPage,
+    ModifyProfileEntreprisePage,
+    EntrepriseProfilePage,
+    PosterAnnocePage,
+    TabsEntreprisePage
   ],
   providers: [
+    AngularFireDatabase,
     StatusBar,
     SplashScreen,
     AuthService,//huum
