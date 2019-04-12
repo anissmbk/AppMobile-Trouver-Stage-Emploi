@@ -1,9 +1,4 @@
-<!--
-  Generated template for the UsersPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <ion-title>UsersPage</ion-title>
@@ -11,5 +6,55 @@
 </ion-header>
 
 <ion-content padding>
+Entreprise:<br>
+  <ion-list>
+    <ion-item-sliding *ngFor="let entreprise of myObject">
+      <ion-item class="comment">
+        <ion-avatar item-start>
+          <img src="{{entreprise[1]['photo']}}">
+        </ion-avatar>
+        <div>
+          <h2>{{entreprise[1]['entrepriseName']}}</h2>
+          <p style="white-space: pre-line">entrprise key est :
+            {{entreprise[0]}}</p>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="bookmark"></ion-icon>
+          Enregistrer
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="text"></ion-icon>
+          Consulter
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-list>
+  Ensaiste :<br>
+  <ion-list>
+    <ion-item-sliding *ngFor="let ensaiste of myObjectEnsaiste">
+      <ion-item class="comment">
+        <ion-avatar item-start>
+          <img src="{{ensaiste[1]['photo']}}">
+        </ion-avatar>
+        <div>
+          <h2>{{ensaiste[1]['firstName']}} {{ensaiste[1]['lastName']}}</h2>
+          <p style="white-space: pre-line">ensaiste key est :
+            {{ensaiste[0]}}</p>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="bookmark"></ion-icon>
+          Enregistrer
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="text"></ion-icon>
+          Consulter
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>

@@ -11,5 +11,16 @@
 </ion-header>
 
 <ion-content padding>
+  <input type="file" value="UploadPhoto" (change)="upload($event)" accept=".jpg,.png" />
 
+  <ion-item-sliding>
+    <ion-item class="comment">
+      <ion-avatar item-start>
+        <img src="{{entrepriseProfile.photo}}" id="myimg">
+      </ion-avatar>
+      <div>
+        <h2>change image</h2>
+      </div>
+    </ion-item>
+  </ion-item-sliding>
 </ion-content>

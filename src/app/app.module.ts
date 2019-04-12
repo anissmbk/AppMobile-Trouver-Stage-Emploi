@@ -27,7 +27,7 @@ import {ModifyProfileEntreprisePage} from "../pages/modify-profile-entreprise/mo
 import {EntrepriseProfilePage} from "../pages/entreprise-profile/entreprise-profile";
 import {PosterAnnocePage} from "../pages/poster-annoce/poster-annoce";
 import {TabsEntreprisePage} from "../pages/tabs-entreprise/tabs-entreprise";
-
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 const firebase= {
   apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
@@ -65,7 +65,8 @@ const firebase= {
     IonicModule.forRoot(MyApp),
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebase),
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule,
+    AngularFireStorageModule// imports firebase/auth, only needed for auth features
 
   ],
   bootstrap: [IonicApp],

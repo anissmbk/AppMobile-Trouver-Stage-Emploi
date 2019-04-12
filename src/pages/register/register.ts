@@ -27,7 +27,7 @@ export class RegisterPage {
               public authService: AuthService,
               public fb: FormBuilder,
               public userService: UserService,
-              public db: AngularFireDatabase,
+              public db: AngularFireDatabase
               ) {this.createForm();}
 
 
@@ -60,6 +60,7 @@ export class RegisterPage {
       .then(res => {
         this.alert('Success! Your account has been created');
         this.ensaisteUser.email=value.email;
+        this.ensaisteUser.photo='../../assets/imgs/user.jpg';
 
         //ajout l'objet this.entrepriseUser to firebase
         const userId=firebase.auth().currentUser.uid;
@@ -85,7 +86,7 @@ export class RegisterPage {
           email: value.email,
           city:  '',
           phone: value.tel,
-          photo: '',
+          photo: '../../assets/imgs/user.jpg',
           description: value.description
         };
 
