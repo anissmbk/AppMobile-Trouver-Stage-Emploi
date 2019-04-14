@@ -30,7 +30,6 @@ export class ModifyProfileEnsaistePage  {
     var x=db.object('/ensaiste/'+firebase.auth().currentUser.uid);
     x.snapshotChanges().subscribe(item=>{
       var e = item.payload.toJSON();
-      e['key']=item.key;
       this.ensaisteProfile=e as EnsaisteModel;
     });
   }

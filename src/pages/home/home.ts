@@ -19,7 +19,7 @@ export class HomePage {
 
   signIn() {
     this.navCtrl.push(LoginPage);
-    console.log("aniss-090@gmail.fr");
+    console.log("filahcompany@hotmail.com");
   }
 
   signup() {

@@ -85,7 +85,7 @@
                 <span class="help-block" *ngIf="registerFormEntreprise.get('password').errors &&
                (registerFormEntreprise.get('password').touched||registerFormEntreprise.get('password').dirty)">
                   <span *ngIf="registerFormEntreprise.get('password').errors.required">*Password is required</span>
-                  <span *ngIf="registerFormEntreprise.get('password').errors.minlength">*Password must be greater than 6 numbers</span>
+                  <span *ngIf="registerFormEntreprise.get('password').errors.minlength">*Password must be greater than 6 characters</span>
                 </span>
               </div>
 

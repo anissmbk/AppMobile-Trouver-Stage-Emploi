@@ -1,0 +1,37 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>AnnonceDetailPage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div>
+    id annonce :{{id}}<br>
+    annonce ville:{{annonceStage.ville}}<br>
+    annonce type de stage :{{annonceStage.type_stage}}<br>
+    titre : {{annonceStage.titre}}<br>
+</div>
+  <ul>
+    <li *ngFor="let commentaire of myObject">
+      <h2>le commentaire Avec les infos de lensaiste :</h2>
+      id_commentaire :{{commentaire[1]['id_commentaire']}}<br>
+      id_ensaiste : {{commentaire[1]['id_ensaiste']}}<br>
+      commentaire_text : {{commentaire[1]['commentaire_text']}}<br>
+      disponibilite : {{commentaire[1]['disponibilite']}}<br>
+      <!--commentaire[1] contient les infos sur commentaire && commentaire[2] contient des infos sur ensaiste-->
+      city :{{commentaire[2]['city']}}<br>
+      competence :{{commentaire[2]['competence']}}<br>
+      date_naissance : {{commentaire[2]['date_naissance']}}<br>
+      email : {{commentaire[2]['email']}}<br>
+      evaluation :{{commentaire[2]['evaluation']}}<br>
+      experience :{{commentaire[2]['experience']}}<br>
+      firstName : {{commentaire[2]['firstName']}}<br>
+      formation : {{commentaire[2]['formation']}}<br>
+      phone :{{commentaire[2]['phone']}}<br>
+      lastName :{{commentaire[2]['lastName']}}<br>
+      photo : {{commentaire[2]['photo']}}<br>
+    </li>
+  </ul>
+
+</ion-content>

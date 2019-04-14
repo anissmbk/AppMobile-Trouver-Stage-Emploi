@@ -28,6 +28,7 @@ import {EntrepriseProfilePage} from "../pages/entreprise-profile/entreprise-prof
 import {PosterAnnocePage} from "../pages/poster-annoce/poster-annoce";
 import {TabsEntreprisePage} from "../pages/tabs-entreprise/tabs-entreprise";
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import {AnnonceDetailPage} from "../pages/annonce-detail/annonce-detail";
 
 const firebase= {
   apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
@@ -58,7 +59,8 @@ const firebase= {
     ModifyProfileEntreprisePage,
     EntrepriseProfilePage,
     PosterAnnocePage,
-    TabsEntreprisePage
+    TabsEntreprisePage,
+    AnnonceDetailPage
   ],
   imports: [
     BrowserModule,
@@ -88,7 +90,8 @@ const firebase= {
     ModifyProfileEntreprisePage,
     EntrepriseProfilePage,
     PosterAnnocePage,
-    TabsEntreprisePage
+    TabsEntreprisePage,
+    AnnonceDetailPage
   ],
   providers: [
     AngularFireDatabase,

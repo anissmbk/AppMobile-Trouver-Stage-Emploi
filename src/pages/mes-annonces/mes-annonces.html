@@ -1,16 +1,45 @@
-<!--
-  Generated template for the MesAnnoncesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <ion-title>MesAnnoncesPage</ion-title>
-   <!-- <button ion-button (click)="back()">back</button>-->
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-hello mes annonces enregistrées
+  <h1>hello mes annonces enregistrées:</h1>
+  <!--annonce[1] contient les id des annonces enregistres && annonce[2] contient les infos sur lannonce enregistre-->
+  <ion-card *ngFor="let annonce of myObject">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{annonce[3]['photo'].photo}}">
+      </ion-avatar>
+      <strong>{{annonce[2]['titre']}}</strong>
+      <p>{{annonce[3]['entrepriseName'].entrepriseName}}</p>
+      <p>publiee le {{annonce[2]['publiee_le']}}</p>
+      <button (click)="annonceDetail(annonce[1]['id'])">consulter</button>
+    </ion-item>
+    <ion-card-content>
+      <p>{{annonce[2]['contexte_mission']}}</p>
+    </ion-card-content>
+    <div class="parent">
+      <label class="badge-stage stage-marketing enfant" id="enfant-A">{{annonce[2]['categorie']}}</label>
+      <label class="badge-stage stage-remunere enfant" id="enfant-B">
+
+        <p *ngIf="annonce[2]['remuneration']==false; else trueRemu">Stage Non Rémunéré</p>
+        <ng-template #trueRemu>Stage Rémunéré</ng-template>
+        <!--<p *ngIf="annonce[1]['remuneration']==false">Stage Rémunéré</p>-->
+      </label>
+      <label class="badge-stage stage-pre-embauche enfant" id="enfant-C">{{annonce[2]['type_stage']}}</label>
+    </div>
+    <div class="parent">
+      <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+
+        <strong>{{annonce[2]['ville']}}</strong><br>
+        <img src="../../assets/imgs/jps.jpg" id="img1">
+      </div>
+      <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+        <strong>{{annonce[2]['duree_stage']}} mois</strong><br>
+        <span>A partir de {{annonce[2]['a_partir_de']}}</span>
+      </div>
+    </div>
+  </ion-card>
 </ion-content>

@@ -24,8 +24,8 @@ export class UsersPage {
 
     this.entrepriseList=db.object('/entreprise');
     this.entrepriseList.snapshotChanges().subscribe(action=>{
-      let y=action.payload.toJSON();
-      y['key']=action.key;
+     // let y=action.payload.toJSON();
+      //y['key']=action.key;
       this.itemArray.push(action.payload.val() as EntrepriseModel);
       // pour savoir la methode entries il faut ajouter au tsconfig.json dans lib"es2017.object","es2016.array.include"
       this.myObject=Object.entries(this.itemArray[0]);
@@ -35,8 +35,8 @@ export class UsersPage {
 
     this.ensaisteList=db.object('/ensaiste');
     this.ensaisteList.snapshotChanges().subscribe(action=>{
-      let y=action.payload.toJSON();
-      y['key']=action.key;
+     // let y=action.payload.toJSON();
+      //y['key']=action.key;
       this.itemArrayEnsaiste.push(action.payload.val() as EnsaisteModel);
 
       // pour savoir la methode entries il faut ajouter au tsconfig.json dans lib"es2017.object","es2016.array.include"

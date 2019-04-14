@@ -24,7 +24,6 @@ export class ModifyProfileEntreprisePage {
     var x=db.object('/entreprise/'+firebase.auth().currentUser.uid);
     x.snapshotChanges().subscribe(item=>{
       var e = item.payload.toJSON();
-      e['key']=item.key;
       this.entrepriseProfile=e as EntrepriseModel;
     });
   }

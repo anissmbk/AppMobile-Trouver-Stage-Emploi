@@ -10,6 +10,9 @@ export class EnsaisteModel{
   experience: string;
   competence: string;
   evaluation: string;
+  zz_annonce_enregistre:{
+    id:string;
+  }[];
   constructor (){
     this.firstName='';
     this.lastName='';
@@ -22,5 +25,8 @@ export class EnsaisteModel{
     this.experience='';
     this.competence='';
     this.evaluation='';
+    this.zz_annonce_enregistre= [{
+      id : ''
+    }];
   }
 }
