@@ -5,9 +5,19 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="dorefresh($event);">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <h1>hello mes annonces enregistrées:</h1>
   <!--annonce[1] contient les id des annonces enregistres && annonce[2] contient les infos sur lannonce enregistre-->
   <ion-card *ngFor="let annonce of myObject">
+    <!--fixer ce probleme-->
+    <div id="{{annonce[1]['id']}}">
     <ion-item>
       <ion-avatar item-start>
         <img src="{{annonce[3]['photo'].photo}}">
@@ -16,6 +26,7 @@
       <p>{{annonce[3]['entrepriseName'].entrepriseName}}</p>
       <p>publiee le {{annonce[2]['publiee_le']}}</p>
       <button (click)="annonceDetail(annonce[1]['id'])">consulter</button>
+      <button (click)="removeAnnonceEnregistre(annonce[1]['id'])">supprimer de mes annonces</button>
     </ion-item>
     <ion-card-content>
       <p>{{annonce[2]['contexte_mission']}}</p>
@@ -40,6 +51,7 @@
         <strong>{{annonce[2]['duree_stage']}} mois</strong><br>
         <span>A partir de {{annonce[2]['a_partir_de']}}</span>
       </div>
+    </div>
     </div>
   </ion-card>
 </ion-content>

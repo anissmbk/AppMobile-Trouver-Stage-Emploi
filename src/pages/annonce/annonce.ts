@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
@@ -18,7 +18,7 @@ export class AnnoncePage {
   itemArray=[];
   myObject= [];
   entrepriseUser:EntrepriseModel;
-  constructor( public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
+  constructor( private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.annonceList=db.object('/annonceStage');
     this.annonceList.snapshotChanges().subscribe(action=>{
       let y=action.payload.toJSON();
@@ -36,15 +36,24 @@ export class AnnoncePage {
   }
 
   annonceDetail(id:string){
+    //problemme pas de back()
     this.navCtrl.push(AnnonceDetailPage,id);
    }
   enregistrerAnnonce(id1:string){
     const userId=firebase.auth().currentUser.uid;
-    const path = Math.random().toString(36).substring(2);
-    const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_enregistre/'+path);
+    const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_enregistre/'+id1);
     var a={
       id:id1
     };
     itemRef.set(a);
+    this.alert("bien enregistrer");
+
+  }
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
   }
 }
