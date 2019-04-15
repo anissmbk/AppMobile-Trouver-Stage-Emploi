@@ -5,12 +5,6 @@ import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
-/**
- * Generated class for the ModifyProfileEnsaistePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -46,15 +40,26 @@ export class ModifyProfileEnsaistePage  {
         var img = document.getElementById('myimg')as HTMLImageElement;
         img.src = downloadURL;
         this.ensaisteProfile.photo=downloadURL;
-        console.log("lien 1"+this.ensaisteProfile.photo);
         this.refrecherPage(this.ensaisteProfile.photo)
       }.bind(this));
-      console.log("lien 2");
     }.bind(this));
-    console.log("lien3");
   }
   refrecherPage(image:string){
     this.ensaisteProfile.photo=image;
+    this.userService.updateEnsaiste(this.ensaisteProfile);
+  }
+
+  modifier(value){
+    if(value.prenom) this.ensaisteProfile.firstName=value.prenom;
+    if(value.nom) this.ensaisteProfile.lastName=value.nom;
+    if(value.debut) this.ensaisteProfile.zdebut=value.debut;
+    if(value.filiere) this.ensaisteProfile.formation=value.filiere;
+    if(value.fin) this.ensaisteProfile.zfin=value.fin;
+    if(value.ville) this.ensaisteProfile.city=value.ville;
+    if(value.ecole) this.ensaisteProfile.zecole=value.ecole;
+    if(value.email) this.ensaisteProfile.email=value.email;
+    if(value.datedenaissance) this.ensaisteProfile.date_naissance=value.datedenaissance;
+    if(value.tel) this.ensaisteProfile.phone=value.tel;
     this.userService.updateEnsaiste(this.ensaisteProfile);
   }
 

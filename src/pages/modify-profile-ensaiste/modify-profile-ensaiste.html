@@ -8,6 +8,8 @@
   <ion-navbar>
     <ion-title>ModifyProfileEnsaistePage</ion-title>
   </ion-navbar>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </ion-header>
 
 <ion-content padding>
@@ -22,5 +24,72 @@
         <h2>change image</h2>
       </div>
     </ion-item>
+
   </ion-item-sliding>
+  <form #f="ngForm" (ngSubmit)="modifier(f.value)" >
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong >Nom :</strong></ion-title>
+      <div padding-bottom="12px;">
+        <input required="" type="text" name="nom" ngModel class="form-control" value="{{ensaisteProfile.lastName}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Prenom:</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="text" name="prenom" ngModel class="form-control" value="{{ensaisteProfile.firstName}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>email :</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="text" name="email" ngModel class="form-control" value="{{ensaisteProfile.email}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Ville :</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="text" name="datenaissance" ngModel class="form-control" value="{{ensaisteProfile.date_naissance}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Tel :</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="text" name="ville" ngModel class="form-control" value="{{ensaisteProfile.city}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Tel :</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="text" name="tel" ngModel class="form-control" value="{{ensaisteProfile.phone}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Etablissement:</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="text" name="ecole" ngModel class="form-control" value="{{ensaisteProfile.zecole}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Filiere:</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="text" name="formation" ngModel class="form-control" value="{{ensaisteProfile.formation}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Debut de formation:</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="date" name="debut" ngModel class="form-control" value="{{ensaisteProfile.zdebut}}">
+      </div></ion-item>
+
+    <ion-item>
+      <ion-title text-left="" padding-bottom="">
+        <strong>Fin de formation:</strong></ion-title>
+      <div padding-bottom="12px;"><input required="" type="date" name="fin" ngModel class="form-control" value="{{ensaisteProfile.zfin}}">
+      </div></ion-item>
+
+    <ion-item text-center="">
+      <button class="btn btn-primary btn-lg btn-block"  type="submit" >Modifier</button>
+    </ion-item>
+  </form>
 </ion-content>

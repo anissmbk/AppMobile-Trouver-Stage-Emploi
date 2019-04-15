@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {EnsaisteModel} from "../../UserClass/ensaisteModel";
+import {UserService} from "../../services/user.service";
+import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profile-ensaiste";
 
 /**
  * Generated class for the MyProfilePage page.
@@ -15,11 +18,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  ensaisteUser:EnsaisteModel=this.userser.getEnsaiste();
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public userser:UserService) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyProfilePage');
+  }
+  change(){
+    this.navCtrl.push(ModifyProfileEnsaistePage);
   }
 
 }

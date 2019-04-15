@@ -10,6 +10,9 @@ export class EnsaisteModel{
   experience: string;
   competence: string;
   evaluation: string;
+  zdebut : string;
+  zecole : string;
+  zfin : string;
   zz_annonce_enregistre:{
     id:string;
   }[];
@@ -25,6 +28,9 @@ export class EnsaisteModel{
     this.experience='';
     this.competence='';
     this.evaluation='';
+    this.zdebut='';
+    this.zecole='';
+    this.zfin='';
     this.zz_annonce_enregistre= [{
       id : ''
     }];

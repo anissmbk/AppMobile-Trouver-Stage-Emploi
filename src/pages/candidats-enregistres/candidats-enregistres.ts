@@ -4,11 +4,7 @@ import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {UserService} from "../../services/user.service";
 import * as firebase from 'firebase/app';
-import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
-import {EntrepriseModel} from "../../UserClass/entrepriseModel";
-import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
 import {MyProfilePage} from "../my-profile/my-profile";
-
 
 @IonicPage()
 @Component({
@@ -22,13 +18,11 @@ export class CandidatsEnregistresPage {
   myObject= [];
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.id=this.navParams.data;
-
     this.candidatsEnregistreesList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_candidats_enregistree');
     this.candidatsEnregistreesList.snapshotChanges().subscribe(action => {
 
       this.itemArray.push(action.payload.val() as {id:string});
       // pour savoir la methode entries il faut ajouter au tsconfig.json dans lib"es2017.object","es2016.array.include"
-
       //had if mohima dans le cas ila makan ta commentaire
       if(this.itemArray[0]!=null){
         this.myObject = Object.entries(this.itemArray[0]);

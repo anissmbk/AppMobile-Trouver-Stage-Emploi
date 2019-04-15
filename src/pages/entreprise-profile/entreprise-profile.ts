@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the EntrepriseProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {EntrepriseModel} from "../../UserClass/entrepriseModel";
+import {UserService} from "../../services/user.service";
+import {ModifyProfileEntreprisePage} from "../modify-profile-entreprise/modify-profile-entreprise";
 
 @IonicPage()
 @Component({
@@ -15,11 +11,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EntrepriseProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  entrepriseUser:EntrepriseModel=this.userService.getEntreprise();
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public userService: UserService,) {
+
+
+  }
+  change(){
+    this.navCtrl.push(ModifyProfileEntreprisePage);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EntrepriseProfilePage');
-  }
+  /*update(){
+    this.entrepriseUser=this.userService.getEntreprise();
+  }*/
+
 
 }

@@ -80,6 +80,34 @@ export class UserService {
     return entreprise;
   }
 
+  getEnsaiste():EnsaisteModel{
+    let ensaiste:EnsaisteModel=new EnsaisteModel();
+    const userId = firebase.auth().currentUser.uid;
+    var ref = firebase.database().ref('/ensaiste/'+userId);
+    ref.once("value").then(function(snapshot){
+      var result = snapshot.val();
+      if(result!=null) {
+        var keys = Object.keys(result);
+        ensaiste.city = result[keys[0]];
+        ensaiste.competence = result[keys[1]];
+        ensaiste.date_naissance = result[keys[2]];
+        ensaiste.email = result[keys[3]];
+        ensaiste.evaluation = result[keys[4]];
+        ensaiste.experience = result[keys[5]];
+        ensaiste.firstName = result[keys[6]];
+        ensaiste.formation = result[keys[7]];
+        ensaiste.lastName = result[keys[8]];
+        ensaiste.phone = result[keys[9]];
+        ensaiste.photo = result[keys[10]];
+        ensaiste.zdebut = result[keys[11]];
+        ensaiste.zecole = result[keys[12]];
+        ensaiste.zfin=result[keys[13]];
+      }
+    }, function (error) {
+      return  error;
+    });
+    return ensaiste;
+  }
 
   getEnsaisteById(id:string):EnsaisteModel{
     let ensaiste:EnsaisteModel=new EnsaisteModel();
@@ -105,6 +133,7 @@ export class UserService {
     });
     return ensaiste;
   }
+
   getEntrepriseById(id:string):EntrepriseModel{
     let entreprise:EntrepriseModel=new EntrepriseModel();
     var ref = firebase.database().ref('/entreprise/'+id);
@@ -128,11 +157,14 @@ export class UserService {
   }
 
   getAnnonceStageById(id:string):AnnonceStageModel{
+  console.log(1);
     let annonceStage:AnnonceStageModel=new AnnonceStageModel();
+    console.log(2);
     var ref = firebase.database().ref('/annonceStage/'+id);
     ref.once("value").then(function(snapshot){
       var result = snapshot.val();
       if(result!=null){
+        console.log(3);
       var keys=Object.keys(result);
       annonceStage.a_partir_de=result[keys[0]];
       annonceStage.categorie=result[keys[1]];
@@ -152,6 +184,8 @@ export class UserService {
 
       return  error;
     });
+    console.log(4);
     return annonceStage;
+
   }
 }

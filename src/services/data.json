@@ -84,6 +84,9 @@
       "lastName" : "Mbarki",
       "phone" : "0610774610",
       "photo" : "../../assets/imgs/ensaiste.jpg",
+      "zdebut": "2014",
+      "zfin": "2022",
+      "zecole": "Ensa",
       "zz_annonce_enregistre" : {
         "-Muh_aSRah7kJewq8Cef" : {
           "id" : "-Mch_bZAvh7kiazx6h99"
@@ -105,6 +108,9 @@
       "lastName" : "Latarcha",
       "phone" : "0610774650",
       "photo" : "../../assets/imgs/ensaiste.jpg",
+      "zdebut": "2014",
+      "zfin": "2022",
+      "zecole": "Ensa",
       "zz_annonce_enregistre" : {
         "-Muh_aSRah7hbfngq12" : {
           "id" : "-Mch_bZAvh7kiazx6k89"
@@ -125,7 +131,10 @@
       "formation" : "Etudiant en GI2",
       "lastName" : "Filah",
       "phone" : "0665595210",
-      "photo" : "../../assets/imgs/ensaiste.jpg"
+      "photo" : "../../assets/imgs/ensaiste.jpg",
+      "zdebut": "2014",
+      "zfin": "2022",
+      "zecole": "Ensa"
     },
     "33KfeBal4sbhDe6SGn6PrVynRZG2" : {
       "city" : "berkane",
@@ -139,6 +148,9 @@
       "lastName" : "Mbarki",
       "phone" : "0587621459",
       "photo" : "https://firebasestorage.googleapis.com/v0/b/employemanagment-914b8.appspot.com/o/80lofsvmek3?alt=media&token=b71085f6-b4d2-495d-98a3-90c40ef8239e",
+      "zdebut": "2014",
+      "zfin": "2022",
+      "zecole": "Ensa",
       "zz_annonce_enregistre" : {
         "gj9a994jahr" : {
           "id" : "-Muh_bZAvh7kiazx6k69"
@@ -159,7 +171,10 @@
       "formation" : "ensa",
       "lastName" : "Mbarki",
       "phone" : "0625155410",
-      "photo" : "../../assets/imgs/ensaiste.jpg"
+      "photo" : "../../assets/imgs/ensaiste.jpg",
+      "zdebut": "2014",
+      "zfin": "2022",
+      "zecole": "Ensa"
     }
   },
   "entreprise" : {

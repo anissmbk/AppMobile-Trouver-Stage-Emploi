@@ -13,6 +13,7 @@ import * as firebase from 'firebase/app';
   templateUrl: 'modify-profile-entreprise.html',
 })
 export class ModifyProfileEntreprisePage {
+  entreprise:EntrepriseModel=this.userService.getEntreprise();
 
   entrepriseProfile:EntrepriseModel=new EntrepriseModel();
   constructor(public navCtrl: NavController,
@@ -20,7 +21,7 @@ export class ModifyProfileEntreprisePage {
               public afStorage:AngularFireStorage,
               public userService:UserService,
               public db:AngularFireDatabase
-             ) {
+  ) {
     var x=db.object('/entreprise/'+firebase.auth().currentUser.uid);
     x.snapshotChanges().subscribe(item=>{
       var e = item.payload.toJSON();
@@ -50,6 +51,15 @@ export class ModifyProfileEntreprisePage {
   refrecherPage(image:string){
     this.entrepriseProfile.photo=image;
     this.userService.updateEntreprise(this.entrepriseProfile);
+  }
+
+  modifier(value){
+    if(value.nomentreprise) this.entreprise.entrepriseName=value.nomentreprise;
+    if(value.email) this.entreprise.email=value.email;
+    if(value.ville) this.entreprise.city=value.ville;
+    if(value.tel) this.entreprise.phone=value.tel;
+    if(value.description) this.entreprise.description=value.description;
+    this.userService.updateEntreprise(this.entreprise);
   }
 
 }
