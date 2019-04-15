@@ -6,6 +6,9 @@ export class EntrepriseModel{
   phone: string;
   photo: string;
   description: string;
+  zz_candidats_enregistree:{
+    id:string;
+  }[];
   constructor (){
     this.entrepriseName='';
     this.secteurActivite='';
@@ -14,5 +17,8 @@ export class EntrepriseModel{
     this.phone='';
     this.photo='';
     this.description='';
+    this.zz_candidats_enregistree= [{
+      id : ''
+    }];
   }
 }

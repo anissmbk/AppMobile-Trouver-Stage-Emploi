@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase, AngularFireList, AngularFireObject} from "@angular/fire/database";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
@@ -19,7 +19,7 @@ export class UsersPage {
   myObjectEnsaiste= [];
   entrepriseObject:EntrepriseModel=new EntrepriseModel();//pas utilisable maintenant apres inchallah hhhhh
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,
+  constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,
               public userService:UserService) {
 
     this.entrepriseList=db.object('/entreprise');
@@ -56,7 +56,23 @@ export class UsersPage {
     });
 */
 
-  }
 
+  }
+  enregistrerCandidat(id1:string){
+    const userId=firebase.auth().currentUser.uid;
+    const itemRef = this.db.object('/entreprise/'+userId+'/zz_candidats_enregistree/'+id1);
+    var a={
+      id:id1
+    };
+    itemRef.set(a);
+    this.alert("bien enregistrer");
+  }
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
 }
 

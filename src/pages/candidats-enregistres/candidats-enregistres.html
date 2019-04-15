@@ -11,5 +11,30 @@
 </ion-header>
 
 <ion-content padding>
+  Candidats Enregistree :<br>
+  <ion-list>
+    <ion-item-sliding *ngFor="let ensaiste of myObject">
+      <ion-item class="comment">
+        <ion-avatar item-start>
+          <img src="{{ensaiste[2]['photo']}}">
+        </ion-avatar>
+        <div>
+          <h2>{{ensaiste[2]['firstName']}} {{ensaiste[2]['lastName']}}</h2>
+          <p style="white-space: pre-line">ensaiste key est :
+            {{ensaiste[1]['id']}}</p>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="removeCandidatEnregistre(ensaiste[1]['id'])">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="text" (click)="candidatsDetails(ensaiste[1]['id'])"></ion-icon>
+          Consulter
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>

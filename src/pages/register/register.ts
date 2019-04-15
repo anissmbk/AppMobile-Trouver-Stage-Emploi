@@ -87,7 +87,8 @@ export class RegisterPage {
           city:  '',
           phone: value.tel,
           photo: '../../assets/imgs/user.jpg',
-          description: value.description
+          description: value.description,
+          zz_candidats_enregistree : []
         };
 
         //ajout l'objet this.entrepriseUser to firebase

@@ -5,6 +5,9 @@
   </ion-navbar>
 </ion-header>
 
+<!--Ba9i khass n9ado laffichage mzn onsepariiw les cas -->
+
+
 <ion-content padding>
 Entreprise:<br>
   <ion-list>
@@ -45,7 +48,7 @@ Entreprise:<br>
         </div>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="enregistrerCandidat(ensaiste[0])">
           <ion-icon name="bookmark"></ion-icon>
           Enregistrer
         </button>
