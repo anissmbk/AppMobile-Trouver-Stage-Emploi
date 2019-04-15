@@ -74,7 +74,6 @@ export class UserService {
         entreprise.secteurActivite = result[keys[6]];
       }
       }, function (error) {
-
       return  error;
     });
     return entreprise;
@@ -150,21 +149,17 @@ export class UserService {
       entreprise.secteurActivite=result[keys[6]];
       }
     }, function (error) {
-
       return  error;
     });
     return entreprise;
   }
 
   getAnnonceStageById(id:string):AnnonceStageModel{
-  console.log(1);
     let annonceStage:AnnonceStageModel=new AnnonceStageModel();
-    console.log(2);
     var ref = firebase.database().ref('/annonceStage/'+id);
     ref.once("value").then(function(snapshot){
       var result = snapshot.val();
       if(result!=null){
-        console.log(3);
       var keys=Object.keys(result);
       annonceStage.a_partir_de=result[keys[0]];
       annonceStage.categorie=result[keys[1]];
@@ -184,7 +179,6 @@ export class UserService {
 
       return  error;
     });
-    console.log(4);
     return annonceStage;
 
   }

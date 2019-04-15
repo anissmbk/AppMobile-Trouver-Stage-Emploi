@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {EnsaistePage} from "../ensaiste/ensaiste";
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import { UserService} from "../../services/user.service";
 import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
-import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import * as firebase from 'firebase/app';
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
@@ -21,7 +19,6 @@ export class MesAnnoncesPage {
   entrepriseUser:EntrepriseModel;
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.id=this.navParams.data;
-
     this.annonceEnregistreesList=this.db.object('/ensaiste/'+firebase.auth().currentUser.uid+'/zz_annonce_enregistre');
     this.annonceEnregistreesList.snapshotChanges().subscribe(action => {
 
@@ -49,8 +46,8 @@ export class MesAnnoncesPage {
     const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_enregistre/'+id1);
     itemRef.remove();
     // fixer le prbleme il faut cliquer deux fois !!!
-    var a=document.getElementById(id1) as HTMLDivElement;
-    a.remove();
+    /*var a=document.getElementById(id1) as HTMLDivElement;
+    a.remove();*/
     //this.navCtrl.setRoot(this.navCtrl.getActive().component);
     this.alert("bien supprimee");
    }

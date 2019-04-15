@@ -31,8 +31,6 @@ export class EnsaisteModel{
     this.zdebut='';
     this.zecole='';
     this.zfin='';
-    this.zz_annonce_enregistre= [{
-      id : ''
-    }];
+    this.zz_annonce_enregistre= [];
   }
 }

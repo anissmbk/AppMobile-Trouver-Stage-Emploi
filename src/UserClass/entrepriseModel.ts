@@ -17,8 +17,6 @@ export class EntrepriseModel{
     this.phone='';
     this.photo='';
     this.description='';
-    this.zz_candidats_enregistree= [{
-      id : ''
-    }];
+    this.zz_candidats_enregistree= [];
   }
 }

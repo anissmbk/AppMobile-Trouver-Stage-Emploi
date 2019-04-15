@@ -84,9 +84,9 @@
       "lastName" : "Mbarki",
       "phone" : "0610774610",
       "photo" : "../../assets/imgs/ensaiste.jpg",
-      "zdebut": "2014",
-      "zfin": "2022",
-      "zecole": "Ensa",
+      "zdebut" : "2014",
+      "zecole" : "Ensa",
+      "zfin" : "2022",
       "zz_annonce_enregistre" : {
         "-Muh_aSRah7kJewq8Cef" : {
           "id" : "-Mch_bZAvh7kiazx6h99"
@@ -108,9 +108,9 @@
       "lastName" : "Latarcha",
       "phone" : "0610774650",
       "photo" : "../../assets/imgs/ensaiste.jpg",
-      "zdebut": "2014",
-      "zfin": "2022",
-      "zecole": "Ensa",
+      "zdebut" : "2014",
+      "zecole" : "Ensa",
+      "zfin" : "2022",
       "zz_annonce_enregistre" : {
         "-Muh_aSRah7hbfngq12" : {
           "id" : "-Mch_bZAvh7kiazx6k89"
@@ -132,9 +132,9 @@
       "lastName" : "Filah",
       "phone" : "0665595210",
       "photo" : "../../assets/imgs/ensaiste.jpg",
-      "zdebut": "2014",
-      "zfin": "2022",
-      "zecole": "Ensa"
+      "zdebut" : "2014",
+      "zecole" : "Ensa",
+      "zfin" : "2022"
     },
     "33KfeBal4sbhDe6SGn6PrVynRZG2" : {
       "city" : "berkane",
@@ -147,18 +147,10 @@
       "formation" : "ensa khouribgua",
       "lastName" : "Mbarki",
       "phone" : "0587621459",
-      "photo" : "https://firebasestorage.googleapis.com/v0/b/employemanagment-914b8.appspot.com/o/80lofsvmek3?alt=media&token=b71085f6-b4d2-495d-98a3-90c40ef8239e",
-      "zdebut": "2014",
-      "zfin": "2022",
-      "zecole": "Ensa",
-      "zz_annonce_enregistre" : {
-        "gj9a994jahr" : {
-          "id" : "-Muh_bZAvh7kiazx6k69"
-        },
-        "gw6t108qt1w" : {
-          "id" : "-Mch_bZAvh7kiazx6h99"
-        }
-      }
+      "photo" : "https://firebasestorage.googleapis.com/v0/b/employemanagment-914b8.appspot.com/o/cxyap78559d?alt=media&token=4a7c18f9-b387-49e7-a2c0-3c6eb048ebad",
+      "zdebut" : "2014",
+      "zecole" : "Ensa",
+      "zfin" : "2022"
     },
     "OZzqYbwlNAQspbbZZyDZxGKjTcr2" : {
       "city" : "MARRAKECH",
@@ -172,9 +164,9 @@
       "lastName" : "Mbarki",
       "phone" : "0625155410",
       "photo" : "../../assets/imgs/ensaiste.jpg",
-      "zdebut": "2014",
-      "zfin": "2022",
-      "zecole": "Ensa"
+      "zdebut" : "2014",
+      "zecole" : "Ensa",
+      "zfin" : "2022"
     }
   },
   "entreprise" : {
@@ -215,8 +207,8 @@
       "secteurActivite" : "info"
     },
     "8ekgYzeqC2YDjCFqWR4AqTFxib62" : {
-      "city" : "",
-      "description" : "kuyfdxgfchvbj",
+      "city" : "casa",
+      "description" : "entreprise info ",
       "email" : "filahCompany@hotmail.com",
       "entrepriseName" : "anassEntreprise",
       "phone" : "05555558456",
