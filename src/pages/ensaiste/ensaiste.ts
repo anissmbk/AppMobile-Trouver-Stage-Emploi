@@ -8,6 +8,7 @@ import {TabsPage} from "../tabs/tabs";
 import {AuthService} from "../../services/auth.service";
 import {HomePage} from "../home/home";
 import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profile-ensaiste";
+import {EntrepriseEnregistreePage} from "../entreprise-enregistree/entreprise-enregistree";
 
 @Component({
   selector: 'page-ensaiste',
@@ -31,6 +32,7 @@ export class EnsaistePage {
     });
     this.pages = [
       {title: 'MesAnnonces', component: MesAnnoncesPage},
+      {title: 'EntrepriseEnregistree', component: EntrepriseEnregistreePage},
       {title: 'Modifier Profile', component: ModifyProfileEnsaistePage}
     ];
   }

@@ -72,9 +72,14 @@ export class UsersPage {
     itemRef.set(a);
     this.alert("bien enregistrer");
   }
-  enregistrerEntreprise(id:string){
-    console.log("enregistrer dans la page mesEntreprisesPreferees Pas encore fiate");
-    this.alert("bien enregistrer Mais Pas encore Faite !!HAHAHAHA");
+  enregistrerEntreprise(id1:string){
+    const userId=firebase.auth().currentUser.uid;
+    const itemRef = this.db.object('/ensaiste/'+userId+'/zz_entreprise_enregistree/'+id1);
+    var a={
+      id:id1
+    };
+    itemRef.set(a);
+    this.alert("bien enregistrer");
   }
 
   consulterEnsaiste(id:string){

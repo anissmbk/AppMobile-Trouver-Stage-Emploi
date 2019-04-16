@@ -16,6 +16,9 @@ export class EnsaisteModel{
   zz_annonce_enregistre:{
     id:string;
   }[];
+  zz_entreprise_enregistree:{
+    id:string;
+  }[];
   constructor (){
     this.firstName='';
     this.lastName='';
@@ -32,5 +35,6 @@ export class EnsaisteModel{
     this.zecole='';
     this.zfin='';
     this.zz_annonce_enregistre= [];
+    this.zz_entreprise_enregistree= [];
   }
 }

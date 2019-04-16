@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>EntrepriseEnregistreePage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  Entreprise Enregistree :<br>
+  <ion-list>
+    <ion-item-sliding *ngFor="let entreprise of myObject">
+      <ion-item class="comment">
+        <ion-avatar item-start>
+          <img src="{{entreprise[2]['photo']}}">
+        </ion-avatar>
+        <div>
+          <h2>{{entreprise[2]['entrepriseName']}}</h2>
+          <p style="white-space: pre-line">entrprise key est :
+            {{entreprise[1]['id']}}</p>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="removeEntrepriseEnregistre(entreprise[0])">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+        <button ion-button color="secondary" (click)="entrepriseDetails(entreprise[0])" >
+          <ion-icon name="text"></ion-icon>
+          Consulter
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
