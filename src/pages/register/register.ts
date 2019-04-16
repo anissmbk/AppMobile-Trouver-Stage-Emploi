@@ -88,7 +88,8 @@ export class RegisterPage {
           phone: value.tel,
           photo: '../../assets/imgs/user.jpg',
           description: value.description,
-          zz_candidats_enregistree : []
+          zz_candidats_enregistree : [],
+          zz_mes_annonces: []
         };
 
         //ajout l'objet this.entrepriseUser to firebase

@@ -1,10 +1,11 @@
-dans modify-profile-ensaiste.html on a besoin de filere !!
-
-enregistrerEntreprise dans users.ts && ajouter mesEntreprisesPage entant qu'ensaiste
-
-annonceDetail(id:string) fixer le prblm de navigation annonce.ts .html
+poster annonce==>ajouter une icon pour soit poster annonceStage ou bien annonceEmploi
+//attention si vous ajoutez dans annoceStage il faut aussi l'ajouter dans mes_annonces dans l'entreorise
 
 regler l'affichage dans annonce.detail.html
+
+dans modify-profile-ensaiste.html on a besoin de filere !!
+
+annonceDetail(id:string) fixer le prblm de navigation annonce.ts .html
 
 fixer le prblm de removeCandidatEnregistre() dans candidats-enregistres.ts .html
 fixer le prblm de removeAnnonceEnregistre(id1:string) dans mes-annonces.ts .html

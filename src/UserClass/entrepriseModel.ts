@@ -9,6 +9,9 @@ export class EntrepriseModel{
   zz_candidats_enregistree:{
     id:string;
   }[];
+    zz_mes_annonces:{
+    id:string;
+  }[];
   constructor (){
     this.entrepriseName='';
     this.secteurActivite='';
@@ -18,5 +21,6 @@ export class EntrepriseModel{
     this.photo='';
     this.description='';
     this.zz_candidats_enregistree= [];
+    this.zz_mes_annonces= [];
   }
 }
