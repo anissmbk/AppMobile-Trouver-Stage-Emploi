@@ -1,0 +1,27 @@
+dans modify-profile-ensaiste.html on a besoin de filere !!
+
+enregistrerEntreprise dans users.ts && ajouter mesEntreprisesPage entant qu'ensaiste
+
+annonceDetail(id:string) fixer le prblm de navigation annonce.ts .html
+
+regler l'affichage dans annonce.detail.html
+
+fixer le prblm de removeCandidatEnregistre() dans candidats-enregistres.ts .html
+fixer le prblm de removeAnnonceEnregistre(id1:string) dans mes-annonces.ts .html
+
+il faut savoir comment on peut travailler avec dorefresh(refresher) et l'appliquer dans mes-annonces.ts  discussion.ts annonces-detail users.ts
+
+dans user.html
+<!--Ba9i khass n9ado laffichage mzn onsepariiw les cas -->
+<!--khass nfixiw les liste fwa7ed taille bach iban ensaiste lte7t
+okhass n9lbo kifaach ndeero lordre dyal affichage par exemple mli ndkhol ka ensaiste iban liya entreprise homa lowlin 3ad ensaiste
+omli ndkhol ka entreprise it9leb l'ordre-->
+
+dans auth.service.ts il faut appliquer les trois methodes doFacebook doTwitterLogin doGoogleLogin
+
+
+le grand prblm c'est trouver comment on peut rendre l'application ouverte lorsque il reload la page ou bien redebug
+et ajouter les listners pour savoir toutes les modifications dans la base de donnees et la synchronisation
+
+entant qu'ensaiste je peux trouver moi meme consulter moi meme !! supprimer mes commentaires
+entant qu'entreprise je peux trouver moi meme consulter moi meme !!  supprimer mes annonces

@@ -11,11 +11,7 @@ import {AnnonceStageModel} from "../AnnonceClass/annonceStageModel";
 @Injectable()
 export class UserService {
 
-  constructor(
-    public authService:AuthService,
-    public db: AngularFireDatabase,
-    public afAuth: AngularFireAuth
-  ) { }
+  constructor(public db: AngularFireDatabase) { }
 
 
   updateEntreprise(value:EntrepriseModel){
@@ -57,26 +53,9 @@ export class UserService {
     });
   }
 
-  getEntreprise():EntrepriseModel{
-    let entreprise:EntrepriseModel=new EntrepriseModel();
-    const userId = firebase.auth().currentUser.uid;
-    var ref = firebase.database().ref('/entreprise/'+userId);
-    ref.once("value").then(function(snapshot){
-      var result = snapshot.val();
-      if(result!=null) {
-        var keys = Object.keys(result);
-        entreprise.city = result[keys[0]];
-        entreprise.description = result[keys[1]];
-        entreprise.email = result[keys[2]];
-        entreprise.entrepriseName = result[keys[3]];
-        entreprise.phone = result[keys[4]];
-        entreprise.photo = result[keys[5]];
-        entreprise.secteurActivite = result[keys[6]];
-      }
-      }, function (error) {
-      return  error;
-    });
-    return entreprise;
+  getCurrentUserDisplayName(){
+    const user = this.getCurrentUser();
+    return user.displayName;
   }
 
   getEnsaiste():EnsaisteModel{
@@ -126,11 +105,38 @@ export class UserService {
         ensaiste.lastName = result[keys[8]];
         ensaiste.phone = result[keys[9]];
         ensaiste.photo = result[keys[10]];
+        ensaiste.zdebut = result[keys[11]];
+        ensaiste.zecole = result[keys[12]];
+        ensaiste.zfin=result[keys[13]];
       }
     }, function (error) {
       return  error;
     });
     return ensaiste;
+  }
+
+
+
+  getEntreprise():EntrepriseModel{
+    let entreprise:EntrepriseModel=new EntrepriseModel();
+    const userId = firebase.auth().currentUser.uid;
+    var ref = firebase.database().ref('/entreprise/'+userId);
+    ref.once("value").then(function(snapshot){
+      var result = snapshot.val();
+      if(result!=null) {
+        var keys = Object.keys(result);
+        entreprise.city = result[keys[0]];
+        entreprise.description = result[keys[1]];
+        entreprise.email = result[keys[2]];
+        entreprise.entrepriseName = result[keys[3]];
+        entreprise.phone = result[keys[4]];
+        entreprise.photo = result[keys[5]];
+        entreprise.secteurActivite = result[keys[6]];
+      }
+    }, function (error) {
+      return  error;
+    });
+    return entreprise;
   }
 
   getEntrepriseById(id:string):EntrepriseModel{

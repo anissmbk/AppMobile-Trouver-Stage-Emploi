@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {AngularFireStorage} from '@angular/fire/storage';
-
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
@@ -13,12 +11,10 @@ import * as firebase from 'firebase/app';
   templateUrl: 'modify-profile-entreprise.html',
 })
 export class ModifyProfileEntreprisePage {
-  entreprise:EntrepriseModel=this.userService.getEntreprise();
-
   entrepriseProfile:EntrepriseModel=new EntrepriseModel();
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public afStorage:AngularFireStorage,
               public userService:UserService,
               public db:AngularFireDatabase
   ) {
@@ -54,12 +50,12 @@ export class ModifyProfileEntreprisePage {
   }
 
   modifier(value){
-    if(value.nomentreprise) this.entreprise.entrepriseName=value.nomentreprise;
-    if(value.email) this.entreprise.email=value.email;
-    if(value.ville) this.entreprise.city=value.ville;
-    if(value.tel) this.entreprise.phone=value.tel;
-    if(value.description) this.entreprise.description=value.description;
-    this.userService.updateEntreprise(this.entreprise);
+    if(value.nomentreprise) this.entrepriseProfile.entrepriseName=value.nomentreprise;
+    if(value.email) this.entrepriseProfile.email=value.email;
+    if(value.ville) this.entrepriseProfile.city=value.ville;
+    if(value.tel) this.entrepriseProfile.phone=value.tel;
+    if(value.description) this.entrepriseProfile.description=value.description;
+    this.userService.updateEntreprise(this.entrepriseProfile);
   }
 
 }

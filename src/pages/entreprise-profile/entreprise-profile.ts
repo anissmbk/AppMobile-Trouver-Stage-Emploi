@@ -10,13 +10,17 @@ import {ModifyProfileEntreprisePage} from "../modify-profile-entreprise/modify-p
   templateUrl: 'entreprise-profile.html',
 })
 export class EntrepriseProfilePage {
-
-  entrepriseUser:EntrepriseModel=this.userService.getEntreprise();
-
-
+  id:string;
+  entrepriseUser:EntrepriseModel;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public userService: UserService,) {
-
+    this.id=this.navParams.data;
+    if(typeof this.id === "object"){
+      this.entrepriseUser=this.userService.getEntreprise();
+      this.id='true';
+    }else {
+      this.entrepriseUser=this.userService.getEntrepriseById(this.id);
+    }
 
   }
   change(){

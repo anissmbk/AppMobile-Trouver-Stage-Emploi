@@ -14,8 +14,6 @@ import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profi
   templateUrl: 'ensaiste.html',
 })
 export class EnsaistePage {
-
-  //@ViewChild(Nav) nav: Nav;
   rootPage: any = TabsPage;
   pages: Array<{ title: string, component: any }>;
 

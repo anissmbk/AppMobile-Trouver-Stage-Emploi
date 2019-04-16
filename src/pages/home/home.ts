@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, NavController} from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 import {LoginPage} from "../login/login";
 import {RegisterPage} from "../register/register";
 
@@ -13,7 +13,7 @@ export class HomePage {
   @ViewChild('password') password;
   pet: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController) {
 
   }
 

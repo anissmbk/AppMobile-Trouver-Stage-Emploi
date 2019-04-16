@@ -4,24 +4,23 @@ import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {UserService} from "../../services/user.service";
 import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profile-ensaiste";
 
-/**
- * Generated class for the MyProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-my-profile',
   templateUrl: 'my-profile.html',
 })
 export class MyProfilePage {
-
-  ensaisteUser:EnsaisteModel=this.userser.getEnsaiste();
+  id:string;
+  ensaisteUser:EnsaisteModel;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public userser:UserService) {
-
+    this.id=this.navParams.data;
+    if(typeof this.id === "object"){
+      this.ensaisteUser=this.userser.getEnsaiste();
+      this.id='true';
+    }else {
+      this.ensaisteUser=this.userser.getEnsaisteById(this.id);
+    }
   }
   change(){
     this.navCtrl.push(ModifyProfileEnsaistePage);

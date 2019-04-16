@@ -5,7 +5,6 @@ import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
 import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
-import {MesAnnoncesPage} from "../mes-annonces/mes-annonces";
 import * as firebase from 'firebase/app';
 
 @IonicPage()

@@ -56,7 +56,6 @@ export class CandidatsEnregistresPage {
   }
 
   candidatsDetails(id:string){
-    //il  faut faire des choses dans le constructeur de MyProfile.ts
     this.navCtrl.push(MyProfilePage,id);
   }
 

@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {AngularFireDatabase, AngularFireList, AngularFireObject} from "@angular/fire/database";
+import {AngularFireDatabase,AngularFireObject} from "@angular/fire/database";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import * as firebase from 'firebase/app';
+import {MyProfilePage} from "../my-profile/my-profile";
+import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
+
 @IonicPage()
 @Component({
   selector: 'page-users',
   templateUrl: 'users.html',
 })
 export class UsersPage {
+  userDisplayName:string;
   entrepriseList:AngularFireObject<any>;
   ensaisteList:AngularFireObject<any>;
   itemArray=[];
@@ -22,6 +26,7 @@ export class UsersPage {
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,
               public userService:UserService) {
 
+    this.userDisplayName=this.userService.getCurrentUserDisplayName();
     this.entrepriseList=db.object('/entreprise');
     this.entrepriseList.snapshotChanges().subscribe(action=>{
      // let y=action.payload.toJSON();
@@ -67,7 +72,21 @@ export class UsersPage {
     itemRef.set(a);
     this.alert("bien enregistrer");
   }
-  alert(message: string) {
+  enregistrerEntreprise(id:string){
+    console.log("enregistrer dans la page mesEntreprisesPreferees Pas encore fiate");
+    this.alert("bien enregistrer Mais Pas encore Faite !!HAHAHAHA");
+  }
+
+  consulterEnsaiste(id:string){
+    this.navCtrl.push(MyProfilePage,id);
+  }
+
+  consulterEntreprise(id:string){
+    console.log("id entreprise : "+id);
+    this.navCtrl.push(EntrepriseProfilePage,id);
+  }
+
+  alert(message: string){
     this.alertCtrl.create({
       title: 'Info!',
       subTitle: message,

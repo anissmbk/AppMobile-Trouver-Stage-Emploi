@@ -1,16 +1,22 @@
 <ion-header>
-  <ion-navbar color="macouleur">
+
+  <ion-navbar color="macouleur" *ngIf="id=='true'; else falseid">
     <ion-title>mon profile</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-
   </ion-navbar>
+
+  <ng-template #falseid>
+    <ion-navbar color="macouleur">
+      <ion-title>{{ensaisteUser.firstName}} {{ensaisteUser.lastName}}</ion-title>
+    </ion-navbar>
+  </ng-template>
 </ion-header>
 
 
 <ion-content  class="back" padding>
-  <ion-fab padding="" (click)="change()"><button ion-fab><ion-icon  name="settings" ></ion-icon></button></ion-fab>
+  <ion-fab padding="" (click)="change()" *ngIf="id=='true'"><button ion-fab><ion-icon  name="settings" ></ion-icon></button></ion-fab>
 
 
   <ion-card style="border-radius:10px; ">

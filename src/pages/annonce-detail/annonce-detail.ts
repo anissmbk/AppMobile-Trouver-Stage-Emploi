@@ -3,15 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserService} from "../../services/user.service";
 import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
-import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
-
-/**
- * Generated class for the AnnonceDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
