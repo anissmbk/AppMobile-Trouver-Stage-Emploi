@@ -22,7 +22,7 @@ export class PosterAnnocePage {
   myObject= [];
   entrepriseUser:EntrepriseModel;
   constructor(public alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
-    this.mesAnnoncesList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces');
+    this.mesAnnoncesList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces_stage');
     this.mesAnnoncesList.snapshotChanges().subscribe(action => {
 
       this.itemArray.push(action.payload.val() as {id:string});
@@ -42,9 +42,9 @@ export class PosterAnnocePage {
     });
   }
 
-  removeAnnonce(id1:string){//Attention il faut supprimer dans deux places diferrents entreprise=>zz_mes_annonces et dans annonceStage
+  removeAnnonce(id1:string){//Attention il faut supprimer dans deux places diferrents entreprise=>zz_mes_annonces_stage et dans annonceStage
     const userId=firebase.auth().currentUser.uid;
-    const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces/'+id1);
+    const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+id1);
     itemRef.remove();
     const annonce = this.db.object('/annonceStage/'+id1);
     annonce.remove();

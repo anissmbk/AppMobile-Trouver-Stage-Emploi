@@ -74,7 +74,7 @@ export class FormAnnonceStagePage {
     const idStage = Math.random().toString(36).substring(2);
     const itemRef = this.db.object('/annonceStage/'+idStage);
     itemRef.set(this.annonceStage);
-    const itemRef1 = this.db.object('/entreprise/'+userId+'/zz_mes_annonces/'+idStage);
+    const itemRef1 = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+idStage);
     itemRef1.set({id:idStage});
     this.alert("bien poster");
     this.navCtrl.setRoot(EntreprisePage);

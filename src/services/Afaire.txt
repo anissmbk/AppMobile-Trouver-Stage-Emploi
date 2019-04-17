@@ -1,6 +1,7 @@
 msg de verification avant de supprimer !!!!
 
-//attention si vous ajoutez dans annoceStage il faut aussi l'ajouter dans mes_annonces dans l'entreorise
+//attention si vous ajoutez dans annonceEmploi il faut aussi l'ajouter dans mes_annonces_emploi dans l'entreprise
+//attention si vous ajoutez dans annonceStage il faut aussi l'ajouter dans mes_annonces_stage dans l'entreprise
 
 regler l'affichage dans annonce.detail.html
 

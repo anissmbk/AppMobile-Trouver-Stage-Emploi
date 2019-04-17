@@ -69,6 +69,20 @@
       "titre" : "offre de stage CASA",
       "type_stage" : "Observation",
       "ville" : "Casablanca"
+    },
+    "1g1higs635a" : {
+      "a_partir_de" : "12/12/1/2019",
+      "categorie" : "Informatique/ Réseaux/ Télécoms",
+      "contexte_mission" : "mission a faire",
+      "duree_stage" : "2",
+      "id_entreprise" : "8ekgYzeqC2YDjCFqWR4AqTFxib62",
+      "profil_recherche" : "php devlopper",
+      "publiee_le" : "21/12/2018",
+      "remuneration" : "true",
+      "stagiaire_demande" : "5",
+      "titre" : "annonce TOP",
+      "type_stage" : "Observation",
+      "ville" : "Agadir"
     }
   },
   "ensaiste" : {
@@ -158,6 +172,11 @@
         "-Muh_bZAvh7kiazx6k69" : {
           "id" : "-Muh_bZAvh7kiazx6k69"
         }
+      },
+      "zz_entreprise_enregistree" : {
+        "hknV2tReqma7dfxJXp4YnnnipvX2" : {
+          "id" : "hknV2tReqma7dfxJXp4YnnnipvX2"
+        }
       }
     },
     "OZzqYbwlNAQspbbZZyDZxGKjTcr2" : {
@@ -227,9 +246,12 @@
           "id" : "-Muh_bXAvh3sdfjk7S65"
         }
       },
-      "zz_mes_annonces" : {
+      "zz_mes_annonces_stage" : {
         "-Muh_bZAvh7kiazx6k69" : {
           "id" : "-Muh_bZAvh7kiazx6k69"
+        },
+        "1g1higs635a" : {
+          "id" : "1g1higs635a"
         }
       }
     },
