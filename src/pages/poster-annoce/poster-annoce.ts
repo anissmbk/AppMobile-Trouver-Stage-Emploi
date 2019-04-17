@@ -4,10 +4,11 @@ import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {UserService} from "../../services/user.service";
 import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
-import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import * as firebase from 'firebase/app';
-import {MyProfilePage} from "../my-profile/my-profile";
 import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
+import {FormAnnonceStagePage} from "../form-annonce-stage/form-annonce-stage";
+import {FormAnnonceEmploiPage} from "../form-annonce-emploi/form-annonce-emploi";
+import {EntreprisePage} from "../entreprise/entreprise";
 
 
 @IonicPage()
@@ -20,7 +21,7 @@ export class PosterAnnocePage {
   itemArray=[];
   myObject= [];
   entrepriseUser:EntrepriseModel;
-  constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
+  constructor(public alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.mesAnnoncesList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces');
     this.mesAnnoncesList.snapshotChanges().subscribe(action => {
 
@@ -48,6 +49,7 @@ export class PosterAnnocePage {
     const annonce = this.db.object('/annonceStage/'+id1);
     annonce.remove();
     this.alert("bien supprimee");
+    this.navCtrl.setRoot(EntreprisePage);
   }
 
   alert(message: string) {
@@ -62,5 +64,10 @@ export class PosterAnnocePage {
     this.navCtrl.push(AnnonceDetailPage,id);
   }
 
-
+  posterAnnonceStage(){
+    this.navCtrl.push(FormAnnonceStagePage);
+  }
+  posterAnnonceEmploi(){
+    this.navCtrl.push(FormAnnonceEmploiPage);
+  }
 }

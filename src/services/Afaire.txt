@@ -1,9 +1,16 @@
-poster annonce==>ajouter une icon pour soit poster annonceStage ou bien annonceEmploi
+msg de verification avant de supprimer !!!!
+
 //attention si vous ajoutez dans annoceStage il faut aussi l'ajouter dans mes_annonces dans l'entreorise
 
 regler l'affichage dans annonce.detail.html
 
-dans modify-profile-ensaiste.html on a besoin de filere !!
+poster-annonce.html prblm de add icon
+
+a partir de champs verification dans FormAnnonceStagePage date!!!!
+var mois    = now.getMonth() + 1;//le prblm de 04 oubien 4
+var jour    = now.getDate();
+
+dans modify-profile-ensaiste.html on a besoin de filere !! et les champ de date pas encore terminee
 
 annonceDetail(id:string) fixer le prblm de navigation annonce.ts .html
 
@@ -26,3 +33,5 @@ et ajouter les listners pour savoir toutes les modifications dans la base de don
 
 entant qu'ensaiste je peux trouver moi meme consulter moi meme !! supprimer mes commentaires
 entant qu'entreprise je peux trouver moi meme consulter moi meme !!  supprimer mes annonces
+
+prblm de photo dans le telephone!!

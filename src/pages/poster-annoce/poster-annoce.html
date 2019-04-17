@@ -9,6 +9,15 @@
 </ion-header>
 
 <ion-content padding>
+
+  <ion-fab right bottom>
+    <button ion-fab color="dark"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab (click)="posterAnnonceStage()"><p class="button-add">stage</p></button>
+      <button ion-fab (click)="posterAnnonceEmploi()"><p class="button-add">emploi</p></button>
+    </ion-fab-list>
+  </ion-fab>
+
   <ion-card *ngFor="let annonce of myObject">
     <!--fixer ce probleme-->
     <div id="{{annonce[1]['id']}}">
