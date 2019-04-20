@@ -31,8 +31,8 @@ export class EnsaistePage {
       splashScreen.hide();
     });
     this.pages = [
-      {title: 'MesAnnonces', component: MesAnnoncesPage},
-      {title: 'EntrepriseEnregistree', component: EntrepriseEnregistreePage},
+      {title: 'Annonces Enregistrees', component: MesAnnoncesPage},
+      {title: 'Entreprise Enregistree', component: EntrepriseEnregistreePage},
       {title: 'Modifier Profile', component: ModifyProfileEnsaistePage}
     ];
   }
@@ -49,7 +49,6 @@ export class EnsaistePage {
   openPage(page) {
     // Reset the content nav to have just this page
 
-    console.log('hello a saat');
     // we wouldn't want the back button to show in this scenario
     this.navCtrl.push(page.component);
   }

@@ -1,5 +1,13 @@
 msg de verification avant de supprimer !!!!
 
+getEntreprise makhdamach f annonceEnregistrees!!
+
+//il faut specifie est que c'est annonceStageDetails annonceEmploiDetails a descute poster-annonce.ts
+prblm dans consulter annonce
+
+//mes-annonces Prblm dans getting id_entreprise
+
+pays dans annonce et entreprise!!!!!!
 //attention si vous ajoutez dans annonceEmploi il faut aussi l'ajouter dans mes_annonces_emploi dans l'entreprise
 //attention si vous ajoutez dans annonceStage il faut aussi l'ajouter dans mes_annonces_stage dans l'entreprise
 

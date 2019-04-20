@@ -13,7 +13,10 @@ export class EnsaisteModel{
   zdebut : string;
   zecole : string;
   zfin : string;
-  zz_annonce_enregistre:{
+  zz_annonce_stage_enregistre:{
+    id:string;
+  }[];
+  zz_annonce_emploi_enregistre:{
     id:string;
   }[];
   zz_entreprise_enregistree:{
@@ -34,7 +37,8 @@ export class EnsaisteModel{
     this.zdebut='';
     this.zecole='';
     this.zfin='';
-    this.zz_annonce_enregistre= [];
+    this.zz_annonce_stage_enregistre= [];
+    this.zz_annonce_emploi_enregistre= [];
     this.zz_entreprise_enregistree= [];
   }
 }

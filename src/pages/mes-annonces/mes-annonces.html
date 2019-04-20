@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>MesAnnoncesPage</ion-title>
+    <ion-title>Annonces Enregistrees</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,19 +13,20 @@
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <h1>hello mes annonces enregistrées:</h1>
+  <h1 style="background-color: #f53d3d">annonces de stage enregistrées:</h1>
   <!--annonce[1] contient les id des annonces enregistres && annonce[2] contient les infos sur lannonce enregistre-->
   <ion-card *ngFor="let annonce of myObject">
     <!--fixer ce probleme-->
     <div id="{{annonce[1]['id']}}">
+      <h2>lmochkilaaaaaa{{annonce[2]['id_entreprise']}}</h2>
     <ion-item>
       <ion-avatar item-start>
-        <img src="{{annonce[3]['photo'].photo}}">
+        <img src="">
       </ion-avatar>
       <strong>{{annonce[2]['titre']}}</strong>
-      <p>{{annonce[3]['entrepriseName'].entrepriseName}}</p>
+      <p></p>
       <p>publiee le {{annonce[2]['publiee_le']}}</p>
-      <button (click)="annonceDetail(annonce[1]['id'])">consulter</button>
+      <button (click)="annonceStageDetail(annonce[1]['id'])">consulter</button>
       <button (click)="removeAnnonceEnregistre(annonce[1]['id'])">supprimer de mes annonces</button>
     </ion-item>
     <ion-card-content>
@@ -45,13 +46,50 @@
       <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
 
         <strong>{{annonce[2]['ville']}}</strong><br>
-        <img src="../../assets/imgs/jps.jpg" id="img1">
+        <img src="../../assets/imgs/jps.jpg" class="img1">
       </div>
       <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
         <strong>{{annonce[2]['duree_stage']}} mois</strong><br>
         <span>A partir de {{annonce[2]['a_partir_de']}}</span>
       </div>
     </div>
+    </div>
+  </ion-card>
+
+
+  <h1 style="background-color: #f53d3d">annonces d'emploi enregistrées:</h1>
+  <!--annonce[1] contient les id des annonces enregistres && annonce[2] contient les infos sur lannonce enregistre-->
+  <ion-card *ngFor="let annonce1 of myObjectEmploi">
+    <!--fixer ce probleme-->
+    <div id="{{annonce1[1]['id']}}">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="">
+        </ion-avatar>
+        <strong>{{annonce1[2]['titre']}}</strong>
+        <p>entreprise name fiiha mochkiil</p>
+        <p>secteur feeha mochkiil</p>
+        <p>publiee le {{annonce1[2]['publiee_le']}}</p>
+        <button (click)="annonceEmploiDetail(annonce1[1]['id'])">consulter</button>
+        <button (click)="removeAnnonceEmploiEnregistre(annonce1[1]['id'])">supprimer de mes annonces</button>
+      </ion-item>
+      <ion-card-content>
+        <p>{{annonce1[2]['contexte_mission']}}</p>
+      </ion-card-content>
+      <div class="parent">
+        <label class="badge-stage stage-marketing enfant">{{annonce1[2]['categorie']}}</label>
+        <label class="badge-stage stage-pre-embauche enfant">{{annonce1[2]['niveau_etude']}}</label>
+      </div>
+      <div class="parent">
+        <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+          <strong>{{annonce1[2]['ville']}}</strong><br>
+          <img src="../../assets/imgs/jps.jpg" class="img1">
+        </div>
+        <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+          <strong>{{annonce1[2]['type_contrat']}}</strong><br>
+          <span>A partir de {{annonce1[2]['a_partir_de']}}</span>
+        </div>
+      </div>
     </div>
   </ion-card>
 </ion-content>

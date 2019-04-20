@@ -32,6 +32,7 @@ import {AnnonceDetailPage} from "../pages/annonce-detail/annonce-detail";
 import {EntrepriseEnregistreePage} from "../pages/entreprise-enregistree/entreprise-enregistree";
 import {FormAnnonceStagePage} from "../pages/form-annonce-stage/form-annonce-stage";
 import {FormAnnonceEmploiPage} from "../pages/form-annonce-emploi/form-annonce-emploi";
+import {AnnonceEmploiPage} from "../pages/annonce-emploi/annonce-emploi";
 
 const firebase= {
   apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
@@ -66,7 +67,8 @@ const firebase= {
     AnnonceDetailPage,
     EntrepriseEnregistreePage,
     FormAnnonceStagePage,
-    FormAnnonceEmploiPage
+    FormAnnonceEmploiPage,
+    AnnonceEmploiPage
   ],
   imports: [
     BrowserModule,
@@ -100,7 +102,8 @@ const firebase= {
     AnnonceDetailPage,
     EntrepriseEnregistreePage,
     FormAnnonceStagePage,
-    FormAnnonceEmploiPage
+    FormAnnonceEmploiPage,
+    AnnonceEmploiPage
   ],
   providers: [
     AngularFireDatabase,//a voir

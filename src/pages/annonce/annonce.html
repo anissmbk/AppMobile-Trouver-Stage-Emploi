@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content padding>
+  <h1 style="background-color: #f53d3d">les annonces de Stage :</h1>
   <ion-card *ngFor="let annonce of myObject">
     <ion-item>
       <ion-avatar item-start>
@@ -38,12 +39,45 @@
       <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
 
         <strong>{{annonce[1]['ville']}}</strong><br>
-        <img src="../../assets/imgs/jps.jpg" id="img1">
+        <img src="../../assets/imgs/jps.jpg" class="img1">
       </div>
     <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
       <strong>{{annonce[1]['duree_stage']}} mois</strong><br>
       <span>A partir de {{annonce[1]['a_partir_de']}}</span>
     </div>
   </div>
+  </ion-card>
+
+  <h1 style="background-color: #f53d3d">les annonces d'Emploi:</h1>
+  <ion-card *ngFor="let annonce of myObjectEmploi">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{annonce[2]['photo']}}">
+      </ion-avatar>
+      <strong>{{annonce[1]['titre']}}</strong>
+      <p>{{annonce[2]['entrepriseName']}}</p>
+      <p>secteur d'activite :{{annonce[2]['secteurActivite']}}</p>
+      <p>publiee le {{annonce[1]['publiee_le']}}</p>
+      <button (click)="annonceDetail(annonce[0])">consulter</button>
+      <button (click)="enregistrerAnnonceEmploi(annonce[0])">enregistrer</button>
+    </ion-item>
+    <ion-card-content>
+      <p>{{annonce[1]['contexte_mission']}}</p>
+    </ion-card-content>
+    <div class="parent">
+      <label class="badge-stage stage-marketing enfant">{{annonce[1]['categorie']}}</label>
+      <label class="badge-stage stage-pre-embauche enfant">{{annonce[1]['niveau_etude']}}</label>
+    </div>
+    <div class="parent">
+      <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+
+        <strong>{{annonce[1]['ville']}}</strong><br>
+        <img src="../../assets/imgs/jps.jpg" class="img1">
+      </div>
+      <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+        <strong>{{annonce[1]['type_contrat']}} mois</strong><br>
+        <span>A partir de {{annonce[1]['a_partir_de']}}</span>
+      </div>
+    </div>
   </ion-card>
 </ion-content>

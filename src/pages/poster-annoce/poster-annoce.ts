@@ -9,7 +9,8 @@ import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
 import {FormAnnonceStagePage} from "../form-annonce-stage/form-annonce-stage";
 import {FormAnnonceEmploiPage} from "../form-annonce-emploi/form-annonce-emploi";
 import {EntreprisePage} from "../entreprise/entreprise";
-
+import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
+import {AnnonceEmploiPage} from "../annonce-emploi/annonce-emploi";
 
 @IonicPage()
 @Component({
@@ -17,28 +18,42 @@ import {EntreprisePage} from "../entreprise/entreprise";
   templateUrl: 'poster-annoce.html',
 })
 export class PosterAnnocePage {
-  mesAnnoncesList:AngularFireObject<any>;
+  mesAnnoncesStageList:AngularFireObject<any>;
   itemArray=[];
   myObject= [];
+  mesAnnoncesEmploiList:AngularFireObject<any>;
+  itemArrayEmploi=[];
+  myObjectEmploi= [];
   entrepriseUser:EntrepriseModel;
   constructor(public alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
-    this.mesAnnoncesList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces_stage');
-    this.mesAnnoncesList.snapshotChanges().subscribe(action => {
 
+    this.entrepriseUser=this.userService.getEntreprise();
+    this.mesAnnoncesStageList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces_stage');
+    this.mesAnnoncesStageList.snapshotChanges().subscribe(action => {
       this.itemArray.push(action.payload.val() as {id:string});
       // pour savoir la methode entries il faut ajouter au tsconfig.json dans lib"es2017.object","es2016.array.include"
       //had if mohima dans le cas ila makan ta commentaire
       if(this.itemArray[0]!=null){
         this.myObject = Object.entries(this.itemArray[0]);
       }
-
       for (let annonce of this.myObject) {
         var x = this.userService.getAnnonceStageById(annonce[1]['id']);
         annonce.push(x as AnnonceStageModel);
-        this.entrepriseUser=this.userService.getEntrepriseById(annonce[2]['id_entreprise']);
-        annonce.push(this.entrepriseUser as EntrepriseModel);
       }
       console.log(this.myObject);
+    });
+
+    this.mesAnnoncesEmploiList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces_emploi');
+    this.mesAnnoncesEmploiList.snapshotChanges().subscribe(action => {
+      this.itemArrayEmploi.push(action.payload.val() as {id:string});
+      if(this.itemArrayEmploi[0]!=null){
+        this.myObjectEmploi = Object.entries(this.itemArrayEmploi[0]);
+      }
+      for (let annonce1 of this.myObjectEmploi) {
+        var x = this.userService.getAnnonceEmploiById(annonce1[1]['id']);
+        annonce1.push(x as AnnonceEmploiModel);
+      }
+      console.log(this.myObjectEmploi);
     });
   }
 
@@ -51,7 +66,15 @@ export class PosterAnnocePage {
     this.alert("bien supprimee");
     this.navCtrl.setRoot(EntreprisePage);
   }
-
+  removeAnnonceEmploi(id1:string){//Attention il faut supprimer dans deux places diferrents entreprise=>zz_mes_annonces_stage et dans annonceStage
+    const userId=firebase.auth().currentUser.uid;
+    const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_emploi/'+id1);
+    itemRef.remove();
+    const annonce = this.db.object('/annonceEmploi/'+id1);
+    annonce.remove();
+    this.alert("bien supprimee");
+    this.navCtrl.setRoot(EntreprisePage);
+  }
   alert(message: string) {
     this.alertCtrl.create({
       title: 'Info!',
@@ -60,8 +83,12 @@ export class PosterAnnocePage {
     }).present();
   }
 
-  annonceDetails(id:string){
+  annonceStageDetails(id:string){//il faut specifie est que c'est annonceStageDetails annonceEmploiDetails a descute
     this.navCtrl.push(AnnonceDetailPage,id);
+  }
+  *
+  annonceEmploiDetails(id:string){//il faut specifie est que c'est annonceStageDetails annonceEmploiDetails a descute
+    this.navCtrl.push(AnnonceEmploiPage,id);
   }
 
   posterAnnonceStage(){

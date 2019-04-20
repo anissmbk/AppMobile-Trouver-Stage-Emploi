@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
 import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";

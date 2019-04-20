@@ -1,4 +1,38 @@
 {
+  "annonceEmploi" : {
+    "-Mch_bZAvh7kiazx1966" : {
+      "a_partir_de" : "10/8/2019",
+      "categorie" : "info",
+      "contexte_mission" : "faire du travaille",
+      "id_entreprise" : "8ekgYzeqC2YDjCFqWR4AqTFxib62",
+      "langues_exigees" : "francais englais",
+      "nbr_poste_proposes" : "2",
+      "niveau_etude" : "Bac+5",
+      "niveau_experience" : "entre 1ans et 5ans",
+      "poste_propose" : "ingenieur d'etat en info",
+      "profil_recherche" : "php devloper",
+      "publiee_le" : "2/8/2019",
+      "titre" : "annoce demploii",
+      "type_contrat" : "CDI",
+      "ville" : "casa"
+    },
+    "nowuqqy2iwi" : {
+      "a_partir_de" : "12/05/2019",
+      "categorie" : "Informatique/ Réseaux/ Télécoms",
+      "contexte_mission" : "missionokljhgchvjbnkjhgfvchjbnkhgcvb",
+      "id_entreprise" : "8ekgYzeqC2YDjCFqWR4AqTFxib62",
+      "langues_exigees" : "anglais",
+      "nbr_poste_proposes" : "5",
+      "niveau_etude" : "bac+3",
+      "niveau_experience" : "entre 1ans et 7ans",
+      "poste_propose" : "technicien",
+      "profil_recherche" : "anass",
+      "publiee_le" : "18/4/2019",
+      "titre" : "hello job",
+      "type_contrat" : "CDI",
+      "ville" : "Al-Hoceima"
+    }
+  },
   "annonceStage" : {
     "-Mch_bZAvh7kiazx6h99" : {
       "a_partir_de" : "29/12/2022",
@@ -83,6 +117,34 @@
       "titre" : "annonce TOP",
       "type_stage" : "Observation",
       "ville" : "Agadir"
+    },
+    "1g1higs635a9669" : {
+      "a_partir_de" : "12/12/1/2019",
+      "categorie" : "Informatique/ Réseaux/ Télécoms",
+      "contexte_mission" : "mission a faire",
+      "duree_stage" : "2",
+      "id_entreprise" : "8ekgYzeqC2YDjCFqWR4AqTFxib62",
+      "profil_recherche" : "php devlopper",
+      "publiee_le" : "21/12/2018",
+      "remuneration" : "true",
+      "stagiaire_demande" : "5",
+      "titre" : "annonce TOP",
+      "type_stage" : "Observation",
+      "ville" : "Agadir"
+    },
+    "1g1higs635adddd" : {
+      "a_partir_de" : "12/12/1/2019",
+      "categorie" : "Informatique/ Réseaux/ Télécoms",
+      "contexte_mission" : "mission a faire",
+      "duree_stage" : "2",
+      "id_entreprise" : "8ekgYzeqC2YDjCFqWR4AqTFxib62",
+      "profil_recherche" : "php devlopper",
+      "publiee_le" : "21/12/2018",
+      "remuneration" : "true",
+      "stagiaire_demande" : "5",
+      "titre" : "annonce TOP",
+      "type_stage" : "Observation",
+      "ville" : "Agadir"
     }
   },
   "ensaiste" : {
@@ -101,7 +163,7 @@
       "zdebut" : "2014",
       "zecole" : "Ensa",
       "zfin" : "2022",
-      "zz_annonce_enregistre" : {
+      "zz_annonce_stage_enregistre" : {
         "-Muh_aSRah7kJewq8Cef" : {
           "id" : "-Mch_bZAvh7kiazx6h99"
         },
@@ -125,7 +187,7 @@
       "zdebut" : "2014",
       "zecole" : "Ensa",
       "zfin" : "2022",
-      "zz_annonce_enregistre" : {
+      "zz_annonce_stage_enregistre" : {
         "-Muh_aSRah7hbfngq12" : {
           "id" : "-Mch_bZAvh7kiazx6k89"
         },
@@ -165,12 +227,23 @@
       "zdebut" : "2014",
       "zecole" : "Ensa",
       "zfin" : "2022",
-      "zz_annonce_enregistre" : {
+      "zz_annonce_emploi_enregistre" : {
+        "-Mch_bZAvh7kiazx1966" : {
+          "id" : "-Mch_bZAvh7kiazx1966"
+        }
+      },
+      "zz_annonce_stage_enregistre" : {
+        "-Mch_bZAvh7kiazx6h99" : {
+          "id" : "-Mch_bZAvh7kiazx6h99"
+        },
         "-Mch_bZAvh7kiazx6k89" : {
           "id" : "-Mch_bZAvh7kiazx6k89"
         },
         "-Muh_bZAvh7kiazx6k69" : {
           "id" : "-Muh_bZAvh7kiazx6k69"
+        },
+        "1g1higs635a" : {
+          "id" : "1g1higs635a"
         }
       },
       "zz_entreprise_enregistree" : {
@@ -239,11 +312,19 @@
       "email" : "filahCompany@hotmail.com",
       "entrepriseName" : "anassEntreprise",
       "phone" : "05555558456",
-      "photo" : "https://firebasestorage.googleapis.com/v0/b/employemanagment-914b8.appspot.com/o/b1wtazuqxao?alt=media&token=18ddc4e8-3927-4bc6-b911-eca470193464",
+      "photo" : "https://firebasestorage.googleapis.com/v0/b/employemanagment-914b8.appspot.com/o/z1ccaniyyrs?alt=media&token=7a8e5c26-79f5-491d-9b5c-dc71cbbb38a4",
       "secteurActivite" : "info",
       "zz_candidats_enregistree" : {
-        "-Muh_bXAvh3sdfjk7S65" : {
-          "id" : "-Muh_bXAvh3sdfjk7S65"
+        "-Muh_aSRah7kJewq8C29" : {
+          "id" : "-Muh_aSRah7kJewq8C29"
+        }
+      },
+      "zz_mes_annonces_emploi" : {
+        "-Mch_bZAvh7kiazx1966" : {
+          "id" : "-Mch_bZAvh7kiazx1966"
+        },
+        "nowuqqy2iwi" : {
+          "id" : "nowuqqy2iwi"
         }
       },
       "zz_mes_annonces_stage" : {

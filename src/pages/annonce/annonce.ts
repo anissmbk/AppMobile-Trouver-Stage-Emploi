@@ -6,6 +6,7 @@ import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
 import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
 import * as firebase from 'firebase/app';
+import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
 
 @IonicPage()
 @Component({
@@ -16,6 +17,9 @@ export class AnnoncePage {
   annonceList:AngularFireObject<any>;
   itemArray=[];
   myObject= [];
+  annonceEmloiList:AngularFireObject<any>;
+  itemArrayEmploi=[];
+  myObjectEmploi= [];
   entrepriseUser:EntrepriseModel;
   constructor( private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.annonceList=db.object('/annonceStage');
@@ -32,6 +36,18 @@ export class AnnoncePage {
       }
 
     });
+
+    this.annonceEmloiList=db.object('/annonceEmploi');
+    this.annonceEmloiList.snapshotChanges().subscribe(action=>{
+      this.itemArrayEmploi.push(action.payload.val() as AnnonceEmploiModel);
+      this.myObjectEmploi=Object.entries(this.itemArrayEmploi[0]);
+
+      for(let annonce1 of this.myObjectEmploi){
+        this.entrepriseUser=this.userService.getEntrepriseById(annonce1[1]['id_entreprise']);
+        annonce1.push(this.entrepriseUser as EntrepriseModel);
+      }
+
+    });
   }
 
   annonceDetail(id:string){
@@ -40,7 +56,17 @@ export class AnnoncePage {
    }
   enregistrerAnnonce(id1:string){
     const userId=firebase.auth().currentUser.uid;
-    const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_enregistre/'+id1);
+    const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_stage_enregistre/'+id1);
+    var a={
+      id:id1
+    };
+    itemRef.set(a);
+    this.alert("bien enregistrer");
+
+  }
+  enregistrerAnnonceEmploi(id1:string){
+    const userId=firebase.auth().currentUser.uid;
+    const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_emploi_enregistre/'+id1);
     var a={
       id:id1
     };

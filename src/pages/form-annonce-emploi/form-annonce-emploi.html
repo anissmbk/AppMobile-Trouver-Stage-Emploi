@@ -1,15 +1,222 @@
-<!--
-  Generated template for the FormAnnonceEmploiPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>FormAnnonceEmploiPage</ion-title>
+    <ion-title>
+      Poster Annonce Emploi
+    </ion-title>
   </ion-navbar>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </ion-header>
 
 <ion-content padding>
+  <div>
+    <ion-list>
+      <div class="container">
+        <form [formGroup]="registerFormAnnonce" (ngSubmit)="tryRegisterAnnonce(registerFormAnnonce.value)">
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('titre').errors &&
+               (registerFormAnnonce.get('titre').touched||registerFormAnnonce.get('titre').dirty)}">
+            <label>Titre de l'annonce</label>
+            <input type="text" formControlName="titre" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('titre').errors &&
+               (registerFormAnnonce.get('titre').touched||registerFormAnnonce.get('titre').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('titre').errors.required">*Titre de l'annonce is required</span>
+                </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('ville').errors &&
+               registerFormAnnonce.get('ville').touched}">
+            <label>Ville</label>
+            <!--<input type="text" formControlName="ville" class="form-control">-->
+            <select name="ville" formControlName="ville" class="form-control">
+              <option value="Agadir">Agadir</option>
+              <option value="Al-Hoceima">Al-Hoceima</option>
+              <option value="Arfoud">Arfoud</option>
+              <option value="Asilah">Asilah</option>
+              <option value="Azrou">Azrou</option>
+              <option value="Ben Slimane">Ben Slimane</option>
+              <option value="Benguerir">Benguerir</option>
+              <option value="Beni Mellal">Beni Mellal</option>
+              <option value="Berkane">Berkane</option>
+              <option value="Berrechid">Berrechid</option>
+              <option value="Boujdour">Boujdour</option>
+              <option value="Bouznika">Bouznika</option>
+              <option value="Casablanca">Casablanca</option>
+              <option value="Chefchaouen">Chefchaouen</option>
+              <option value="Dakhla">Dakhla</option>
+              <option value="El Jadida">El Jadida</option>
+              <option value="Errachidia">Errachidia</option>
+              <option value="Essaouira">Essaouira</option>
+              <option value="Fès">Fès</option>
+              <option value="Fquih BenSalah">Fquih BenSalah</option>
+              <option value="Guelmim">Guelmim</option>
+              <option value="Ifrane">Ifrane</option>
+              <option value="Jerada">Jerada</option>
+              <option value="Kénitra">Kénitra</option>
+              <option value="Khémisset">Khémisset</option>
+              <option value="Khénifra">Khénifra</option>
+              <option value="Khouribga">Khouribga</option>
+              <option value="Ksar el-Kébir">Ksar el-Kébir</option>
+              <option value="Laâyoune">Laâyoune </option>
+              <option value="Lagouira">Lagouira</option>
+              <option value="Larache">Larache</option>
+              <option value="Marrakech">Marrakech</option>
+              <option value="Mehdia">Mehdia</option>
+              <option value="Meknès">Meknès</option>
+              <option value="Mohammédia">Mohammédia</option>
+              <option value="Nador">Nador</option>
+              <option value="Ouarzazate">Ouarzazate</option>
+              <option value="Oujda">Oujda</option>
+              <option value="OuedZem">OuedZem</option>
+              <option value="Rabat">Rabat</option>
+              <option value="Safi">Safi</option>
+              <option value="Sala El Jadida">Sala El Jadida</option>
+              <option value="Salé">Salé</option>
+              <option value="Sefrou">Sefrou</option>
+              <option value="Settat">Settat</option>
+              <option value="Sidi Slimane">Sidi Slimane</option>
+              <option value="Skhirat">Skhirat</option>
+              <option value="Tanger">Tanger</option>
+              <option value="Taza">Taza</option>
+              <option value="Temara">Temara</option>
+              <option value="Tétouan">Tétouan</option>
+            </select>
+            <span class="help-block" *ngIf="registerFormAnnonce.get('ville').errors &&
+               registerFormAnnonce.get('ville').touched">
+                  <span *ngIf="registerFormAnnonce.get('ville').errors.required">*ville is required</span>
+                </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('contexte_mission').errors &&
+               (registerFormAnnonce.get('contexte_mission').touched||registerFormAnnonce.get('contexte_mission').dirty)}">
+            <label>contexte && mission</label>
+            <input type="text" formControlName="contexte_mission" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('contexte_mission').errors &&
+               (registerFormAnnonce.get('contexte_mission').touched||registerFormAnnonce.get('contexte_mission').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('contexte_mission').errors.required">*contexte && mission is required</span>
+                </span>
+          </div>
+
+          <div class="form-group">
+            <label>categorie</label>
+            <select name="categorie" formControlName="categorie" class="form-control">
+              <option value="Informatique/ Réseaux/ Télécoms">Informatique/ Réseaux/ Télécoms</option>
+              <option value="Import/ Export/ Commerce">Import/ Export/ Commerce</option>
+              <option value="Direction générale">Direction générale</option>
+              <option value="Distribution/ Logistique/ Transport">Distribution/ Logistique/ Transport</option>
+              <option value="Commercial/ Vente">Commercial/ Vente</option>
+              <option value="Comptabilité/ Finance/ Audit">Comptabilité/ Finance/ Audit</option>
+              <option value="Administration/ Secrétariat">Administration/ Secrétariat</option>
+              <option value="Internet/ E-commerce/ E-reputation">Internet/ E-commerce/ E-reputation</option>
+              <option value="Juridique/ Droit">Juridique/ Droit</option>
+              <option value="Marketing/ Communication/ Publicité">Marketing/ Communication/ Publicité</option>
+              <option value="Organisation/ Gestion/ Stratégie">Organisation/ Gestion/ Stratégie</option>
+              <option value="Recherche & Développement">Recherche & Développement</option>
+              <option value="Évenementiel">Évenementiel</option>
+              <option value="Système d'information ">Système d'information </option>
+              <option value="Qualité/ Production">Qualité/ Production</option>
+              <option value="Ressources Humaines">Ressources Humaines</option>
+              <option value="Services Généraux">Services Généraux</option>
+              <option value="Tourisme/ Hôtellerie/ Restauration">Tourisme/ Hôtellerie/ Restauration</option>
+              <option value="Maintenance/ Réparation">Maintenance/ Réparation</option>
+              <option value="Enseignement /Formation /Education">Enseignement /Formation /Education</option>
+              <option value="Art graphique/ Photographie/ Son">Art graphique/ Photographie/ Son</option>
+            </select>
+            <span class="help-block" *ngIf="registerFormAnnonce.get('categorie').errors &&
+               registerFormAnnonce.get('categorie').touched">
+                  <span *ngIf="registerFormAnnonce.get('categorie').errors.required">*categorie is required</span>
+                </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('a_partir_de').errors &&
+               (registerFormAnnonce.get('a_partir_de').touched||registerFormAnnonce.get('a_partir_de').dirty)}">
+            <label>A partir de</label>
+            <input type="text" formControlName="a_partir_de" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('a_partir_de').errors &&
+               (registerFormAnnonce.get('a_partir_de').touched||registerFormAnnonce.get('a_partir_de').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('a_partir_de').errors.required">*A partir de is required</span>
+            </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('nbr_poste_proposes').errors &&
+               (registerFormAnnonce.get('nbr_poste_proposes').touched||registerFormAnnonce.get('nbr_poste_proposes').dirty)}">
+            <label>nbr poste proposes</label>
+            <input type="text" formControlName="nbr_poste_proposes" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('nbr_poste_proposes').errors &&
+               (registerFormAnnonce.get('nbr_poste_proposes').touched||registerFormAnnonce.get('nbr_poste_proposes').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('nbr_poste_proposes').errors.required">*nbr_poste_proposes is required</span>
+               <span *ngIf="registerFormAnnonce.get('nbr_poste_proposes').errors.pattern">*only numbers</span>
+            </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('profil_recherche').errors &&
+               (registerFormAnnonce.get('profil_recherche').touched||registerFormAnnonce.get('profil_recherche').dirty)}">
+            <label>profil recherche</label>
+            <input type="text" formControlName="profil_recherche" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('profil_recherche').errors &&
+               (registerFormAnnonce.get('profil_recherche').touched||registerFormAnnonce.get('profil_recherche').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('profil_recherche').errors.required">*profil recherche is required</span>
+            </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('poste_propose').errors &&
+               (registerFormAnnonce.get('poste_propose').touched||registerFormAnnonce.get('poste_propose').dirty)}">
+            <label>poste propose</label>
+            <input type="text" formControlName="poste_propose" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('poste_propose').errors &&
+               (registerFormAnnonce.get('poste_propose').touched||registerFormAnnonce.get('poste_propose').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('poste_propose').errors.required">*poste_propose is required</span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label>type de contrat</label>
+            <select name="type_contrat" formControlName="type_contrat" class="form-control">
+              <option value="CDD">CDD</option>
+              <option value="CDI">CDI</option>
+              <option value="Iterem">Iterem</option>
+            </select>
+            <span class="help-block" *ngIf="registerFormAnnonce.get('type_contrat').errors &&
+               registerFormAnnonce.get('type_contrat').touched">
+                  <span *ngIf="registerFormAnnonce.get('type_contrat').errors.required">*type contrat is required</span>
+                </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('niveau_experience').errors &&
+               (registerFormAnnonce.get('niveau_experience').touched||registerFormAnnonce.get('niveau_experience').dirty)}">
+            <label>niveau_experience</label>
+            <input type="text" formControlName="niveau_experience" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('niveau_experience').errors &&
+               (registerFormAnnonce.get('niveau_experience').touched||registerFormAnnonce.get('niveau_experience').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('niveau_experience').errors.required">*niveau_experience is required</span>
+            </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('niveau_etude').errors &&
+               (registerFormAnnonce.get('niveau_etude').touched||registerFormAnnonce.get('niveau_etude').dirty)}">
+            <label>niveau_etude</label>
+            <input type="text" formControlName="niveau_etude" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('niveau_etude').errors &&
+               (registerFormAnnonce.get('niveau_etude').touched||registerFormAnnonce.get('niveau_etude').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('niveau_etude').errors.required">*niveau_etude is required</span>
+            </span>
+          </div>
+
+          <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('langues_exigees').errors &&
+               (registerFormAnnonce.get('langues_exigees').touched||registerFormAnnonce.get('langues_exigees').dirty)}">
+            <label>langues_exigees</label>
+            <input type="text" formControlName="langues_exigees" class="form-control">
+            <span class="help-block" *ngIf="registerFormAnnonce.get('langues_exigees').errors &&
+               (registerFormAnnonce.get('langues_exigees').touched||registerFormAnnonce.get('langues_exigees').dirty)">
+                  <span *ngIf="registerFormAnnonce.get('langues_exigees').errors.required">*langues_exigees is required</span>
+            </span>
+          </div>
+
+          <input type="submit" class="btn btn-primary" value="Poster"/>
+
+        </form>
+      </div>
+    </ion-list>
+  </div>
 
 </ion-content>

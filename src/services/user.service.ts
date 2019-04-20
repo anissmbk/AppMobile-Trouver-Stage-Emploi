@@ -7,6 +7,7 @@ import {AuthService} from "./auth.service";
 import {EnsaisteModel} from "../UserClass/ensaisteModel";
 import {EntrepriseModel} from "../UserClass/entrepriseModel";
 import {AnnonceStageModel} from "../AnnonceClass/annonceStageModel";
+import {AnnonceEmploiModel} from "../AnnonceClass/AnnonceEmploiModel";
 
 @Injectable()
 export class UserService {
@@ -141,6 +142,7 @@ export class UserService {
 
   getEntrepriseById(id:string):EntrepriseModel{
     let entreprise:EntrepriseModel=new EntrepriseModel();
+    if(id!=''){
     var ref = firebase.database().ref('/entreprise/'+id);
     ref.once("value").then(function(snapshot){
       var result = snapshot.val();
@@ -157,35 +159,68 @@ export class UserService {
     }, function (error) {
       return  error;
     });
+    }
     return entreprise;
   }
 
   getAnnonceStageById(id:string):AnnonceStageModel{
     let annonceStage:AnnonceStageModel=new AnnonceStageModel();
-    var ref = firebase.database().ref('/annonceStage/'+id);
+    if(id!='') {
+      var ref = firebase.database().ref('/annonceStage/' + id);
+      ref.once("value").then(function (snapshot) {
+        var result = snapshot.val();
+        if (result != null) {
+          var keys = Object.keys(result);
+          annonceStage.a_partir_de = result[keys[0]];
+          annonceStage.categorie = result[keys[1]];
+          annonceStage.contexte_mission = result[keys[2]];
+          annonceStage.duree_stage = result[keys[3]];
+          annonceStage.id_entreprise = result[keys[4]];
+          annonceStage.profil_recherche = result[keys[5]];
+          annonceStage.publiee_le = result[keys[6]];
+          annonceStage.remuneration = result[keys[7]];
+          annonceStage.stagiaire_demande = result[keys[8]];
+          annonceStage.titre = result[keys[9]];
+          annonceStage.type_stage = result[keys[10]];
+          annonceStage.ville = result[keys[11]];
+          annonceStage.z_commentaires = result[keys[12]];
+        }
+      }, function (error) {
+
+        return error;
+      });
+    }
+    return annonceStage;
+
+  }
+
+  getAnnonceEmploiById(id:string):AnnonceEmploiModel{
+    let annonceEmploi:AnnonceEmploiModel=new AnnonceEmploiModel();
+    var ref = firebase.database().ref('/annonceEmploi/'+id);
     ref.once("value").then(function(snapshot){
       var result = snapshot.val();
       if(result!=null){
-      var keys=Object.keys(result);
-      annonceStage.a_partir_de=result[keys[0]];
-      annonceStage.categorie=result[keys[1]];
-      annonceStage.contexte_mission=result[keys[2]];
-      annonceStage.duree_stage=result[keys[3]];
-      annonceStage.id_entreprise=result[keys[4]];
-      annonceStage.profil_recherche=result[keys[5]];
-      annonceStage.publiee_le=result[keys[6]];
-      annonceStage.remuneration=result[keys[7]];
-      annonceStage.stagiaire_demande=result[keys[8]];
-      annonceStage.titre=result[keys[9]];
-      annonceStage.type_stage=result[keys[10]];
-      annonceStage.ville=result[keys[11]];
-      annonceStage.z_commentaires=result[keys[12]];
+        var keys=Object.keys(result);
+        annonceEmploi.a_partir_de=result[keys[0]];
+        annonceEmploi.categorie=result[keys[1]];
+        annonceEmploi.contexte_mission=result[keys[2]];
+        annonceEmploi.id_entreprise=result[keys[3]];
+        annonceEmploi.langues_exigees=result[keys[4]];
+        annonceEmploi.nbr_poste_proposes=result[keys[5]];
+        annonceEmploi.niveau_etude=result[keys[6]];
+        annonceEmploi.niveau_experience=result[keys[7]];
+        annonceEmploi.poste_propose=result[keys[8]];
+        annonceEmploi.profil_recherche=result[keys[9]];
+        annonceEmploi.publiee_le=result[keys[10]];
+        annonceEmploi.titre=result[keys[11]];
+        annonceEmploi.type_contrat=result[keys[12]];
+        annonceEmploi.ville=result[keys[13]];
       }
     }, function (error) {
 
       return  error;
     });
-    return annonceStage;
+    return annonceEmploi;
 
   }
 }
