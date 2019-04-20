@@ -3,7 +3,6 @@ import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angula
 import {AuthService} from "../../services/auth.service";
 import {EnsaistePage} from "../ensaiste/ensaiste";
 import {UserService} from "../../services/user.service";
-import * as firebase from 'firebase/app';
 import {EntreprisePage} from "../entreprise/entreprise";
 
 @IonicPage()
@@ -23,7 +22,6 @@ export class LoginPage {
               public userService: UserService
   ) {
   }
-
 
   alert(message: string) {
     this.alertCtrl.create({
@@ -50,8 +48,6 @@ export class LoginPage {
         console.log('got an error', error);
         this.alert(error.message);
       });
-
-
   }
 
 }

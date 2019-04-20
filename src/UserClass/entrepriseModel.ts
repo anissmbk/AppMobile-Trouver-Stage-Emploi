@@ -18,7 +18,7 @@ export class EntrepriseModel{
     this.email='';
     this.city='';
     this.phone='';
-    this.photo='';
+    this.photo='../../assets/imgs/entreprise.jpg';
     this.description='';
     this.zz_candidats_enregistree= [];
     this.zz_mes_annonces_stage= [];

@@ -29,7 +29,7 @@ export class EnsaisteModel{
     this.email='';
     this.city='';
     this.phone='';
-    this.photo='';
+    this.photo='../../assets/imgs/ensaiste.jpg';
     this.formation='';
     this.experience='';
     this.competence='';

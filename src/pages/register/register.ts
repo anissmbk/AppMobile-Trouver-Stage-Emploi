@@ -60,12 +60,11 @@ export class RegisterPage {
       .then(res => {
         this.alert('Success! Your account has been created');
         this.ensaisteUser.email=value.email;
-        this.ensaisteUser.photo='../../assets/imgs/user.jpg';
 
         //ajout l'objet this.entrepriseUser to firebase
         const userId=firebase.auth().currentUser.uid;
         const itemRef = this.db.object('/ensaiste/'+userId);
-        itemRef.set(this.entrepriseUser);
+        itemRef.set(this.ensaisteUser);
 
         //set display name
         this.userService.updateCurrentBasicProfile('ensaiste');
@@ -80,18 +79,11 @@ export class RegisterPage {
     this.authService.doRegister(value)
       .then(res => {
         this.alert('Success! Your account has been created');
-        this.entrepriseUser={
-          entrepriseName: value.nomEntreprise,
-          secteurActivite: value.secteurActivite,
-          email: value.email,
-          city:  '',
-          phone: value.tel,
-          photo: '../../assets/imgs/user.jpg',
-          description: value.description,
-          zz_candidats_enregistree : [],
-          zz_mes_annonces_stage: []
-        };
-
+        this.entrepriseUser.entrepriseName=value.nomEntreprise;
+        this.entrepriseUser.secteurActivite=value.secteurActivite;
+        this.entrepriseUser.email=value.email;
+        this.entrepriseUser.phone=value.tel;
+        this.entrepriseUser.description=value.description;
         //ajout l'objet this.entrepriseUser to firebase
         const userId=firebase.auth().currentUser.uid;
         const itemRef = this.db.object('/entreprise/'+userId);

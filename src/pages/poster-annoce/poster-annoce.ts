@@ -10,7 +10,7 @@ import {FormAnnonceStagePage} from "../form-annonce-stage/form-annonce-stage";
 import {FormAnnonceEmploiPage} from "../form-annonce-emploi/form-annonce-emploi";
 import {EntreprisePage} from "../entreprise/entreprise";
 import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
-import {AnnonceEmploiPage} from "../annonce-emploi/annonce-emploi";
+import {AnnonceEmploiDetailsPage} from "../annonce-emploi-details/annonce-emploi-details";
 
 @IonicPage()
 @Component({
@@ -58,22 +58,57 @@ export class PosterAnnocePage {
   }
 
   removeAnnonce(id1:string){//Attention il faut supprimer dans deux places diferrents entreprise=>zz_mes_annonces_stage et dans annonceStage
-    const userId=firebase.auth().currentUser.uid;
-    const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+id1);
-    itemRef.remove();
-    const annonce = this.db.object('/annonceStage/'+id1);
-    annonce.remove();
-    this.alert("bien supprimee");
-    this.navCtrl.setRoot(EntreprisePage);
+
+    const confirm = this.alertCtrl.create({
+      title: 'Voulez-vous vraiment supprimer cette annonce ?',
+      buttons: [
+        {
+          text: 'Non',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            const userId=firebase.auth().currentUser.uid;
+            const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+id1);
+            itemRef.remove();
+            const annonce = this.db.object('/annonceStage/'+id1);
+            annonce.remove();
+            this.alert("bien supprimee");
+            this.navCtrl.setRoot(EntreprisePage);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
   removeAnnonceEmploi(id1:string){//Attention il faut supprimer dans deux places diferrents entreprise=>zz_mes_annonces_stage et dans annonceStage
-    const userId=firebase.auth().currentUser.uid;
-    const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_emploi/'+id1);
-    itemRef.remove();
-    const annonce = this.db.object('/annonceEmploi/'+id1);
-    annonce.remove();
-    this.alert("bien supprimee");
-    this.navCtrl.setRoot(EntreprisePage);
+    const confirm = this.alertCtrl.create({
+      title: 'Voulez-vous vraiment supprimer cette annonce ?',
+      buttons: [
+        {
+          text: 'Non',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            const userId=firebase.auth().currentUser.uid;
+            const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_emploi/'+id1);
+            itemRef.remove();
+            const annonce = this.db.object('/annonceEmploi/'+id1);
+            annonce.remove();
+            this.alert("bien supprimee");
+            this.navCtrl.setRoot(EntreprisePage);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
   alert(message: string) {
     this.alertCtrl.create({
@@ -88,7 +123,7 @@ export class PosterAnnocePage {
   }
   *
   annonceEmploiDetails(id:string){//il faut specifie est que c'est annonceStageDetails annonceEmploiDetails a descute
-    this.navCtrl.push(AnnonceEmploiPage,id);
+    this.navCtrl.push(AnnonceEmploiDetailsPage,id);
   }
 
   posterAnnonceStage(){

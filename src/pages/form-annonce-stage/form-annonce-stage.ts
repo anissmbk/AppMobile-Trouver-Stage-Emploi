@@ -47,36 +47,43 @@ export class FormAnnonceStagePage {
     });
 
   }
-  tryRegisterAnnonce(value){
-    const userId=firebase.auth().currentUser.uid;
-    var now = new Date();
-    var annee   = now.getFullYear();
-    var mois    = now.getMonth() + 1;
-    var jour    = now.getDate();
-    const dateNow=jour+'/'+mois+'/'+annee;
-    console.log(dateNow);
-    this.annonceStage={
-      titre: value.titre,
-      ville: value.ville,
-      contexte_mission:value.contexte_mission,
-      type_stage: value.type_stage,
-      remuneration: value.remuneration,
-      categorie: value.categorie,
-      duree_stage: value.duree_stage,
-      a_partir_de: value.a_partir_de,
-      publiee_le: dateNow,
-      stagiaire_demande: value.stagiaire_demande,
-      id_entreprise: userId,
-      profil_recherche: value.profil_recherche,
-      z_commentaires: []
-   };
-    const idStage = Math.random().toString(36).substring(2);
-    const itemRef = this.db.object('/annonceStage/'+idStage);
-    itemRef.set(this.annonceStage);
-    const itemRef1 = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+idStage);
-    itemRef1.set({id:idStage});
-    this.alert("bien poster");
-    this.navCtrl.setRoot(EntreprisePage);
+  tryRegisterAnnonce(value) {
+    if (value.a_partir_de != '' && value.titre != '' && value.ville != '' && value.contexte_mission != '' &&
+      value.categorie != '' && value.profil_recherche != '' && value.type_stage!= '' && value.remuneration != '' &&
+      value.duree_stage != '' && value.stagiaire_demande != '') {
+      const userId = firebase.auth().currentUser.uid;
+      var now = new Date();
+      var annee = now.getFullYear();
+      var mois = now.getMonth() + 1;
+      var jour = now.getDate();
+      const dateNow = jour + '/' + mois + '/' + annee;
+      console.log(dateNow);
+      this.annonceStage = {
+        titre: value.titre,
+        ville: value.ville,
+        contexte_mission: value.contexte_mission,
+        type_stage: value.type_stage,
+        remuneration: value.remuneration,
+        categorie: value.categorie,
+        duree_stage: value.duree_stage,
+        a_partir_de: value.a_partir_de,
+        publiee_le: dateNow,
+        stagiaire_demande: value.stagiaire_demande,
+        id_entreprise: userId,
+        profil_recherche: value.profil_recherche,
+        z_commentaires: []
+      };
+      const idStage = Math.random().toString(36).substring(2);
+      const itemRef = this.db.object('/annonceStage/' + idStage);
+      itemRef.set(this.annonceStage);
+      const itemRef1 = this.db.object('/entreprise/' + userId + '/zz_mes_annonces_stage/' + idStage);
+      itemRef1.set({id: idStage});
+      this.alert("bien poster");
+      this.navCtrl.setRoot(EntreprisePage);
+    }
+    else{
+      this.alert("il faut remplir touts les champs !")
+    }
   }
 
 }

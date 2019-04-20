@@ -7,7 +7,7 @@ export class AnnonceEmploiModel{
   publiee_le: string;//
   id_entreprise: string;//
   profil_recherche: string;
-  poste_propose: string;
+ // poste_propose: string;
   type_contrat: string;
   niveau_experience: string;
   niveau_etude: string;
@@ -25,7 +25,7 @@ export class AnnonceEmploiModel{
     this.titre = '';
     this.ville = '';
     this.contexte_mission = '';
-    this.poste_propose= '';
+   // this.poste_propose= '';
     this.type_contrat= '';
     this.categorie = '';
     this.niveau_etude= '';

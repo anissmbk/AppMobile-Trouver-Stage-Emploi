@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import * as firebase from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
 import {AngularFireDatabase} from "@angular/fire/database";
-import {AuthService} from "./auth.service";
 import {EnsaisteModel} from "../UserClass/ensaisteModel";
 import {EntrepriseModel} from "../UserClass/entrepriseModel";
 import {AnnonceStageModel} from "../AnnonceClass/annonceStageModel";
@@ -209,12 +207,11 @@ export class UserService {
         annonceEmploi.nbr_poste_proposes=result[keys[5]];
         annonceEmploi.niveau_etude=result[keys[6]];
         annonceEmploi.niveau_experience=result[keys[7]];
-        annonceEmploi.poste_propose=result[keys[8]];
-        annonceEmploi.profil_recherche=result[keys[9]];
-        annonceEmploi.publiee_le=result[keys[10]];
-        annonceEmploi.titre=result[keys[11]];
-        annonceEmploi.type_contrat=result[keys[12]];
-        annonceEmploi.ville=result[keys[13]];
+        annonceEmploi.profil_recherche=result[keys[8]];
+        annonceEmploi.publiee_le=result[keys[9]];
+        annonceEmploi.titre=result[keys[10]];
+        annonceEmploi.type_contrat=result[keys[11]];
+        annonceEmploi.ville=result[keys[12]];
       }
     }, function (error) {
 

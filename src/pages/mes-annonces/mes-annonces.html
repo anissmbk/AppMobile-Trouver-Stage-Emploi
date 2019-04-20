@@ -18,13 +18,12 @@
   <ion-card *ngFor="let annonce of myObject">
     <!--fixer ce probleme-->
     <div id="{{annonce[1]['id']}}">
-      <h2>lmochkilaaaaaa{{annonce[2]['id_entreprise']}}</h2>
     <ion-item>
       <ion-avatar item-start>
-        <img src="">
+        <img src=""><!--{{annonce[3]['photo']}}-->
       </ion-avatar>
       <strong>{{annonce[2]['titre']}}</strong>
-      <p></p>
+      <p></p><!--{{annonce[3]['entrepriseName']}}-->
       <p>publiee le {{annonce[2]['publiee_le']}}</p>
       <button (click)="annonceStageDetail(annonce[1]['id'])">consulter</button>
       <button (click)="removeAnnonceEnregistre(annonce[1]['id'])">supprimer de mes annonces</button>
@@ -38,7 +37,6 @@
 
         <p *ngIf="annonce[2]['remuneration']==false; else trueRemu">Stage Non Rémunéré</p>
         <ng-template #trueRemu>Stage Rémunéré</ng-template>
-        <!--<p *ngIf="annonce[1]['remuneration']==false">Stage Rémunéré</p>-->
       </label>
       <label class="badge-stage stage-pre-embauche enfant" id="enfant-C">{{annonce[2]['type_stage']}}</label>
     </div>
@@ -58,17 +56,15 @@
 
 
   <h1 style="background-color: #f53d3d">annonces d'emploi enregistrées:</h1>
-  <!--annonce[1] contient les id des annonces enregistres && annonce[2] contient les infos sur lannonce enregistre-->
   <ion-card *ngFor="let annonce1 of myObjectEmploi">
-    <!--fixer ce probleme-->
     <div id="{{annonce1[1]['id']}}">
       <ion-item>
         <ion-avatar item-start>
-          <img src="">
+          <img src=""><!--{{annonce1[3]['photo']}}-->
         </ion-avatar>
         <strong>{{annonce1[2]['titre']}}</strong>
-        <p>entreprise name fiiha mochkiil</p>
-        <p>secteur feeha mochkiil</p>
+        <p></p><!--{{annonce1[3]['entrepriseName']}}-->
+        <p>secteur activite :</p><!--{{annonce1[3]['secteurActivite']}}-->
         <p>publiee le {{annonce1[2]['publiee_le']}}</p>
         <button (click)="annonceEmploiDetail(annonce1[1]['id'])">consulter</button>
         <button (click)="removeAnnonceEmploiEnregistre(annonce1[1]['id'])">supprimer de mes annonces</button>

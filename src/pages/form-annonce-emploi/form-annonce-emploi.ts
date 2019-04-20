@@ -40,16 +40,19 @@ export class FormAnnonceEmploiPage {
       categorie: ['', Validators.required],
       a_partir_de: ['', Validators.required],
       profil_recherche: ['', Validators.required],
-      poste_propose: ['', Validators.required],
       nbr_poste_proposes: ['', [Validators.required,Validators.pattern("[0-9][0-9]*")]],
       type_contrat: ['', Validators.required],
       niveau_experience: ['', Validators.required],
       niveau_etude: ['', Validators.required],
       langues_exigees: ['', Validators.required]
+             // poste_propose: ['', Validators.required],
     });
 
   }
   tryRegisterAnnonce(value){
+ if(value.a_partir_de!=''&&value.titre!=''&&value.ville!=''&&value.contexte_mission!=''&&
+    value.categorie!=''&&value.profil_recherche!=''&&value.nbr_poste_proposes!='' &&value.type_contrat!=''&&
+    value.niveau_experience!=''&&value.niveau_etude!=''&&value.langues_exigees!=''){
     const userId=firebase.auth().currentUser.uid;
     var now = new Date();
     var annee   = now.getFullYear();
@@ -64,7 +67,6 @@ export class FormAnnonceEmploiPage {
       categorie: value.categorie,
       a_partir_de: value.a_partir_de,
       profil_recherche: value.profil_recherche,
-      poste_propose: value.poste_propose,
       nbr_poste_proposes: value.nbr_poste_proposes,
       type_contrat: value.type_contrat,
       publiee_le: dateNow,
@@ -81,6 +83,10 @@ export class FormAnnonceEmploiPage {
     itemRef1.set({id:idEmploi});
     this.alert("bien poster");
     this.navCtrl.setRoot(EntreprisePage);
+ }
+ else{
+   this.alert("il faut remplir touts les champs !");
+ }
   }
 
 }

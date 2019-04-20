@@ -5,6 +5,7 @@ import {UserService} from "../../services/user.service";
 import * as firebase from 'firebase/app';
 import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
+import {EntreprisePage} from "../entreprise/entreprise";
 
 @IonicPage()
 @Component({
@@ -37,14 +38,31 @@ export class EntrepriseEnregistreePage {
   }
 
   removeEntrepriseEnregistre(id1:string){
-    const userId=firebase.auth().currentUser.uid;
-    const itemRef = this.db.object('/ensaiste/'+userId+'/zz_entreprise_enregistree/'+id1);
-    itemRef.remove();
-    // fixer le prbleme il faut cliquer deux fois !!!
-    /*    var a=document.getElementById(id1) as HTMLDivElement;
-        a.remove();*/
-    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
-    this.alert("bien supprimee");
+    const confirm = this.alertCtrl.create({
+      title: 'Voulez-vous vraiment supprimer cette entreprise ?',
+      buttons: [
+        {
+          text: 'Non',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            const userId=firebase.auth().currentUser.uid;
+            const itemRef = this.db.object('/ensaiste/'+userId+'/zz_entreprise_enregistree/'+id1);
+            itemRef.remove();
+            // fixer le prbleme il faut cliquer deux fois !!!
+            /*    var a=document.getElementById(id1) as HTMLDivElement;
+                a.remove();*/
+            //this.navCtrl.setRoot(this.navCtrl.getActive().component);
+            this.alert("bien supprimee");
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
   alert(message: string) {
     this.alertCtrl.create({
