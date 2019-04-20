@@ -5,7 +5,6 @@ import {UserService} from "../../services/user.service";
 import * as firebase from 'firebase/app';
 import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
-import {EntreprisePage} from "../entreprise/entreprise";
 
 @IonicPage()
 @Component({

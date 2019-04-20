@@ -9,7 +9,6 @@
       "nbr_poste_proposes" : "2",
       "niveau_etude" : "Bac+5",
       "niveau_experience" : "entre 1ans et 5ans",
-      "poste_propose" : "ingenieur d'etat en info",
       "profil_recherche" : "php devloper",
       "publiee_le" : "2/8/2019",
       "titre" : "annoce demploii",
@@ -25,7 +24,6 @@
       "nbr_poste_proposes" : "5",
       "niveau_etude" : "bac+3",
       "niveau_experience" : "entre 1ans et 7ans",
-      "poste_propose" : "technicien",
       "profil_recherche" : "anass",
       "publiee_le" : "18/4/2019",
       "titre" : "hello job",
@@ -230,6 +228,9 @@
       "zz_annonce_emploi_enregistre" : {
         "-Mch_bZAvh7kiazx1966" : {
           "id" : "-Mch_bZAvh7kiazx1966"
+        },
+        "nowuqqy2iwi" : {
+          "id" : "nowuqqy2iwi"
         }
       },
       "zz_annonce_stage_enregistre" : {
@@ -297,6 +298,33 @@
       "photo" : "../../assets/imgs/entreprise.jpg",
       "secteurActivite" : "Informatique"
     },
+    "-gergMuh_aSRah7kJewq8C29" : {
+      "city" : "Casa",
+      "description" : "nun",
+      "email" : "entreprise-info@gmail.com",
+      "entrepriseName" : "MIT mobile",
+      "phone" : "0510259786",
+      "photo" : "../../assets/imgs/entreprise.jpg",
+      "secteurActivite" : "Informatique"
+    },
+    "-thyjMuh_aSRah7kJewq8C29" : {
+      "city" : "Casa",
+      "description" : "nun",
+      "email" : "entreprise-info@gmail.com",
+      "entrepriseName" : "MIT mobile",
+      "phone" : "0510259786",
+      "photo" : "../../assets/imgs/entreprise.jpg",
+      "secteurActivite" : "Informatique"
+    },
+    "-xxMuh_aSRah7kJewq8C29" : {
+      "city" : "Casa",
+      "description" : "nun",
+      "email" : "entreprise-info@gmail.com",
+      "entrepriseName" : "MIT mobile",
+      "phone" : "0510259786",
+      "photo" : "../../assets/imgs/entreprise.jpg",
+      "secteurActivite" : "Informatique"
+    },
     "883H6ZMJdYdTnQZRkHMJHjACrHM2" : {
       "city" : "",
       "description" : "hfycb",
@@ -314,11 +342,6 @@
       "phone" : "05555558456",
       "photo" : "https://firebasestorage.googleapis.com/v0/b/employemanagment-914b8.appspot.com/o/z1ccaniyyrs?alt=media&token=7a8e5c26-79f5-491d-9b5c-dc71cbbb38a4",
       "secteurActivite" : "info",
-      "zz_candidats_enregistree" : {
-        "-Muh_aSRah7kJewq8C29" : {
-          "id" : "-Muh_aSRah7kJewq8C29"
-        }
-      },
       "zz_mes_annonces_emploi" : {
         "-Mch_bZAvh7kiazx1966" : {
           "id" : "-Mch_bZAvh7kiazx1966"
@@ -333,6 +356,20 @@
         },
         "1g1higs635a" : {
           "id" : "1g1higs635a"
+        }
+      }
+    },
+    "WxXDUTBZKTYKOmtP90ivFYhp3z12" : {
+      "city" : "",
+      "description" : "afemlh",
+      "email" : "dvCompany@gmail.com",
+      "entrepriseName" : "dvCompany",
+      "phone" : "0544444444",
+      "photo" : "../../assets/imgs/entreprise.jpg",
+      "secteurActivite" : "infoCafe",
+      "zz_candidats_enregistree" : {
+        "-Muh_aSRah7kJewq8C29" : {
+          "id" : "-Muh_aSRah7kJewq8C29"
         }
       }
     },

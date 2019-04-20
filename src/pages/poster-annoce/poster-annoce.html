@@ -8,28 +8,28 @@
   <ion-searchbar></ion-searchbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding style="background-color:#f0f0f0;">
 
   <ion-fab right bottom>
     <button ion-fab color="dark"><ion-icon name="add"></ion-icon></button>
     <ion-fab-list side="top">
-      <button ion-fab (click)="posterAnnonceStage()"><p class="button-add">stage</p></button>
-      <button ion-fab (click)="posterAnnonceEmploi()"><p class="button-add">emploi</p></button>
+      <button ion-fab (click)="posterAnnonceStage()" style="background-color:#FFCD89;"><p class="button-add">stage</p></button>
+      <button ion-fab (click)="posterAnnonceEmploi()" style="background-color:#FFCD89;"><p class="button-add">emploi</p></button>
     </ion-fab-list>
   </ion-fab>
 
-  <h1 style="background-color: #f53d3d"> Mes Annonces de stage :</h1>
+  <p class="text">Mes annonces de Stage :</p>
+  <div class="scroll comment">
   <ion-card *ngFor="let annonce of myObject">
-    <!--fixer ce probleme-->
     <div id="{{annonce[1]['id']}}">
       <ion-item>
         <ion-avatar item-start>
-          <img src="{{entrepriseUser.photo}}">
+          <img src="{{entrepriseUser.photo}}" class="imgreduce">
         </ion-avatar>
         <strong>{{annonce[2]['titre']}}</strong>
         <p>{{entrepriseUser.entrepriseName}}</p>
         <p>publiee le {{annonce[2]['publiee_le']}}</p>
-        <button (click)="annonceDetails(annonce[1]['id'])">consulter</button>
+        <button (click)="annonceEmploiDetails(annonce[1]['id'])">consulter</button>
         <button (click)="removeAnnonce(annonce[1]['id'])">Delete</button>
       </ion-item>
       <ion-card-content>
@@ -58,14 +58,16 @@
       </div>
     </div>
   </ion-card>
+  </div>
 
-<h1 style="background-color: #f53d3d">Mes Annonces d'Emploi :</h1>
+  <p class="text">Mes annonces d'Emploi :</p>
+  <div class="scroll comment">
   <ion-card *ngFor="let annonce1 of myObjectEmploi">
     <!--fixer ce probleme-->
     <div id="{{annonce1[1]['id']}}">
       <ion-item>
         <ion-avatar item-start>
-          <img src="{{entrepriseUser.photo}}">
+          <img src="{{entrepriseUser.photo}}" class="imgreduce">
         </ion-avatar>
         <strong>{{annonce1[2]['titre']}}</strong>
         <p>{{entrepriseUser.entrepriseName}}</p>
@@ -93,6 +95,6 @@
       </div>
     </div>
   </ion-card>
-
+  </div>
 </ion-content>
 

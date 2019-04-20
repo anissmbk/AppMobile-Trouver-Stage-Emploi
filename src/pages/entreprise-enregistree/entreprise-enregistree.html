@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  Entreprise Enregistree :<br>
+  <p class="text">Entreprise Enregistree :</p>
   <ion-list>
     <ion-item-sliding *ngFor="let entreprise of myObject">
       <ion-item class="comment">
         <ion-avatar item-start>
-          <img src="{{entreprise[2]['photo']}}">
+          <img src="{{entreprise[2]['photo']}}" class="imgreduce">
         </ion-avatar>
         <div>
           <h2>{{entreprise[2]['entrepriseName']}}</h2>

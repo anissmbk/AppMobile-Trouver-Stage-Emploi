@@ -31,8 +31,6 @@ export class PosterAnnocePage {
     this.mesAnnoncesStageList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces_stage');
     this.mesAnnoncesStageList.snapshotChanges().subscribe(action => {
       this.itemArray.push(action.payload.val() as {id:string});
-      // pour savoir la methode entries il faut ajouter au tsconfig.json dans lib"es2017.object","es2016.array.include"
-      //had if mohima dans le cas ila makan ta commentaire
       if(this.itemArray[0]!=null){
         this.myObject = Object.entries(this.itemArray[0]);
       }

@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  Candidats Enregistree :<br>
+  <p class="text">Candidats Enregistree :</p>
   <ion-list>
     <ion-item-sliding *ngFor="let ensaiste of myObject">
       <ion-item class="comment">
         <ion-avatar item-start>
-          <img src="{{ensaiste[2]['photo']}}">
+          <img src="{{ensaiste[2]['photo']}}" class="imgreduce">
         </ion-avatar>
         <div>
           <h2>{{ensaiste[2]['firstName']}} {{ensaiste[2]['lastName']}}</h2>

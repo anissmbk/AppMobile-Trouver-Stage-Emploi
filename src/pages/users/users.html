@@ -16,12 +16,13 @@ omli ndkhol ka entreprise it9leb ordre-->
 </ion-header>
 
 <ion-content padding>
-Entreprise:<br>
+<p class="text">Entreprise:</p>
+  <div class="scroll">
   <ion-list>
     <ion-item-sliding *ngFor="let entreprise of myObject">
       <ion-item class="comment">
         <ion-avatar item-start>
-          <img src="{{entreprise[1]['photo']}}">
+          <img src="{{entreprise[1]['photo']}}" class="imgreduce">
         </ion-avatar>
         <div>
           <h2>{{entreprise[1]['entrepriseName']}}</h2>
@@ -41,12 +42,14 @@ Entreprise:<br>
       </ion-item-options>
     </ion-item-sliding>
     </ion-list>
-  Ensaiste :<br>
+  </div>
+  <p class="text">Ensaiste :</p>
+  <div class="scroll">
   <ion-list>
     <ion-item-sliding *ngFor="let ensaiste of myObjectEnsaiste">
       <ion-item class="comment">
         <ion-avatar item-start>
-          <img src="{{ensaiste[1]['photo']}}">
+          <img src="{{ensaiste[1]['photo']}}" class="imgreduce">
         </ion-avatar>
         <div>
           <h2>{{ensaiste[1]['firstName']}} {{ensaiste[1]['lastName']}}</h2>
@@ -66,5 +69,5 @@ Entreprise:<br>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-
+  </div>
 </ion-content>

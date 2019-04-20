@@ -8,7 +8,6 @@ import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
 import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
 import {AnnonceEmploiDetailsPage} from "../annonce-emploi-details/annonce-emploi-details";
-import {EntreprisePage} from "../entreprise/entreprise";
 @IonicPage()
 @Component({
   selector: 'page-mes-annonces',

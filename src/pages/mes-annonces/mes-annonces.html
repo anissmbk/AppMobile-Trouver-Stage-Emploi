@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding style="background-color:#f0f0f0;">
   <ion-refresher (ionRefresh)="dorefresh($event);">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -13,14 +13,15 @@
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <h1 style="background-color: #f53d3d">annonces de stage enregistrées:</h1>
-  <!--annonce[1] contient les id des annonces enregistres && annonce[2] contient les infos sur lannonce enregistre-->
+
+  <p class="text">Les annonces de Stage Enregistrees:</p>
+  <div class="scroll comment">
   <ion-card *ngFor="let annonce of myObject">
     <!--fixer ce probleme-->
     <div id="{{annonce[1]['id']}}">
     <ion-item>
       <ion-avatar item-start>
-        <img src=""><!--{{annonce[3]['photo']}}-->
+        <img src="" class="imgreduce"><!--{{annonce[3]['photo']}}-->
       </ion-avatar>
       <strong>{{annonce[2]['titre']}}</strong>
       <p></p><!--{{annonce[3]['entrepriseName']}}-->
@@ -31,7 +32,7 @@
     <ion-card-content>
       <p>{{annonce[2]['contexte_mission']}}</p>
     </ion-card-content>
-    <div class="parent">
+      <div class="parent">
       <label class="badge-stage stage-marketing enfant" id="enfant-A">{{annonce[2]['categorie']}}</label>
       <label class="badge-stage stage-remunere enfant" id="enfant-B">
 
@@ -53,14 +54,15 @@
     </div>
     </div>
   </ion-card>
+  </div>
 
-
-  <h1 style="background-color: #f53d3d">annonces d'emploi enregistrées:</h1>
+  <p class="text">Les annonces d'Emploi Enregistrees:</p>
+  <div class="scroll emploi">
   <ion-card *ngFor="let annonce1 of myObjectEmploi">
     <div id="{{annonce1[1]['id']}}">
       <ion-item>
         <ion-avatar item-start>
-          <img src=""><!--{{annonce1[3]['photo']}}-->
+          <img src="" class="imgreduce"><!--{{annonce1[3]['photo']}}-->
         </ion-avatar>
         <strong>{{annonce1[2]['titre']}}</strong>
         <p></p><!--{{annonce1[3]['entrepriseName']}}-->
@@ -88,4 +90,5 @@
       </div>
     </div>
   </ion-card>
+  </div>
 </ion-content>

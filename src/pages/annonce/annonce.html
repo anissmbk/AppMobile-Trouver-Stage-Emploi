@@ -9,11 +9,12 @@
   <ion-searchbar></ion-searchbar>
 </ion-header>
 
-<ion-content padding>
-  <h1 style="background-color: #f53d3d">les annonces de Stage :</h1>
+<ion-content padding style="background-color:#f0f0f0;">
+  <p class="text">Les annonces de Stage :</p>
+  <div class="scroll comment">
   <ion-card *ngFor="let annonce of myObject">
     <ion-item>
-      <ion-avatar item-start>
+      <ion-avatar item-start class="imgreduce">
         <img src="{{annonce[2]['photo']}}">
       </ion-avatar>
       <strong>{{annonce[1]['titre']}}</strong>
@@ -47,8 +48,9 @@
     </div>
   </div>
   </ion-card>
-
-  <h1 style="background-color: #f53d3d">les annonces d'Emploi:</h1>
+  </div>
+  <p class="text">Les annonces d'Emploi :</p>
+  <div class="scroll emploi">
   <ion-card *ngFor="let annonce of myObjectEmploi">
     <ion-item>
       <ion-avatar item-start>
@@ -80,4 +82,5 @@
       </div>
     </div>
   </ion-card>
+  </div>
 </ion-content>

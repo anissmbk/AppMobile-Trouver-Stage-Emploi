@@ -56,5 +56,36 @@ page-poster-annoce {
   }
 .button-add{
   font-size: 11px;
+  font-family: fantasy;
 }
+
+  .scroll{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: relative;
+    z-index: 1;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    contain: size style layout;
+    height: 308px;
+  }
+  .comment{
+    background-color:#161954;
+  }
+  .emploi{
+    background-color:#161954;
+  }
+  .text {
+    font-family: fantasy;
+    font-size: large;
+  }
+  .imgreduce{
+    border: 2px solid #161954;
+    border-radius: 50%;
+  }
 }
