@@ -27,10 +27,22 @@ export class UsersPage {
   isEnsaisteSearch:boolean=false;
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,
               public userService:UserService) {
+    /*var ref = this.userService.getEnsaisteById("efdnkjb");
+    console.log(ref);
+    if(ref.email==''){
+      console.log("khawya");
+    }
 
+    var ref1 = this.userService.getEnsaisteById("-Muh_aSRah7kJewq8C29");
+    console.log(ref1);*/
     this.userDisplayName=this.userService.getCurrentUserDisplayName();
     this.entrepriseList=db.object('/entreprise');
     this.entrepriseList.snapshotChanges().subscribe(action=>{
+      /*if(ref1.email==''){
+        console.log("3amra");
+      }else{
+        console.log("to");
+      }*/
      // let y=action.payload.toJSON();
       //y['key']=action.key;
       this.itemArray.push(action.payload.val() as EntrepriseModel);

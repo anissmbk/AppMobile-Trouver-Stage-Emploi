@@ -5,6 +5,7 @@ import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
+import {EnsaistePage} from "../ensaiste/ensaiste";
 
 @IonicPage()
 @Component({
@@ -61,7 +62,12 @@ export class ModifyProfileEnsaistePage  {
     if(value.datedenaissance) this.ensaisteProfile.date_naissance=value.datedenaissance;
     if(value.tel) this.ensaisteProfile.phone=value.tel;
     this.userService.updateEnsaiste(this.ensaisteProfile);
-  }
+    const user=this.userService.getCurrentUser();
+    if(user.displayName==="ensaiste1"){
+    this.userService.updateCurrentBasicProfile('ensaiste');
+      this.navCtrl.setRoot(EnsaistePage);
+    }
+    }
 
 }
 

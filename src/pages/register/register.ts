@@ -67,7 +67,7 @@ export class RegisterPage {
         itemRef.set(this.ensaisteUser);
 
         //set display name
-        this.userService.updateCurrentBasicProfile('ensaiste');
+        this.userService.updateCurrentBasicProfile('ensaiste1');
         this.navCtrl.setRoot(HomePage);
       }, err => {
         this.alert(err.message);

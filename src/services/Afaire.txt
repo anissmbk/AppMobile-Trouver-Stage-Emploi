@@ -1,8 +1,11 @@
 getEntreprise makhdamach f annonceEnregistrees!!
 
+delete commentaires  dans les annonceas et dans les sujets if user delete son compte!! &&
+delete evaluation de lensaiste aussi if entreprise  delete son compte!!!!
+
 fixer la taille de balise p de text dans annonce html!!
 
-les msgs lorsque no data exist!!!
+les msgs lorsque no data exist!!!et aussi dans annoncesEnregistre lorsque no data exist
 
 ajuster laffichage pour multiple phone!!!
 

@@ -1,37 +1,73 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title>AnnonceDetailPage</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-<div>
-    id annonce :{{id}}<br>
-    annonce ville:{{annonceStage.ville}}<br>
-    annonce type de stage :{{annonceStage.type_stage}}<br>
-    titre : {{annonceStage.titre}}<br>
-</div>
-  <ul>
-    <li *ngFor="let commentaire of myObject">
-      <h2>le commentaire Avec les infos de lensaiste :</h2>
-      id_commentaire :{{commentaire[1]['id_commentaire']}}<br>
-      id_ensaiste : {{commentaire[1]['id_ensaiste']}}<br>
-      commentaire_text : {{commentaire[1]['commentaire_text']}}<br>
-      disponibilite : {{commentaire[1]['disponibilite']}}<br>
-      <!--commentaire[1] contient les infos sur commentaire && commentaire[2] contient des infos sur ensaiste-->
-      city :{{commentaire[2]['city']}}<br>
-      competence :{{commentaire[2]['competence']}}<br>
-      date_naissance : {{commentaire[2]['date_naissance']}}<br>
-      email : {{commentaire[2]['email']}}<br>
-      evaluation :{{commentaire[2]['evaluation']}}<br>
-      experience :{{commentaire[2]['experience']}}<br>
-      firstName : {{commentaire[2]['firstName']}}<br>
-      formation : {{commentaire[2]['formation']}}<br>
-      phone :{{commentaire[2]['phone']}}<br>
-      lastName :{{commentaire[2]['lastName']}}<br>
-      photo : {{commentaire[2]['photo']}}<br>
-    </li>
+<ion-content padding="" class="back">
+  <ion-card padding="">
+    <ion-title style="color:#06358e" text-center="">{{annonceStage.titre}}</ion-title>
+    <ion-item text-center=""><img class="image"  src="{{entrepriseUser.photo}}">
+      <p style="padding-top: 10px;">{{entrepriseUser.entrepriseName}}</p>
+      <p>{{annonceStage.ville}}</p>
+    </ion-item>
+    <ion-item>
+      <div><strong style="color:darkred; display:inline-block">Type de stage :</strong> <p style="display: inline">{{annonceStage.type_stage}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">profile recherché :</strong> <p style="display: inline">{{annonceStage.profil_recherche}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">Durée du stage :</strong> <p style="display: inline">{{annonceStage.duree_stage}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">A partir du :</strong> <p style="display: inline">{{annonceStage.a_partir_de}}</p></div>
+
+    </ion-item>
+    <ion-card padding="">
+      <ion-title text-center="">
+        Description
+      </ion-title>
+      <ion-card-content>
+        {{entrepriseUser.description}}
+      </ion-card-content>
+
+
+
+    </ion-card>
+  </ion-card>
+
+  <ion-card text-center="" padding="" color="macouleur">
+    <ion-title text-center="" padding-bottom=""><strong class="text">Commentaire :</strong></ion-title>
+    <ion-item>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+    <button color="macouleur" ion-button><ion-icon name="send"></ion-icon></button>
+
+  </ion-card>
+
+  <ul padding="0px" *ngFor="let commentaire of myObject"><ion-card padding="2px">
+    <ion-row>
+      <ion-col col-3="">
+        <span style=""><img class="imagecomm" src="{{commentaire[2]['photo']}}"></span>
+      </ion-col>
+      <ion-col>
+        <strong></strong>
+      </ion-col></ion-row>
+    id_commentaire :{{commentaire[1]['id_commentaire']}}<br>
+    id_ensaiste : {{commentaire[1]['id_ensaiste']}}<br>
+    commentaire_text : {{commentaire[1]['commentaire_text']}}<br>
+    disponibilite : {{commentaire[1]['disponibilite']}}<br>
+    <!--commentaire[1] contient les infos sur commentaire && commentaire[2] contient des infos sur ensaiste-->
+    city :{{commentaire[2]['city']}}<br>
+    competence :{{commentaire[2]['competence']}}<br>
+    date_naissance : {{commentaire[2]['date_naissance']}}<br>
+    email : {{commentaire[2]['email']}}<br>
+    evaluation :{{commentaire[2]['evaluation']}}<br>
+    experience :{{commentaire[2]['experience']}}<br>
+    firstName : {{commentaire[2]['firstName']}}<br>
+    formation : {{commentaire[2]['formation']}}<br>
+    phone :{{commentaire[2]['phone']}}<br>
+    lastName :{{commentaire[2]['lastName']}}<br>
+    photo : {{commentaire[2]['photo']}}<br>
+  </ion-card>
   </ul>
 
 </ion-content>

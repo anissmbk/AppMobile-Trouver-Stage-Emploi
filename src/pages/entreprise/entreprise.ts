@@ -7,6 +7,8 @@ import {HomePage} from "../home/home";
 import {CandidatsEnregistresPage} from "../candidats-enregistres/candidats-enregistres";
 import {ModifyProfileEntreprisePage} from "../modify-profile-entreprise/modify-profile-entreprise";
 import {TabsEntreprisePage} from "../tabs-entreprise/tabs-entreprise";
+import * as firebase from 'firebase/app';
+import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 
 @IonicPage()
 @Component({
@@ -17,17 +19,39 @@ export class EntreprisePage {
 
   rootPage:any = TabsEntreprisePage;
   pages: Array<{title: string, component: any}>;
-
+  deleteList:AngularFireObject<any>;
+  itemArray=[];
+  myObject= [];
+  deleteList1:AngularFireObject<any>;
+  itemArray1=[];
+  myObject1= [];
   constructor(platform: Platform,
               statusBar: StatusBar,
               splashScreen: SplashScreen,
               public authService: AuthService,
               private alertCtrl: AlertController,
-              public navCtrl: NavController,) {
+              public navCtrl: NavController,
+              public db: AngularFireDatabase) {
+
+    var userId=firebase.auth().currentUser.uid;
+    this.deleteList=this.db.object('/entreprise/'+userId+'/zz_mes_annonces_emploi');
+    this.deleteList.snapshotChanges().subscribe(action => {
+      this.itemArray.push(action.payload.val() as {id :string});
+      if(this.itemArray[0]!=null){
+        this.myObject = Object.entries(this.itemArray[0]);
+      }
+    });
+
+    var userId1=firebase.auth().currentUser.uid;
+    this.deleteList1=this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage');
+    this.deleteList1.snapshotChanges().subscribe(action => {
+      this.itemArray1.push(action.payload.val() as {id :string});
+      if(this.itemArray1[0]!=null){
+        this.myObject1 = Object.entries(this.itemArray1[0]);
+      }
+    });
 
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
@@ -61,4 +85,49 @@ export class EntreprisePage {
         console.log('got an error');
       })
   }
+
+  DeleteUserAcount(){
+    const confirm = this.alertCtrl.create({
+      title: 'Voulez-vous vraiment supprimer votre compt ?',
+      buttons: [
+        {
+          text: 'Non',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            //il faut geter zz_mes_annonces_emploi && zz_mes_annonces_emploi
+            //et les supprimer dans annonceEmploi && annoncestage table firebase
+            //evaluation de lensaiste aussi !!!!
+            for (let annonce of this.myObject) {
+              var itemRef1 = this.db.object('/annonceEmploi/'+annonce[0]);
+              itemRef1.remove();
+            }
+            for (let annonce of this.myObject1) {
+              var itemRef2 = this.db.object('/annonceStage/'+annonce[0]);
+              itemRef2.remove();
+            }
+
+            const userId=firebase.auth().currentUser.uid;
+            const itemRef = this.db.object('/entreprise/'+userId);
+            itemRef.remove();
+            const user = firebase.auth().currentUser;
+            user.delete().then(function() {
+              this.alert("bien supprimee");
+              this.navCtrl.setRoot(HomePage);
+            }.bind(this)).catch(function(error) {
+              // An error happened.
+            });
+
+          }
+        }
+      ]
+    });
+    confirm.present();
+
+  }
+
 }

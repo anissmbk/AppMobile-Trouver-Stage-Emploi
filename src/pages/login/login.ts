@@ -4,6 +4,7 @@ import {AuthService} from "../../services/auth.service";
 import {EnsaistePage} from "../ensaiste/ensaiste";
 import {UserService} from "../../services/user.service";
 import {EntreprisePage} from "../entreprise/entreprise";
+import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profile-ensaiste";
 
 @IonicPage()
 @Component({
@@ -41,6 +42,8 @@ export class LoginPage {
           this.navCtrl.setRoot(EnsaistePage);
         }else if (user.displayName==="entreprise"){
           this.navCtrl.setRoot(EntreprisePage);
+        }else if(user.displayName==="ensaiste1"){
+          this.navCtrl.setRoot(ModifyProfileEnsaistePage);
         }
 
       })
