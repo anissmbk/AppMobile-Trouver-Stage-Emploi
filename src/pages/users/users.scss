@@ -29,15 +29,18 @@ page-users {
 
   #searchEnsaiste{
     display:none;
+    position: absolute;
+    top: 49px;
+    width: 100%;
     //visibility: visible;
-   //display: inline-block;
+    //display: inline-block;
     //visibility: hidden;
-  }
-  .opacity{
-    opacity: 0.2;
   }
   #searchEntreprise{
     display:none;
+    position: absolute;
+    top: 49px;
+    width: 100%;
   }
 
   #mySelect{

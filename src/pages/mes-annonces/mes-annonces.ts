@@ -21,6 +21,19 @@ export class MesAnnoncesPage {
   itemArrayEmploi=[];
   myObjectEmploi= [];
   entrepriseUser:EntrepriseModel;
+  isSearch:boolean=false;
+  isEmploiSearch:boolean=false;
+  searchTab=[];
+  searchStageDefaultValues={
+    Ville:"0",
+    Type:"0",
+    Categorie:"0"
+  };
+  searchEmploiDefaultValues={
+    Ville:"0",
+    Type_contrat:"0",
+    Categorie:"0"
+  };
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
 
     this.annonceEnregistreesList=this.db.object('/ensaiste/'+firebase.auth().currentUser.uid+'/zz_annonce_stage_enregistre');
@@ -137,6 +150,63 @@ export class MesAnnoncesPage {
       ]
     });
     confirm.present();
+  }
+  chercherStage(value){
+    this.searchTab=[];
+    if(value.type_stage==0 && value.categorie==0 && value.ville==0){
+      this.searchTab=this.myObject;
+    }
+    else{
+      for (let annonce of this.myObject){
+        if( (annonce[2]['ville']==value.ville || value.ville==0) && (annonce[2]['categorie']==value.categorie||value.categorie==0)  &&
+          (annonce[2]['type_stage']==value.type_stage || value.type_stage==0)){
+          this.searchTab.push(annonce);
+        }
+      }
+    }
+    this.isEmploiSearch=false;
+    this.isSearch=true;
+  }
+
+  chercherEmploi(value){
+    this.searchTab=[];
+    if(value.type_contrat==0 && value.categorie==0 && value.ville==0){
+      this.searchTab=this.myObjectEmploi;
+    }
+    else{
+      for (let annonce of this.myObjectEmploi){
+        if( (annonce[2]['ville']==value.ville || value.ville==0) && (annonce[2]['categorie']==value.categorie||value.categorie==0)  &&
+          (annonce[2]['type_contrat']==value.type_contrat || value.type_contrat==0)){
+          this.searchTab.push(annonce);
+        }
+      }
+    }
+    this.isEmploiSearch=true;
+    this.isSearch=true;
+  }
+
+  chooseSearch(event:any){
+    var x=event.target.value;
+    console.log(x);
+    if(x=='Stage'){
+      document.getElementById("searchformEmploii").style.display="none";
+      document.getElementById("searchformStagee").style.display="block";
+    }
+    else if(x=='Emploi'){
+      document.getElementById("searchformStagee").style.display="none";
+      document.getElementById("searchformEmploii").style.display="block";
+    }
+    else{
+      document.getElementById("searchformStagee").style.display="none";
+      document.getElementById("searchformEmploii").style.display="none";
+      this.isSearch=false;
+    }
+  }
+  closefilter(){
+    this.isSearch=false;
+    document.getElementById("searchformStagee").style.display="none";
+    document.getElementById("searchformEmploii").style.display="none";
+    document.getElementById("mySelect11").getElementsByTagName('option')[0].selected=true;
   }
 
 }

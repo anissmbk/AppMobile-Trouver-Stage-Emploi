@@ -16,6 +16,8 @@ export class EntrepriseEnregistreePage {
   entrepriseEnregistreesList:AngularFireObject<any>;
   itemArray=[];
   myObject= [];
+  isSearch:boolean=false;
+  searchTab=[];
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.id=this.navParams.data;
     this.entrepriseEnregistreesList=this.db.object('/ensaiste/'+firebase.auth().currentUser.uid+'/zz_entreprise_enregistree');
@@ -75,5 +77,18 @@ export class EntrepriseEnregistreePage {
     this.navCtrl.push(EntrepriseProfilePage,id);
   }
 
+  chercherEnsaiste(ev: any){
+    this.searchTab=[];
+    var val = ev.target.value;
+    if ( typeof val === "undefined" || val.trim() == '') {
+      this.isSearch=false;
+    }
+    else if (val && val.trim() !== '') {
+      this.searchTab = this.myObject.filter(function(item) {
+        return item[2]['entrepriseName'].toLowerCase().includes(val.toLowerCase());
+      });
+      this.isSearch=true;
+    }
+  }
 
 }

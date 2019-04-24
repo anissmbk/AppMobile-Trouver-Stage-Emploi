@@ -1,5 +1,11 @@
 getEntreprise makhdamach f annonceEnregistrees!!
 
+fixer la taille de balise p de text dans annonce html!!
+
+les msgs lorsque no data exist!!!
+
+ajuster laffichage pour multiple phone!!!
+
 langueexigee wach darori ola optionnel!!! form poster annonce
 
 regler l'affichage dans annonce.detail.html

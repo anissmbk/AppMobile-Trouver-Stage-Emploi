@@ -36,16 +36,6 @@ page-mes-annonces {
   .enfant {
     flex: 1;
   }
-
-  #enfant-A {
-    order: 3;
-  }
-  #enfant-B {
-    order: 1;
-  }
-  #enfant-C {
-    order: 2;
-  }
   .img1{
     width: 16%;
     margin-left: 30px;
@@ -79,5 +69,56 @@ page-mes-annonces {
   .imgreduce{
     border: 2px solid #161954;
     border-radius: 50%;
+  }
+  #searchformStagee{
+    display:none;
+    position: absolute;
+    top: 55px;
+    right: -8px;
+    width: 100%;
+  }
+  #searchformEmploii{
+    display:none;
+    position: absolute;
+    top: 55px;
+    right: -8px;
+    width: 100%;
+  }
+  select{
+    width: 95px;
+  }
+  #mySelectt{
+    position: absolute;
+    top: 8px;
+    right: 20px;
+  }
+  #mySelect11{
+    background-color: #06358e;
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    appearance: none;
+  }
+  .filterSelect{
+    background-color: #3d5b80;
+    color: #fff;
+    padding: 6px;
+    border-radius: 4px;
+
+  }
+  .filter-btn{
+    background-color: #080c1b;
+    color: #fff;
+    padding: 8px;
+    border-radius: 7px;
+  }
+  .x {
+    position: absolute;
+    top: 3px;
+    right: 13px;
+    background: #06358e;
+    color: white;
+
   }
 }
