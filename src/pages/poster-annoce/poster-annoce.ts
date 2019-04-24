@@ -25,6 +25,21 @@ export class PosterAnnocePage {
   itemArrayEmploi=[];
   myObjectEmploi= [];
   entrepriseUser:EntrepriseModel;
+
+  isSearch:boolean=false;
+  isEmploiSearch:boolean=false;
+  searchTab=[];
+  searchStageDefaultValues={
+    Ville:"0",
+    Type:"0",
+    Categorie:"0"
+  };
+  searchEmploiDefaultValues={
+    Ville:"0",
+    Type_contrat:"0",
+    Categorie:"0"
+  };
+
   constructor(public alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
 
     this.entrepriseUser=this.userService.getEntreprise();
@@ -116,11 +131,11 @@ export class PosterAnnocePage {
     }).present();
   }
 
-  annonceStageDetails(id:string){//il faut specifie est que c'est annonceStageDetails annonceEmploiDetails a descute
+  annonceStageDetails(id:string){
     this.navCtrl.push(AnnonceDetailPage,id);
   }
-  *
-  annonceEmploiDetails(id:string){//il faut specifie est que c'est annonceStageDetails annonceEmploiDetails a descute
+
+  annonceEmploiDetails(id:string){
     this.navCtrl.push(AnnonceEmploiDetailsPage,id);
   }
 
@@ -129,5 +144,64 @@ export class PosterAnnocePage {
   }
   posterAnnonceEmploi(){
     this.navCtrl.push(FormAnnonceEmploiPage);
+  }
+
+  chercherStage(value){
+    this.searchTab=[];
+    if(value.type_stage==0 && value.categorie==0 && value.ville==0){
+      this.searchTab=this.myObject;
+    }
+    else{
+      for (let annonce of this.myObject){
+        if( (annonce[2]['ville']==value.ville || value.ville==0) && (annonce[2]['categorie']==value.categorie||value.categorie==0)  &&
+          (annonce[2]['type_stage']==value.type_stage || value.type_stage==0)){
+          this.searchTab.push(annonce);
+        }
+      }
+    }
+    this.isEmploiSearch=false;
+    this.isSearch=true;
+  }
+
+  chercherEmploi(value){
+    this.searchTab=[];
+    if(value.type_contrat==0 && value.categorie==0 && value.ville==0){
+      this.searchTab=this.myObjectEmploi;
+    }
+    else{
+      for (let annonce of this.myObjectEmploi){
+        if( (annonce[2]['ville']==value.ville || value.ville==0) && (annonce[2]['categorie']==value.categorie||value.categorie==0)  &&
+          (annonce[2]['type_contrat']==value.type_contrat || value.type_contrat==0)){
+          this.searchTab.push(annonce);
+        }
+      }
+    }
+    this.isEmploiSearch=true;
+    this.isSearch=true;
+  }
+
+  chooseSearch(event){
+    var x=event.target.value;
+    if(x=='Stage'){
+    document.getElementById("searchformEmploi").style.display="none";
+    document.getElementById("searchformStage").style.display="block";
+    }
+    else if(x=='Emploi'){
+      document.getElementById("searchformStage").style.display="none";
+      document.getElementById("searchformEmploi").style.display="block";
+    }
+    else{
+      document.getElementById("searchformStage").style.display="none";
+      document.getElementById("searchformEmploi").style.display="none";
+      this.isSearch=false;
+    }
+    /*var x=(<HTMLInputElement>document.getElementById("mySelect")).value;
+    console.log(x)*/
+  }
+  closefilter(){
+    this.isSearch=false;
+    document.getElementById("searchformStage").style.display="none";
+    document.getElementById("searchformEmploi").style.display="none";
+    document.getElementById("mySelect1").getElementsByTagName('option')[0].selected=true;
   }
 }

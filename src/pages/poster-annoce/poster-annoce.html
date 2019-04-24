@@ -1,15 +1,205 @@
 <ion-header>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
   <ion-navbar color="macouleur">
     <ion-title>Poster annonce</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <div id="mySelect">
+    <select id="mySelect1" (change)="chooseSearch($event)">
+      <option value="0">Search..</option>
+      <option value="Stage">Stage</option>
+      <option value="Emploi">Emploi</option>
+    </select>
+      <i class="fas fa-search"></i>
+    </div>
   </ion-navbar>
-  <ion-searchbar></ion-searchbar>
+
+
+  <form #f="ngForm" (ngSubmit)="chercherStage(f.value)" id="searchformStage">
+    <select class="filterSelect" name="ville" [(ngModel)]='searchStageDefaultValues.Ville'>
+        <option value="0" selected="selected">Ville</option>
+        <option value="Agadir">Agadir</option>
+        <option value="Al-Hoceima">Al-Hoceima</option>
+        <option value="Arfoud">Arfoud</option>
+        <option value="Asilah">Asilah</option>
+        <option value="Azrou">Azrou</option>
+        <option value="Ben Slimane">Ben Slimane</option>
+        <option value="Benguerir">Benguerir</option>
+        <option value="Beni Mellal">Beni Mellal</option>
+        <option value="Berkane">Berkane</option>
+        <option value="Berrechid">Berrechid</option>
+        <option value="Boujdour">Boujdour</option>
+        <option value="Bouznika">Bouznika</option>
+        <option value="Casablanca">Casablanca</option>
+        <option value="Chefchaouen">Chefchaouen</option>
+        <option value="Dakhla">Dakhla</option>
+        <option value="El Jadida">El Jadida</option>
+        <option value="Errachidia">Errachidia</option>
+        <option value="Essaouira">Essaouira</option>
+        <option value="Fès">Fès</option>
+        <option value="Fquih BenSalah">Fquih BenSalah</option>
+        <option value="Guelmim">Guelmim</option>
+        <option value="Ifrane">Ifrane</option>
+        <option value="Jerada">Jerada</option>
+        <option value="Kénitra">Kénitra</option>
+        <option value="Khémisset">Khémisset</option>
+        <option value="Khénifra">Khénifra</option>
+        <option value="Khouribga">Khouribga</option>
+        <option value="Ksar el-Kébir">Ksar el-Kébir</option>
+        <option value="Laâyoune">Laâyoune </option>
+        <option value="Lagouira">Lagouira</option>
+        <option value="Larache">Larache</option>
+        <option value="Marrakech">Marrakech</option>
+        <option value="Mehdia">Mehdia</option>
+        <option value="Meknès">Meknès</option>
+        <option value="Mohammédia">Mohammédia</option>
+        <option value="Nador">Nador</option>
+        <option value="Ouarzazate">Ouarzazate</option>
+        <option value="Oujda">Oujda</option>
+        <option value="OuedZem">OuedZem</option>
+        <option value="Rabat">Rabat</option>
+        <option value="Safi">Safi</option>
+        <option value="Sala El Jadida">Sala El Jadida</option>
+        <option value="Salé">Salé</option>
+        <option value="Sefrou">Sefrou</option>
+        <option value="Settat">Settat</option>
+        <option value="Sidi Slimane">Sidi Slimane</option>
+        <option value="Skhirat">Skhirat</option>
+        <option value="Tanger">Tanger</option>
+        <option value="Taza">Taza</option>
+        <option value="Temara">Temara</option>
+        <option value="Tétouan">Tétouan</option>
+      </select>
+    <select class="filterSelect" name="type_stage" [(ngModel)]='searchStageDefaultValues.Type'>
+    <option value="0" selected="selected">Type</option>
+    <option value="Observation">Observation</option>
+    <option value="Opérationnel">Opérationnel</option>
+    <option value="En alternance">En alternance</option>
+    <option value="Fin d'études">Fin d'études</option>
+    <option value="Pré-embauche">Pré-embauche</option>
+  </select>
+    <select class="filterSelect" name="categorie" [(ngModel)]='searchStageDefaultValues.Categorie'>
+    <option value="0" selected="selected">Categorie</option>
+    <option value="Informatique/ Réseaux/ Télécoms">Informatique/ Réseaux/ Télécoms</option>
+    <option value="Import/ Export/ Commerce">Import/ Export/ Commerce</option>
+    <option value="Direction générale">Direction générale</option>
+    <option value="Distribution/ Logistique/ Transport">Distribution/ Logistique/ Transport</option>
+    <option value="Commercial/ Vente">Commercial/ Vente</option>
+    <option value="Comptabilité/ Finance/ Audit">Comptabilité/ Finance/ Audit</option>
+    <option value="Administration/ Secrétariat">Administration/ Secrétariat</option>
+    <option value="Internet/ E-commerce/ E-reputation">Internet/ E-commerce/ E-reputation</option>
+    <option value="Juridique/ Droit">Juridique/ Droit</option>
+    <option value="Marketing/ Communication/ Publicité">Marketing/ Communication/ Publicité</option>
+    <option value="Organisation/ Gestion/ Stratégie">Organisation/ Gestion/ Stratégie</option>
+    <option value="Recherche & Développement">Recherche & Développement</option>
+    <option value="Évenementiel">Évenementiel</option>
+    <option value="Système d'information ">Système d'information </option>
+    <option value="Qualité/ Production">Qualité/ Production</option>
+    <option value="Ressources Humaines">Ressources Humaines</option>
+    <option value="Services Généraux">Services Généraux</option>
+    <option value="Tourisme/ Hôtellerie/ Restauration">Tourisme/ Hôtellerie/ Restauration</option>
+    <option value="Maintenance/ Réparation">Maintenance/ Réparation</option>
+    <option value="Enseignement /Formation /Education">Enseignement /Formation /Education</option>
+    <option value="Art graphique/ Photographie/ Son">Art graphique/ Photographie/ Son</option>
+  </select>
+    <button type="submit" class="filter-btn" >Chercher Stage</button>
+    <button type="button" class = "x" (click)="closefilter()">X</button>
+  </form>
+
+  <form #f1="ngForm" (ngSubmit)="chercherEmploi(f1.value)" id="searchformEmploi">
+    <select class="filterSelect" name="ville" [(ngModel)]='searchEmploiDefaultValues.Ville'>
+      <option value="0" selected="selected">Ville</option>
+      <option value="Agadir">Agadir</option>
+      <option value="Al-Hoceima">Al-Hoceima</option>
+      <option value="Arfoud">Arfoud</option>
+      <option value="Asilah">Asilah</option>
+      <option value="Azrou">Azrou</option>
+      <option value="Ben Slimane">Ben Slimane</option>
+      <option value="Benguerir">Benguerir</option>
+      <option value="Beni Mellal">Beni Mellal</option>
+      <option value="Berkane">Berkane</option>
+      <option value="Berrechid">Berrechid</option>
+      <option value="Boujdour">Boujdour</option>
+      <option value="Bouznika">Bouznika</option>
+      <option value="Casablanca">Casablanca</option>
+      <option value="Chefchaouen">Chefchaouen</option>
+      <option value="Dakhla">Dakhla</option>
+      <option value="El Jadida">El Jadida</option>
+      <option value="Errachidia">Errachidia</option>
+      <option value="Essaouira">Essaouira</option>
+      <option value="Fès">Fès</option>
+      <option value="Fquih BenSalah">Fquih BenSalah</option>
+      <option value="Guelmim">Guelmim</option>
+      <option value="Ifrane">Ifrane</option>
+      <option value="Jerada">Jerada</option>
+      <option value="Kénitra">Kénitra</option>
+      <option value="Khémisset">Khémisset</option>
+      <option value="Khénifra">Khénifra</option>
+      <option value="Khouribga">Khouribga</option>
+      <option value="Ksar el-Kébir">Ksar el-Kébir</option>
+      <option value="Laâyoune">Laâyoune </option>
+      <option value="Lagouira">Lagouira</option>
+      <option value="Larache">Larache</option>
+      <option value="Marrakech">Marrakech</option>
+      <option value="Mehdia">Mehdia</option>
+      <option value="Meknès">Meknès</option>
+      <option value="Mohammédia">Mohammédia</option>
+      <option value="Nador">Nador</option>
+      <option value="Ouarzazate">Ouarzazate</option>
+      <option value="Oujda">Oujda</option>
+      <option value="OuedZem">OuedZem</option>
+      <option value="Rabat">Rabat</option>
+      <option value="Safi">Safi</option>
+      <option value="Sala El Jadida">Sala El Jadida</option>
+      <option value="Salé">Salé</option>
+      <option value="Sefrou">Sefrou</option>
+      <option value="Settat">Settat</option>
+      <option value="Sidi Slimane">Sidi Slimane</option>
+      <option value="Skhirat">Skhirat</option>
+      <option value="Tanger">Tanger</option>
+      <option value="Taza">Taza</option>
+      <option value="Temara">Temara</option>
+      <option value="Tétouan">Tétouan</option>
+    </select>
+    <select class="filterSelect" name="type_contrat" [(ngModel)]='searchEmploiDefaultValues.Type_contrat'>
+      <option value="0" selected="selected">Type contrat</option>
+      <option value="CDD">CDD</option>
+      <option value="CDI">CDI</option>
+      <option value="Iterem">Iterem</option>
+    </select>
+    <select class="filterSelect" name="categorie" [(ngModel)]='searchStageDefaultValues.Categorie'>
+      <option value="0" selected="selected">Categorie</option>
+      <option value="Informatique/ Réseaux/ Télécoms">Informatique/ Réseaux/ Télécoms</option>
+      <option value="Import/ Export/ Commerce">Import/ Export/ Commerce</option>
+      <option value="Direction générale">Direction générale</option>
+      <option value="Distribution/ Logistique/ Transport">Distribution/ Logistique/ Transport</option>
+      <option value="Commercial/ Vente">Commercial/ Vente</option>
+      <option value="Comptabilité/ Finance/ Audit">Comptabilité/ Finance/ Audit</option>
+      <option value="Administration/ Secrétariat">Administration/ Secrétariat</option>
+      <option value="Internet/ E-commerce/ E-reputation">Internet/ E-commerce/ E-reputation</option>
+      <option value="Juridique/ Droit">Juridique/ Droit</option>
+      <option value="Marketing/ Communication/ Publicité">Marketing/ Communication/ Publicité</option>
+      <option value="Organisation/ Gestion/ Stratégie">Organisation/ Gestion/ Stratégie</option>
+      <option value="Recherche & Développement">Recherche & Développement</option>
+      <option value="Évenementiel">Évenementiel</option>
+      <option value="Système d'information ">Système d'information </option>
+      <option value="Qualité/ Production">Qualité/ Production</option>
+      <option value="Ressources Humaines">Ressources Humaines</option>
+      <option value="Services Généraux">Services Généraux</option>
+      <option value="Tourisme/ Hôtellerie/ Restauration">Tourisme/ Hôtellerie/ Restauration</option>
+      <option value="Maintenance/ Réparation">Maintenance/ Réparation</option>
+      <option value="Enseignement /Formation /Education">Enseignement /Formation /Education</option>
+      <option value="Art graphique/ Photographie/ Son">Art graphique/ Photographie/ Son</option>
+    </select>
+    <button type="submit" class="filter-btn">Chercher Emploi</button>
+    <button type="button" class = "x" (click)="closefilter()">X</button>
+  </form>
+
 </ion-header>
 
 <ion-content padding style="background-color:#f0f0f0;">
-
   <ion-fab right bottom>
     <button ion-fab color="dark"><ion-icon name="add"></ion-icon></button>
     <ion-fab-list side="top">
@@ -17,7 +207,7 @@
       <button ion-fab (click)="posterAnnonceEmploi()" style="background-color:#FFCD89;"><p class="button-add">emploi</p></button>
     </ion-fab-list>
   </ion-fab>
-
+<div *ngIf="isSearch==false; else trueSearch">
   <p class="text">Mes annonces de Stage :</p>
   <div class="scroll comment">
   <ion-card *ngFor="let annonce of myObject">
@@ -36,20 +226,20 @@
         <p>{{annonce[2]['contexte_mission']}}</p>
       </ion-card-content>
       <div class="parent">
-        <label class="badge-stage stage-marketing enfant" id="enfant-A">{{annonce[2]['categorie']}}</label>
-        <label class="badge-stage stage-remunere enfant" id="enfant-B">
+        <label class="badge-stage stage-marketing enfant" >{{annonce[2]['categorie']}}</label>
+        <label class="badge-stage stage-remunere enfant">
 
           <p *ngIf="annonce[2]['remuneration']==false; else trueRemu">Stage Non Rémunéré</p>
           <ng-template #trueRemu>Stage Rémunéré</ng-template>
           <!--<p *ngIf="annonce[1]['remuneration']==false">Stage Rémunéré</p>-->
         </label>
-        <label class="badge-stage stage-pre-embauche enfant" id="enfant-C">{{annonce[2]['type_stage']}}</label>
+        <label class="badge-stage stage-pre-embauche enfant">{{annonce[2]['type_stage']}}</label>
       </div>
       <div class="parent">
         <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
 
           <strong>{{annonce[2]['ville']}}</strong><br>
-          <img src="../../assets/imgs/jps.jpg" id="img1">
+          <img src="../../assets/imgs/jps.jpg" class="img1">
         </div>
         <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
           <strong>{{annonce[2]['duree_stage']}} mois</strong><br>
@@ -86,7 +276,7 @@
       <div class="parent">
         <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
           <strong>{{annonce1[2]['ville']}}</strong><br>
-          <img src="../../assets/imgs/jps.jpg" id="img11">
+          <img src="../../assets/imgs/jps.jpg" class="img1">
         </div>
         <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
           <strong>{{annonce1[2]['type_contrat']}}</strong><br>
@@ -96,5 +286,83 @@
     </div>
   </ion-card>
   </div>
+</div>
+
+  <ng-template #trueSearch>
+    <div *ngIf="isEmploiSearch==false; else trueEmploiSearch">
+      <ion-card *ngFor="let annonce of searchTab">
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="{{entrepriseUser.photo}}" class="imgreduce">
+            </ion-avatar>
+            <strong>{{annonce[2]['titre']}}</strong>
+            <p>{{entrepriseUser.entrepriseName}}</p>
+            <p>publiee le {{annonce[2]['publiee_le']}}</p>
+            <button (click)="annonceEmploiDetails(annonce[1]['id'])">consulter</button>
+            <button (click)="removeAnnonce(annonce[1]['id'])">Delete</button>
+          </ion-item>
+          <ion-card-content>
+            <p>{{annonce[2]['contexte_mission']}}</p>
+          </ion-card-content>
+          <div class="parent">
+            <label class="badge-stage stage-marketing enfant">{{annonce[2]['categorie']}}</label>
+            <label class="badge-stage stage-remunere enfant">
+
+              <p *ngIf="annonce[2]['remuneration']==false; else trueRemu">Stage Non Rémunéré</p>
+              <ng-template #trueRemu>Stage Rémunéré</ng-template>
+            </label>
+            <label class="badge-stage stage-pre-embauche enfant">{{annonce[2]['type_stage']}}</label>
+          </div>
+          <div class="parent">
+            <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+
+              <strong>{{annonce[2]['ville']}}</strong><br>
+              <img src="../../assets/imgs/jps.jpg" class="img1">
+            </div>
+            <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+              <strong>{{annonce[2]['duree_stage']}} mois</strong><br>
+              <span>A partir de {{annonce[2]['a_partir_de']}}</span>
+            </div>
+        </div>
+      </ion-card>
+    </div>
+    <ng-template #trueEmploiSearch>
+      <div>
+        <ion-card *ngFor="let annonce1 of searchTab">
+          <div>
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="{{entrepriseUser.photo}}" class="imgreduce">
+              </ion-avatar>
+              <strong>{{annonce1[2]['titre']}}</strong>
+              <p>{{entrepriseUser.entrepriseName}}</p>
+              <p>Secteur d'activite :{{entrepriseUser.secteurActivite}}</p>
+              <p>publiee le {{annonce1[2]['publiee_le']}}</p>
+              <button (click)="annonceStageDetails(annonce1[1]['id'])">consulter</button>
+              <button (click)="removeAnnonceEmploi(annonce1[1]['id'])">Delete</button>
+            </ion-item>
+            <ion-card-content>
+              <p>{{annonce1[2]['contexte_mission']}}</p>
+            </ion-card-content>
+            <div class="parent">
+              <label class="badge-stage stage-marketing enfant">{{annonce1[2]['categorie']}}</label>
+              <label class="badge-stage stage-pre-embauche enfant">{{annonce1[2]['niveau_etude']}}</label>
+            </div>
+            <div class="parent">
+              <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+                <strong>{{annonce1[2]['ville']}}</strong><br>
+                <img src="../../assets/imgs/jps.jpg" class="img1">
+              </div>
+              <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
+                <strong>{{annonce1[2]['type_contrat']}}</strong><br>
+                <span>A partir de {{annonce1[2]['a_partir_de']}}</span>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </div>
+    </ng-template>
+  </ng-template>
+
 </ion-content>
 

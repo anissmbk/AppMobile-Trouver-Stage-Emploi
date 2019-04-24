@@ -35,7 +35,7 @@ export class LoginPage {
 
     this.authService.doLogin(this.email.value, this.password.value)
       .then(data => {
-        this.alert('Success! You\'re logged in');
+        //this.alert('Success! You\'re logged in');
         const user=this.userService.getCurrentUser();
         if(user.displayName==="ensaiste"){
           this.navCtrl.setRoot(EnsaistePage);

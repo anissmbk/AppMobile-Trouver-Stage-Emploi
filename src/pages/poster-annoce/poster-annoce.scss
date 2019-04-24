@@ -37,20 +37,16 @@ page-poster-annoce {
     flex: 1;
   }
 
-  #enfant-A {
+  .enfant-A {
     order: 3;
   }
-  #enfant-B {
+  .enfant-B {
     order: 1;
   }
-  #enfant-C {
+  .enfant-C {
     order: 2;
   }
-  #img1{
-    width: 16%;
-    margin-left: 30px;
-  }
-  #img11{
+  .img1{
     width: 16%;
     margin-left: 30px;
   }
@@ -87,5 +83,48 @@ page-poster-annoce {
   .imgreduce{
     border: 2px solid #161954;
     border-radius: 50%;
+  }
+  #searchformStage{
+    display:none;
+  }
+  #searchformEmploi{
+    display:none;
+  }
+  select{
+    width: 95px;
+  }
+  #mySelect{
+    position: absolute;
+    top: 8px;
+    right: 20px;
+  }
+  #mySelect1{
+    background-color: #06358e;
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    appearance: none;
+  }
+  .filterSelect{
+    background-color: #3d5b80;
+    color: #fff;
+    padding: 6px;
+    border-radius: 4px;
+
+  }
+  .filter-btn{
+    background-color: #080c1b;
+    color: #fff;
+    padding: 8px;
+    border-radius: 7px;
+  }
+  .x {
+    position: relative;
+    background: #06358e;
+    color: white;
+    top: -8px;
+    right: -28px;
+
   }
 }

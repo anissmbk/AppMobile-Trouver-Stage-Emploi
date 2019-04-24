@@ -53,7 +53,7 @@ export class ModifyProfileEnsaistePage  {
     if(value.prenom) this.ensaisteProfile.firstName=value.prenom;
     if(value.nom) this.ensaisteProfile.lastName=value.nom;
     if(value.debut) this.ensaisteProfile.zdebut=value.debut;
-    if(value.filiere) this.ensaisteProfile.formation=value.filiere;
+    if(value.formation) this.ensaisteProfile.formation=value.formation;
     if(value.fin) this.ensaisteProfile.zfin=value.fin;
     if(value.ville) this.ensaisteProfile.city=value.ville;
     if(value.ecole) this.ensaisteProfile.zecole=value.ecole;
