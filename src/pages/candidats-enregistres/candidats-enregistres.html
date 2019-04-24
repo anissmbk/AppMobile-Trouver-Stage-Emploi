@@ -1,10 +1,13 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>CandidatsEnregistresPage</ion-title>
+  <ion-navbar color="macouleur">
+    <ion-title>Mes Candidats Enregistrees</ion-title>
   </ion-navbar>
+  <ion-searchbar placeholder="chercher Ensaiste.." (ionInput)="chercherEnsaiste($event)">
+  </ion-searchbar>
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="isSearch==false; else trueSearch">
   <p class="text">Candidats Enregistree :</p>
   <ion-list>
     <ion-item-sliding *ngFor="let ensaiste of myObject">
@@ -30,5 +33,32 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  </div>
+  <ng-template #trueSearch>
+    <ion-list>
+      <ion-item-sliding *ngFor="let ensaiste of searchTab">
+        <ion-item class="comment">
+          <ion-avatar item-start>
+            <img src="{{ensaiste[2]['photo']}}" class="imgreduce">
+          </ion-avatar>
+          <div>
+            <h2>{{ensaiste[2]['firstName']}} {{ensaiste[2]['lastName']}}</h2>
+            <p style="white-space: pre-line">ensaiste key est :
+              {{ensaiste[1]['id']}}</p>
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="removeCandidatEnregistre(ensaiste[1]['id'])">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+          <button ion-button color="secondary" (click)="candidatsDetails(ensaiste[1]['id'])">
+            <ion-icon name="text"></ion-icon>
+            Consulter
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
 
+  </ng-template>
 </ion-content>

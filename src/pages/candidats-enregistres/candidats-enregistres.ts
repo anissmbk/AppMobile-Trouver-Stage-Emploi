@@ -16,6 +16,8 @@ export class CandidatsEnregistresPage {
   candidatsEnregistreesList:AngularFireObject<any>;
   itemArray=[];
   myObject= [];
+  isSearch:boolean=false;
+  searchTab=[];
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.id=this.navParams.data;
     this.candidatsEnregistreesList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_candidats_enregistree');
@@ -79,4 +81,20 @@ export class CandidatsEnregistresPage {
     this.navCtrl.push(MyProfilePage,id);
   }
 
+  chercherEnsaiste(ev: any){
+    this.searchTab=[];
+    var val = ev.target.value;
+    if ( typeof val === "undefined" || val.trim() == '') {
+      this.isSearch=false;
+    }
+    else if (val && val.trim() !== '') {
+      this.searchTab = this.myObject.filter(function(item) {
+        var str=item[2]['firstName']+" "+item[2]['lastName'];
+        var str1=item[2]['lastName']+" "+item[2]['firstName'];
+        return (str.toLowerCase().includes(val.toLowerCase()))
+          ||(str1.toLowerCase().includes(val.toLowerCase()));
+      });
+      this.isSearch=true;
+    }
+  }
 }

@@ -22,7 +22,9 @@ export class UsersPage {
   itemArrayEnsaiste=[];
   myObjectEnsaiste= [];
   entrepriseObject:EntrepriseModel=new EntrepriseModel();//pas utilisable maintenant apres inchallah hhhhh
-
+  isSearch:boolean=false;
+  searchTab=[];
+  isEnsaisteSearch:boolean=false;
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase,
               public userService:UserService) {
 
@@ -97,6 +99,63 @@ export class UsersPage {
       subTitle: message,
       buttons: ['OK']
     }).present();
+  }
+
+  chooseSearch(event){
+    var x=event.target.value;
+    console.log(x);
+    if(x=='Ensaiste'){
+      document.getElementById("searchEnsaiste").style.display="block";
+      document.getElementById("searchEntreprise").style.display="none";
+    }
+    else if(x=='Entreprise'){
+      document.getElementById("searchEnsaiste").style.display="none";
+      document.getElementById("searchEntreprise").style.display="block";
+    }
+    else{
+      document.getElementById("searchEnsaiste").style.display="none";
+      document.getElementById("searchEntreprise").style.display="none";
+      this.isSearch=false;
+    }
+    /*var x=(<HTMLInputElement>document.getElementById("mySelect")).value;
+    console.log(x)*/
+  }
+  closefilter(){
+    this.isSearch=false;
+    document.getElementById("searchEnsaiste").style.display="none";
+    document.getElementById("searchEntreprise").style.display="none";
+    document.getElementById("mySelect2").getElementsByTagName('option')[0].selected=true;
+  }
+  chercherEnsaiste(ev: any){
+    this.searchTab=[];
+    var val = ev.target.value;
+    if ( typeof val === "undefined" || val.trim() == '') {
+      this.searchTab = this.myObjectEnsaiste;
+    }
+    else if (val.trim() !== '') {
+      this.searchTab = this.myObjectEnsaiste.filter(function(item) {
+        var str=item[1]['firstName']+" "+item[1]['lastName'];
+        var str1=item[1]['lastName']+" "+item[1]['firstName'];
+        return (str.toLowerCase().includes(val.toLowerCase()))
+          ||(str1.toLowerCase().includes(val.toLowerCase()));
+      });
+    }
+    this.isEnsaisteSearch=true;
+    this.isSearch=true;
+  }
+  chercherEntreprise(ev: any){
+    this.searchTab=[];
+    var val = ev.target.value;
+    if ( typeof val === "undefined" || val.trim() == ''){
+      this.searchTab = this.myObject;
+    }
+     else if (val && val.trim() !== '') {
+      this.searchTab = this.myObject.filter(function(item) {
+        return item[1]['entrepriseName'].toLowerCase().includes(val.toLowerCase());
+      });
+    }
+    this.isEnsaisteSearch=false;
+    this.isSearch=true;
   }
 }
 

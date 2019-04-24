@@ -25,4 +25,44 @@ page-users {
     font-family: fantasy;
     font-size: large;
   }
+
+
+  #searchEnsaiste{
+    display:none;
+    //visibility: visible;
+   //display: inline-block;
+    //visibility: hidden;
+  }
+  .opacity{
+    opacity: 0.2;
+  }
+  #searchEntreprise{
+    display:none;
+  }
+
+  #mySelect{
+    position: absolute;
+    top: 8px;
+    right: 20px;
+  }
+  #mySelect2{
+    background-color: #06358e;
+    color: #fff;
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    appearance: none;
+  }
+
+  .x {
+    position: relative;
+    background: #06358e;
+    color: white;
+    top: -51px;
+    right: 0;
+    left: 432px;
+  }
+  .templat{
+    margin-top: 60px;
+  }
 }

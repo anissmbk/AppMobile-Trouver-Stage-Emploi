@@ -1,21 +1,35 @@
-
-<!--Ba9i khass n9ado laffichage mzn onsepariiw les cas -->
-
-<!--khass nfixiw les liste fwa7ed taille bach iban ensaiste lte7t
-okhass n9lbo kifaach ndeero lordre dyal affichage par exemple mli ndkhol ka ensaiste iban liya entreprise homa lowlin 3ad ensaiste
-omli ndkhol ka entreprise it9leb ordre-->
-
 <ion-header>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
   <ion-navbar color="macouleur">
     <ion-title>Notre reseau</ion-title>    <button ion-button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
+    <div id="mySelect">
+      <select id="mySelect2" (change)="chooseSearch($event)">
+        <option value="0">Search..</option>
+        <option value="Ensaiste">Ensaiste</option>
+        <option value="Entreprise">Entreprise</option>
+      </select>
+      <i class="fas fa-search"></i>
+    </div>
   </ion-navbar>
-  <ion-searchbar></ion-searchbar>
 
+  <div id="searchEnsaiste" >
+  <ion-searchbar class="opacity" placeholder="chercher Ensaiste.." (ionInput)="chercherEnsaiste($event)">
+  </ion-searchbar>
+    <button type="button" class = "x" (click)="closefilter()">X</button>
+  </div>
+
+  <div id="searchEntreprise">
+  <ion-searchbar placeholder="chercher Entreprise.." (ionInput)="chercherEntreprise($event)">
+  </ion-searchbar>
+    <button type="button" class = "x" (click)="closefilter()">X</button>
+  </div>
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="isSearch==false; else trueSearch">
 <p class="text">Entreprise:</p>
   <div class="scroll">
   <ion-list>
@@ -70,4 +84,59 @@ omli ndkhol ka entreprise it9leb ordre-->
     </ion-item-sliding>
   </ion-list>
   </div>
+  </div>
+  <ng-template #trueSearch>
+    <div *ngIf="isEnsaisteSearch==false; else trueEnsaisteSearch" class="templat">
+    <ion-list>
+      <ion-item-sliding *ngFor="let entreprise of searchTab">
+        <ion-item class="comment">
+          <ion-avatar item-start>
+            <img src="{{entreprise[1]['photo']}}" class="imgreduce">
+          </ion-avatar>
+          <div>
+            <h2>{{entreprise[1]['entrepriseName']}}</h2>
+            <p style="white-space: pre-line">entrprise key est :
+              {{entreprise[0]}}</p>
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="enregistrerEntreprise(entreprise[0])" *ngIf="userDisplayName=='ensaiste'">
+            <ion-icon name="bookmark"></ion-icon>
+            Enregistrer
+          </button>
+          <button ion-button color="secondary" (click)="consulterEntreprise(entreprise[0])" >
+            <ion-icon name="text"></ion-icon>
+            Consulter
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    </div>
+    <ng-template #trueEnsaisteSearch>
+      <ion-list class="templat">
+        <ion-item-sliding *ngFor="let ensaiste of searchTab">
+          <ion-item class="comment">
+            <ion-avatar item-start>
+              <img src="{{ensaiste[1]['photo']}}" class="imgreduce">
+            </ion-avatar>
+            <div>
+              <h2>{{ensaiste[1]['firstName']}} {{ensaiste[1]['lastName']}}</h2>
+              <p style="white-space: pre-line">ensaiste key est :
+                {{ensaiste[0]}}</p>
+            </div>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="primary" (click)="enregistrerCandidat(ensaiste[0])" *ngIf="userDisplayName=='entreprise'">
+              <ion-icon name="bookmark"></ion-icon>
+              Enregistrer
+            </button>
+            <button ion-button color="secondary" (click)="consulterEnsaiste(ensaiste[0])">
+              <ion-icon name="text"></ion-icon>
+              Consulter
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ng-template>
+  </ng-template>
 </ion-content>
