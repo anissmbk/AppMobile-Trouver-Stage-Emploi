@@ -13,7 +13,7 @@
       "publiee_le" : "2/8/2019",
       "titre" : "annoce demploii",
       "type_contrat" : "CDI",
-      "ville" : "casa"
+      "ville" : "Casablanca"
     },
     "nowuqqy2iwi" : {
       "a_partir_de" : "12/05/2019",
@@ -103,34 +103,6 @@
       "ville" : "Casablanca"
     },
     "1g1higs635a" : {
-      "a_partir_de" : "12/12/1/2019",
-      "categorie" : "Informatique/ Réseaux/ Télécoms",
-      "contexte_mission" : "mission a faire",
-      "duree_stage" : "2",
-      "id_entreprise" : "8ekgYzeqC2YDjCFqWR4AqTFxib62",
-      "profil_recherche" : "php devlopper",
-      "publiee_le" : "21/12/2018",
-      "remuneration" : "true",
-      "stagiaire_demande" : "5",
-      "titre" : "annonce TOP",
-      "type_stage" : "Observation",
-      "ville" : "Agadir"
-    },
-    "1g1higs635a9669" : {
-      "a_partir_de" : "12/12/1/2019",
-      "categorie" : "Informatique/ Réseaux/ Télécoms",
-      "contexte_mission" : "mission a faire",
-      "duree_stage" : "2",
-      "id_entreprise" : "8ekgYzeqC2YDjCFqWR4AqTFxib62",
-      "profil_recherche" : "php devlopper",
-      "publiee_le" : "21/12/2018",
-      "remuneration" : "true",
-      "stagiaire_demande" : "5",
-      "titre" : "annonce TOP",
-      "type_stage" : "Observation",
-      "ville" : "Agadir"
-    },
-    "1g1higs635adddd" : {
       "a_partir_de" : "12/12/1/2019",
       "categorie" : "Informatique/ Réseaux/ Télécoms",
       "contexte_mission" : "mission a faire",
@@ -248,8 +220,8 @@
         }
       },
       "zz_entreprise_enregistree" : {
-        "hknV2tReqma7dfxJXp4YnnnipvX2" : {
-          "id" : "hknV2tReqma7dfxJXp4YnnnipvX2"
+        "-Muh_aSRah7kJewq8C29" : {
+          "id" : "-Muh_aSRah7kJewq8C29"
         }
       }
     },
@@ -342,6 +314,11 @@
       "phone" : "05555558456",
       "photo" : "https://firebasestorage.googleapis.com/v0/b/employemanagment-914b8.appspot.com/o/z1ccaniyyrs?alt=media&token=7a8e5c26-79f5-491d-9b5c-dc71cbbb38a4",
       "secteurActivite" : "info",
+      "zz_candidats_enregistree" : {
+        "-Muh_bZAvh7kiazx6D13" : {
+          "id" : "-Muh_bZAvh7kiazx6D13"
+        }
+      },
       "zz_mes_annonces_emploi" : {
         "-Mch_bZAvh7kiazx1966" : {
           "id" : "-Mch_bZAvh7kiazx1966"

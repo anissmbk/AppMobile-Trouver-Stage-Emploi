@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {UserService} from "../../services/user.service";
 import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
+import {MyProfilePage} from "../my-profile/my-profile";
 
 @IonicPage()
 @Component({
@@ -21,7 +22,7 @@ export class AnnonceDetailPage {
   entrepriseUser:EntrepriseModel=new EntrepriseModel();
   deleteArray=[];
   deletemyObject= [];
-  constructor(public navCtrl: NavController, public navParams: NavParams,public userService:UserService, public db: AngularFireDatabase) {
+  constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,public userService:UserService, public db: AngularFireDatabase) {
     this.id=this.navParams.data;
     this.annonceStage= this.userService.getAnnonceStageById(this.id);
 
@@ -46,30 +47,48 @@ export class AnnonceDetailPage {
     });
 
   }
-
-  ionViewDidLoad(){
-   /*var hello;
-    this.deletList=this.db.object('/annonceStage/'+this.id+'/z_commentaires');
-    this.deletList.snapshotChanges().subscribe(action => {
-
-      this.deleteArray.push(action.payload.val() as CommentaireModel);
-
-      if(this.deleteArray[0]!=null){
-        this.deletemyObject = Object.entries(this.deleteArray[0]);
-      }
-
-      for (let annonce of this.deletemyObject) {
-        var y=hello;
-        var x = this.userService.getEnsaisteById(annonce[1]['id_ensaiste']);
-        annonce.push(x as EnsaisteModel);
-      }
-
-    });*/
+  showPrompt() {
+    const prompt = this.alertCtrl.create({
+      title: 'Add Commentaire',
+      //message: "Enter a name for this new album you're so keen on adding",
+      inputs: [
+        {
+          name: 'commentaire_text',
+          type:'textarea',
+          placeholder: 'comment text..'
+        },
+        {
+          name: 'disponibilite',
+          placeholder: 'disponibilite'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Send',
+          handler: data => {
+            if(data.commentaire_text!='' && data.disponibilite){
+             console.log(this.id);
+              this.userService.addCommentaireStage(this.id,data.commentaire_text,data.disponibilite);
+            }
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+  consulterEnsaiste(id:string){
+    this.navCtrl.push(MyProfilePage,id);
   }
 
 }
 export class CommentaireModel{
-  id_commentaire: string;
   id_ensaiste: string;
   commentaire_text: string;
   disponibilite: string;

@@ -220,4 +220,24 @@ export class UserService {
     return annonceEmploi;
 
   }
+
+  addCommentaireStage(id:string,commentaire_text:string,disponibilite:string){
+    const userId = firebase.auth().currentUser.uid;
+    const idAleatoir = Math.random().toString(36).substring(2);
+    this.db.object('/annonceStage/'+id+'/z_commentaires/'+idAleatoir).set({
+      commentaire_text:commentaire_text,
+      disponibilite:disponibilite,
+      id_ensaiste:userId
+    });
+    }
+
+  addCommentaireEmploi(id:string,commentaire_text:string,disponibilite:string){
+    const userId = firebase.auth().currentUser.uid;
+    const idAleatoir = Math.random().toString(36).substring(2);
+    this.db.object('/annonceEmploi/'+id+'/z_commentaires/'+idAleatoir).set({
+      commentaire_text:commentaire_text,
+      disponibilite:disponibilite,
+      id_ensaiste:userId
+    });
+  }
 }

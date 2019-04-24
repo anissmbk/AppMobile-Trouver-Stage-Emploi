@@ -1,15 +1,83 @@
-<!--
-  Generated template for the AnnonceEmploiDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar>
-    <ion-title>AnnonceEmploiDetailsPage</ion-title>
+  <ion-navbar color="macouleur">
+    <ion-title>AnnonceEmploi Details</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding="" class="back">
+  <ion-card padding="">
+    <ion-item>
+      <ion-avatar item-start class="imgreduce">
+        <img src="{{entrepriseUser.photo}}">
+      </ion-avatar>
+      <strong>{{annonceEmploi.titre}}</strong>
+      <p>{{entrepriseUser.entrepriseName}}</p>
+      <p>publiee le {{annonceEmploi.publiee_le}}</p>
+    </ion-item>
+    <ion-item>
+
+      <div><strong style="color:darkred; display:inline-block">Type de contrat :</strong> <p style="display: inline">{{annonceEmploi.type_contrat}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">Langues exigees:</strong> <p style="display: inline">{{annonceEmploi.langues_exigees}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">Ville :</strong> <p style="display: inline">{{annonceEmploi.ville}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">Niveau d'etuse :</strong> <p style="display: inline">{{annonceEmploi.niveau_etude}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">Categorie :</strong>
+        <p style="display: inline">{{annonceEmploi.categorie}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">Niveau d'experience :</strong> <p style="display: inline">{{annonceEmploi.niveau_experience}}</p></div>
+
+      <div><strong style="color:darkred; display:inline-block">A partir de :</strong> <p style="display: inline">{{annonceEmploi.a_partir_de}}</p></div>
+    </ion-item>
+    <p class="text">Description Entreprise</p>
+    <ion-card padding="">
+      <ion-card-content>
+        {{entrepriseUser.description}}
+      </ion-card-content>
+    </ion-card>
+
+
+    <p class="text">CONTEXTE & MISSION</p>
+    <ion-card padding="">
+      <ion-card-content>
+        {{annonceEmploi.contexte_mission}}
+      </ion-card-content>
+    </ion-card>
+
+    <p class="text">PROFIL RECHERCHÉ</p>
+    <ion-card padding="">
+      <ion-card-content>
+        {{annonceEmploi.profil_recherche}}
+      </ion-card-content>
+    </ion-card>
+  </ion-card>
+
+  <p class="text">Commentaires:</p>
+  <div class="scroll">
+    <ion-list>
+      <ion-item-sliding *ngFor="let commentaire of myObject">
+        <ion-item class="comment">
+          <ion-avatar item-start>
+            <img src="{{commentaire[2]['photo']}}" class="imgreduce">
+          </ion-avatar>
+          <div>
+            <h2>{{commentaire[2]['firstName']}} {{commentaire[2]['lastName']}}</h2>
+            <p style="white-space: pre-line">{{commentaire[1]['commentaire_text']}}
+              <b>Disponible :</b>{{commentaire[1]['disponibilite']}}
+              <b>Ville:</b>{{commentaire[2]['city']}}</p>
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="secondary" (click)="consulterEnsaiste(commentaire[1]['id_ensaiste'])" >
+            <ion-icon name="text"></ion-icon>
+            Consulter
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+  <button block ion-button (click)="showPrompt()" item-left><ion-icon name="send"></ion-icon></button>
 
 </ion-content>

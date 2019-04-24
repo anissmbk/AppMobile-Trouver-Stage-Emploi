@@ -249,7 +249,7 @@
       <p>{{annonce[2]['entrepriseName']}}</p>
       <p>secteur d'activite :{{annonce[2]['secteurActivite']}}</p>
       <p>publiee le {{annonce[1]['publiee_le']}}</p>
-      <button (click)="annonceDetail(annonce[0])">consulter</button>
+      <button (click)="annonceEmploiDetail(annonce[0])">consulter</button>
       <button (click)="enregistrerAnnonceEmploi(annonce[0])">enregistrer</button>
     </ion-item>
     <ion-card-content>
@@ -325,7 +325,7 @@
             <p>{{annonce[2]['entrepriseName']}}</p>
             <p>secteur d'activite :{{annonce[2]['secteurActivite']}}</p>
             <p>publiee le {{annonce[1]['publiee_le']}}</p>
-            <button (click)="annonceDetail(annonce[0])">consulter</button>
+            <button (click)="annonceEmploiDetail(annonce[0])">consulter</button>
             <button (click)="enregistrerAnnonceEmploi(annonce[0])">enregistrer</button>
           </ion-item>
           <ion-card-content>

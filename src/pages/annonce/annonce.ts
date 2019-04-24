@@ -7,6 +7,7 @@ import {UserService} from "../../services/user.service";
 import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
 import * as firebase from 'firebase/app';
 import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
+import {AnnonceEmploiDetailsPage} from "../annonce-emploi-details/annonce-emploi-details";
 
 @IonicPage()
 @Component({
@@ -68,6 +69,10 @@ export class AnnoncePage {
     //problemme pas de back()
     this.navCtrl.push(AnnonceDetailPage,id);
    }
+  annonceEmploiDetail(id:string){
+    //problemme pas de back()
+    this.navCtrl.push(AnnonceEmploiDetailsPage,id);
+  }
   enregistrerAnnonce(id1:string){
     const userId=firebase.auth().currentUser.uid;
     const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_stage_enregistre/'+id1);
