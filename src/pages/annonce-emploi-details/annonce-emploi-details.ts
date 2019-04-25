@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
@@ -22,7 +21,8 @@ import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
   templateUrl: 'annonce-emploi-details.html',
 })
 export class AnnonceEmploiDetailsPage {
-
+  userDisplayName:string;
+  userUid:string;
   id:string='no data';
   annonceEmploi:AnnonceEmploiModel;
   commentairesList:AngularFireObject<any>;
@@ -34,6 +34,9 @@ export class AnnonceEmploiDetailsPage {
   deletemyObject= [];
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,public userService:UserService, public db: AngularFireDatabase) {
     this.id=this.navParams.data;
+    this.userDisplayName=this.userService.getCurrentUserDisplayName();
+    this.userUid=this.userService.getCurrentUser().uid;
+
     this.annonceEmploi= this.userService.getAnnonceEmploiById(this.id);
 
     this.commentairesList=this.db.object('/annonceEmploi/'+this.id+'/z_commentaires');
@@ -92,5 +95,37 @@ export class AnnonceEmploiDetailsPage {
   consulterEnsaiste(id:string){
     this.navCtrl.push(MyProfilePage,id);
   }
-
+  deleteComment(id:string){
+    const confirm = this.alertCtrl.create({
+      title: 'Voulez-vous vraiment supprimer votre commentaire ?',
+      buttons: [
+        {
+          text: 'Non',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            const itemRef = this.db.object('/annonceEmploi/'+this.id+'/z_commentaires/'+id);
+            itemRef.remove();
+            // fixer le prbleme il faut cliquer deux fois !!!
+            /*var a=document.getElementById(id1) as HTMLDivElement;
+            a.remove();*/
+            //this.navCtrl.setRoot(this.navCtrl.getActive().component);
+            this.alert("bien supprimee");
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
 }

@@ -41,8 +41,6 @@ export class EntreprisePage {
         this.myObject = Object.entries(this.itemArray[0]);
       }
     });
-
-    var userId1=firebase.auth().currentUser.uid;
     this.deleteList1=this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage');
     this.deleteList1.snapshotChanges().subscribe(action => {
       this.itemArray1.push(action.payload.val() as {id :string});

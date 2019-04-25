@@ -74,11 +74,15 @@
             <ion-icon name="text"></ion-icon>
             Consulter
           </button>
+          <button ion-button color="secondary" *ngIf="userDisplayName=='ensaiste' &&userUid==commentaire[1]['id_ensaiste']" (click)="deleteComment(commentaire[0])" >
+            <ion-icon name="trash"></ion-icon>
+            delete
+          </button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
   </div>
-  <button block ion-button (click)="showPrompt()" item-left><ion-icon name="send"></ion-icon></button>
+  <button block ion-button *ngIf="userDisplayName=='ensaiste'" (click)="showPrompt()" item-left><ion-icon name="send"></ion-icon></button>
 <!--
   <ul padding="0px" *ngFor="let commentaire of myObject"><ion-card padding="2px">
     <ion-row>
