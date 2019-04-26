@@ -12,6 +12,7 @@ import {EntrepriseModel} from "../../UserClass/entrepriseModel";
   templateUrl: 'entreprise-enregistree.html',
 })
 export class EntrepriseEnregistreePage {
+  searchName:string;
   id:string;
   entrepriseEnregistreesList:AngularFireObject<any>;
   itemArray=[];
@@ -77,15 +78,18 @@ export class EntrepriseEnregistreePage {
     this.navCtrl.push(EntrepriseProfilePage,id);
   }
 
-  chercherEnsaiste(ev: any){
+  chercherEntrepriseEnregistree(ev: any){
     this.searchTab=[];
     var val = ev.target.value;
+    this.searchName=val;
     if ( typeof val === "undefined" || val.trim() == '') {
       this.isSearch=false;
     }
     else if (val && val.trim() !== '') {
       this.searchTab = this.myObject.filter(function(item) {
-        return item[2]['entrepriseName'].toLowerCase().includes(val.toLowerCase());
+        let motInverse=item[2]['entrepriseName'].split(' ').reverse().join(' ');
+        return item[2]['entrepriseName'].toLowerCase().includes(val.toLowerCase())
+          || motInverse.toLowerCase().includes(val.toLowerCase()) ;
       });
       this.isSearch=true;
     }

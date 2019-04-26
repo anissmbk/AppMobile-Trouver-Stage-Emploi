@@ -52,8 +52,8 @@ page-annonce {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
-    contain: size style layout;
-    height: 308px;
+    //contain: size style layout;
+    max-height: 308px;
   }
   .comment{
     background-color:#161954;
@@ -120,4 +120,13 @@ page-annonce {
     color: white;
 
   }
+
+  /*solution pour fixer la taille de balise p mais pas parfait*/
+  .test{
+    //max-height: 60px; /* à modifier selon vos besoins */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+  }
+
 }

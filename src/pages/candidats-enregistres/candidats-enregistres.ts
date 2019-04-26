@@ -12,6 +12,7 @@ import {MyProfilePage} from "../my-profile/my-profile";
   templateUrl: 'candidats-enregistres.html',
 })
 export class CandidatsEnregistresPage {
+  searchName:string;
   id:string;
   candidatsEnregistreesList:AngularFireObject<any>;
   itemArray=[];
@@ -84,6 +85,7 @@ export class CandidatsEnregistresPage {
   chercherEnsaiste(ev: any){
     this.searchTab=[];
     var val = ev.target.value;
+    this.searchName=val;
     if ( typeof val === "undefined" || val.trim() == '') {
       this.isSearch=false;
     }

@@ -10,10 +10,12 @@ import {ModifyProfileEntreprisePage} from "../modify-profile-entreprise/modify-p
   templateUrl: 'entreprise-profile.html',
 })
 export class EntrepriseProfilePage {
+  entrepriseId:string;
   id:string;
   entrepriseUser:EntrepriseModel;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public userService: UserService,) {
+    this.entrepriseId=this.userService.getCurrentUser().uid;
     this.id=this.navParams.data;
     if(typeof this.id === "object"){
       this.entrepriseUser=this.userService.getEntreprise();

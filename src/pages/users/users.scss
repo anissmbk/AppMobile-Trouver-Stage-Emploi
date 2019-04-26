@@ -14,8 +14,8 @@ page-users {
       overflow-y: scroll;
       -webkit-overflow-scrolling: touch;
       will-change: scroll-position;
-      contain: size style layout;
-      height: 300px;
+      //contain: size style layout;
+    max-height: 308px;
   }
   .imgreduce{
     border: 2px solid #161954;

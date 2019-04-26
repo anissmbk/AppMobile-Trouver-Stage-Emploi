@@ -200,7 +200,8 @@
 <ion-content padding style="background-color:#f0f0f0;">
   <div *ngIf="isSearch==false; else trueSearch">
   <p class="text">Les annonces de Stage :</p>
-  <div class="scroll comment">
+    <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0">Aucune annonce de stage postee pour le moment!!</div>
+    <div class="scroll comment">
   <ion-card *ngFor="let annonce of myObject">
     <ion-item>
       <ion-avatar item-start class="imgreduce">
@@ -239,7 +240,9 @@
   </ion-card>
   </div>
   <p class="text">Les annonces d'Emploi :</p>
-  <div class="scroll emploi">
+    <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObjectEmploi.length==0">Pas d'annonce d'emploi postee pour le moment!!</div>
+
+    <div class="scroll emploi">
   <ion-card *ngFor="let annonce of myObjectEmploi">
     <ion-item>
       <ion-avatar item-start>
@@ -277,6 +280,7 @@
 
   <ng-template #trueSearch>
     <div *ngIf="isEmploiSearch==false; else trueEmploiSearch">
+      <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="searchTab.length==0">We couldn't find anything Sorry!!</div>
       <ion-card *ngFor="let annonce of searchTab">
         <ion-item>
           <ion-avatar item-start class="imgreduce">
@@ -316,9 +320,10 @@
     </div>
     <ng-template #trueEmploiSearch>
       <div>
+        <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="searchTab.length==0">We couldn't find anything Sorry!!</div>
         <ion-card *ngFor="let annonce of searchTab">
           <ion-item>
-            <ion-avatar item-start>
+            <ion-avatar item-start class="imgreduce">
               <img src="{{annonce[2]['photo']}}">
             </ion-avatar>
             <strong>{{annonce[1]['titre']}}</strong>

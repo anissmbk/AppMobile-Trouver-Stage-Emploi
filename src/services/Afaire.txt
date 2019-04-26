@@ -1,17 +1,19 @@
+recommandation : si l'entreprise consulte le profile de l'ensaiste il trouve un champs de recommandation
+cette recommandation est visible seulement au autre entreprise et lensaiste elle meme!!
+il faut ajouter une page pour expliquer ca a notre utilisateur apres
+
 getEntreprise makhdamach f annonceEnregistrees!!
 
-delete commentaires  dans les annonceas et dans les sujets if user delete son compte!! &&
+delete acount changer sa place!!
+
+delete commentaires  dans les annonceas et dans les sujets et se propres sujets if user delete son compte!! &&
 delete evaluation de lensaiste aussi if entreprise  delete son compte!!!!
 
-fixer la taille de balise p de text dans annonce html!!
-
-les msgs lorsque no data exist!!!et aussi dans annoncesEnregistre lorsque no data exist
+fixer la taille de balise p de text dans annonce html!!//afficher '...' apres le depassement de 3 lignes
 
 ajuster laffichage pour multiple phone!!!
 
 langueexigee wach darori ola optionnel!!! form poster annonce
-
-regler l'affichage dans annonce.detail.html
 
 poster-annonce.html prblm de add icon
 
@@ -30,8 +32,7 @@ il faut savoir comment on peut travailler avec dorefresh(refresher) et l'appliqu
 
 dans user.html
 <!--Ba9i khass n9ado laffichage mzn -->
-<!--khass nfixiw les liste fwa7ed taille bach iban ensaiste lte7t
-okhass n9lbo kifaach ndeero lordre dyal affichage par exemple mli ndkhol ka ensaiste iban liya entreprise homa lowlin 3ad ensaiste
+<!--khass n9lbo kifaach ndeero lordre dyal affichage par exemple mli ndkhol ka ensaiste iban liya entreprise homa lowlin 3ad ensaiste
 omli ndkhol ka entreprise it9leb l'ordre-->
 
 dans auth.service.ts il faut appliquer les trois methodes doFacebook doTwitterLogin doGoogleLogin
@@ -40,7 +41,16 @@ dans auth.service.ts il faut appliquer les trois methodes doFacebook doTwitterLo
 le grand prblm c'est trouver comment on peut rendre l'application ouverte lorsque il reload la page ou bien redebug
 et ajouter les listners pour savoir toutes les modifications dans la base de donnees et la synchronisation
 
+
+prblm de photo dans le telephone!!
+
+regler l'affichage dans annonce.detail.html && modify profile
+
+
+les msgs lorsque no data exist!!!et aussi dans annoncesEnregistre lorsque no data exist//le prblm est fixee mais il faut bien stylee ca!!
+//fixee------------
+
 entant qu'ensaiste je peux trouver moi meme consulter moi meme !! supprimer mes commentaires
 entant qu'entreprise je peux trouver moi meme consulter moi meme !!  supprimer mes annonces
 
-prblm de photo dans le telephone!!
+le bouton modifier dans entreprise et ensaiste visibilite !!

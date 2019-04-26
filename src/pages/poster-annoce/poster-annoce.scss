@@ -58,8 +58,8 @@ page-poster-annoce {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
-    contain: size style layout;
-    height: 308px;
+   // contain: size style layout;
+    max-height: 308px;
   }
   .comment{
     background-color:#161954;

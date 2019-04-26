@@ -14,6 +14,7 @@ import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
   templateUrl: 'users.html',
 })
 export class UsersPage {
+  searchName:string;
   userDisplayName:string;
   entrepriseList:AngularFireObject<any>;
   ensaisteList:AngularFireObject<any>;
@@ -141,6 +142,7 @@ export class UsersPage {
   chercherEnsaiste(ev: any){
     this.searchTab=[];
     var val = ev.target.value;
+    this.searchName=val;
     if ( typeof val === "undefined" || val.trim() == '') {
       this.searchTab = this.myObjectEnsaiste;
     }
@@ -158,16 +160,20 @@ export class UsersPage {
   chercherEntreprise(ev: any){
     this.searchTab=[];
     var val = ev.target.value;
+    this.searchName=val;
     if ( typeof val === "undefined" || val.trim() == ''){
       this.searchTab = this.myObject;
     }
      else if (val && val.trim() !== '') {
       this.searchTab = this.myObject.filter(function(item) {
-        return item[1]['entrepriseName'].toLowerCase().includes(val.toLowerCase());
+        let motInverse=item[1]['entrepriseName'].split(' ').reverse().join(' ');
+        return item[1]['entrepriseName'].toLowerCase().includes(val.toLowerCase())
+          || motInverse.toLowerCase().includes(val.toLowerCase());
       });
     }
     this.isEnsaisteSearch=false;
     this.isSearch=true;
   }
+
 }
 

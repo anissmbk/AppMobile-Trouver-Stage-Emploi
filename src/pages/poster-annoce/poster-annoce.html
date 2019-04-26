@@ -209,6 +209,7 @@
   </ion-fab>
 <div *ngIf="isSearch==false; else trueSearch">
   <p class="text">Mes annonces de Stage :</p>
+  <div style="color: #f53d3d;text-align:center "  *ngIf="myObject.length==0">pas d'annonce de stage postee!!</div>
   <div class="scroll comment">
   <ion-card *ngFor="let annonce of myObject">
     <div id="{{annonce[1]['id']}}">
@@ -251,6 +252,7 @@
   </div>
 
   <p class="text">Mes annonces d'Emploi :</p>
+  <div style="color: #f53d3d;text-align:center " *ngIf="myObject.length==0">pas d'annonce d'emploi postee!!</div>
   <div class="scroll comment">
   <ion-card *ngFor="let annonce1 of myObjectEmploi">
     <!--fixer ce probleme-->
@@ -290,6 +292,7 @@
 
   <ng-template #trueSearch>
     <div *ngIf="isEmploiSearch==false; else trueEmploiSearch">
+      <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="searchTab.length==0">We couldn't find anything Sorry!!</div>
       <ion-card *ngFor="let annonce of searchTab">
           <ion-item>
             <ion-avatar item-start>
@@ -328,6 +331,7 @@
     </div>
     <ng-template #trueEmploiSearch>
       <div>
+        <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="searchTab.length==0">We couldn't find anything Sorry!!</div>
         <ion-card *ngFor="let annonce1 of searchTab">
           <div>
             <ion-item>

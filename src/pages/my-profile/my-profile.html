@@ -16,8 +16,7 @@
 
 
 <ion-content  class="back" padding>
-  <ion-fab padding="" (click)="change()" *ngIf="id=='true'"><button ion-fab><ion-icon  name="settings" ></ion-icon></button></ion-fab>
-
+  <ion-fab padding="" (click)="change()" *ngIf="id=='true' || id==ensaisteId"><button ion-fab><ion-icon  name="settings" ></ion-icon></button></ion-fab>
 
   <ion-card style="border-radius:10px; ">
     <ion-item text-center=""> <img src="{{ensaisteUser.photo}}" class="image">

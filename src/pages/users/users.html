@@ -31,7 +31,9 @@
 <ion-content padding>
   <div *ngIf="isSearch==false; else trueSearch">
 <p class="text">Entreprise:</p>
-  <div class="scroll">
+    <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0">Aucune entreprise inscrit!!</div>
+
+    <div class="scroll">
   <ion-list>
     <ion-item-sliding *ngFor="let entreprise of myObject">
       <ion-item class="comment">
@@ -58,7 +60,8 @@
     </ion-list>
   </div>
   <p class="text">Ensaiste :</p>
-  <div class="scroll">
+    <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObjectEnsaiste.length==0">Aucune ensaiste inscrit!!</div>
+    <div class="scroll">
   <ion-list>
     <ion-item-sliding *ngFor="let ensaiste of myObjectEnsaiste">
       <ion-item class="comment">
@@ -87,7 +90,8 @@
   </div>
   <ng-template #trueSearch>
     <div *ngIf="isEnsaisteSearch==false; else trueEnsaisteSearch" class="templat">
-    <ion-list>
+      <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="searchTab.length==0">We couldn't find anything for <b>{{searchName}}</b></div>
+      <ion-list>
       <ion-item-sliding *ngFor="let entreprise of searchTab">
         <ion-item class="comment">
           <ion-avatar item-start>
@@ -113,6 +117,7 @@
     </ion-list>
     </div>
     <ng-template #trueEnsaisteSearch>
+      <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="searchTab.length==0">We couldn't find anything for <b>{{searchName}}</b></div>
       <ion-list class="templat">
         <ion-item-sliding *ngFor="let ensaiste of searchTab">
           <ion-item class="comment">

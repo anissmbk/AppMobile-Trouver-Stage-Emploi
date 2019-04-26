@@ -12,9 +12,11 @@ import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profi
 export class MyProfilePage {
   id:string;
   ensaisteUser:EnsaisteModel;
+  ensaisteId:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public userser:UserService) {
     this.id=this.navParams.data;
+    this.ensaisteId=this.userser.getCurrentUser().uid;
     if(typeof this.id === "object"){
       this.ensaisteUser=this.userser.getEnsaiste();
       this.id='true';

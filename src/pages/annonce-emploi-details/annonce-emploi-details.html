@@ -55,6 +55,7 @@
   </ion-card>
 
   <p class="text">Commentaires:</p>
+  <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0">Soyez le premier à commenter cette annonce !!</div>
   <div class="scroll">
     <ion-list>
       <ion-item-sliding *ngFor="let commentaire of myObject">
@@ -74,7 +75,7 @@
             <ion-icon name="text"></ion-icon>
             Consulter
           </button>
-          <button ion-button color="secondary" *ngIf="userDisplayName=='ensaiste' && userUid==commentaire[1]['id_ensaiste']" (click)="deleteComment(commentaire[0])" >
+          <button ion-button color="danger" *ngIf="userDisplayName=='ensaiste' && userUid==commentaire[1]['id_ensaiste']" (click)="deleteComment(commentaire[0])" >
             <ion-icon name="trash"></ion-icon>
             delete
           </button>

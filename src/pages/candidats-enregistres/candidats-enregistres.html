@@ -9,7 +9,8 @@
 <ion-content padding>
   <div *ngIf="isSearch==false; else trueSearch">
   <p class="text">Candidats Enregistree :</p>
-  <ion-list>
+    <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0">Pas de Candidat enregistree!!</div>
+    <ion-list>
     <ion-item-sliding *ngFor="let ensaiste of myObject">
       <ion-item class="comment">
         <ion-avatar item-start>
@@ -35,6 +36,7 @@
   </ion-list>
   </div>
   <ng-template #trueSearch>
+    <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="searchTab.length==0">We couldn't find anything for <b>{{searchName}}</b></div>
     <ion-list>
       <ion-item-sliding *ngFor="let ensaiste of searchTab">
         <ion-item class="comment">

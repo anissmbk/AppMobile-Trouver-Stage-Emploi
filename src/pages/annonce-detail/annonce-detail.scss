@@ -11,8 +11,8 @@ page-annonce-detail {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     will-change: scroll-position;
-    contain: size style layout;
-    height: 200px;
+    //contain: size style layout;
+    max-height: 200px;
   }
   .imgreduce{
     border: 2px solid #161954;
