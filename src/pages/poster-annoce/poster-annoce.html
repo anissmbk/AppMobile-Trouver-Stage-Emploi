@@ -219,7 +219,7 @@
         </ion-avatar>
         <strong>{{annonce[2]['titre']}}</strong>
         <p>{{entrepriseUser.entrepriseName}}</p>
-        <p>publiee le {{annonce[2]['publiee_le']}}</p>
+        <p>publiee le {{afficherDateFormat(annonce[2]['publiee_le'])}}</p>
         <button (click)="annonceEmploiDetails(annonce[1]['id'])">consulter</button>
         <button (click)="removeAnnonce(annonce[1]['id'])">Delete</button>
       </ion-item>
@@ -244,7 +244,7 @@
         </div>
         <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
           <strong>{{annonce[2]['duree_stage']}} mois</strong><br>
-          <span>A partir de {{annonce[2]['a_partir_de']}}</span>
+          <span>A partir de {{afficherDateFormat(annonce[2]['a_partir_de'])}}</span>
         </div>
       </div>
     </div>
@@ -264,7 +264,7 @@
         <strong>{{annonce1[2]['titre']}}</strong>
         <p>{{entrepriseUser.entrepriseName}}</p>
         <p>Secteur d'activite :{{entrepriseUser.secteurActivite}}</p>
-        <p>publiee le {{annonce1[2]['publiee_le']}}</p>
+        <p>publiee le {{afficherDateFormat(annonce1[2]['publiee_le'])}}</p>
         <button (click)="annonceStageDetails(annonce1[1]['id'])">consulter</button>
         <button (click)="removeAnnonceEmploi(annonce1[1]['id'])">Delete</button>
       </ion-item>
@@ -282,7 +282,7 @@
         </div>
         <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
           <strong>{{annonce1[2]['type_contrat']}}</strong><br>
-          <span>A partir de {{annonce1[2]['a_partir_de']}}</span>
+          <span>A partir de {{afficherDateFormat(annonce1[2]['a_partir_de'])}}</span>
         </div>
       </div>
     </div>
@@ -300,7 +300,7 @@
             </ion-avatar>
             <strong>{{annonce[2]['titre']}}</strong>
             <p>{{entrepriseUser.entrepriseName}}</p>
-            <p>publiee le {{annonce[2]['publiee_le']}}</p>
+            <p>publiee le {{afficherDateFormat(annonce[2]['publiee_le'])}}</p>
             <button (click)="annonceEmploiDetails(annonce[1]['id'])">consulter</button>
             <button (click)="removeAnnonce(annonce[1]['id'])">Delete</button>
           </ion-item>
@@ -324,7 +324,7 @@
             </div>
             <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
               <strong>{{annonce[2]['duree_stage']}} mois</strong><br>
-              <span>A partir de {{annonce[2]['a_partir_de']}}</span>
+              <span>A partir de {{afficherDateFormat(annonce[2]['a_partir_de'])}}</span>
             </div>
         </div>
       </ion-card>
@@ -341,7 +341,7 @@
               <strong>{{annonce1[2]['titre']}}</strong>
               <p>{{entrepriseUser.entrepriseName}}</p>
               <p>Secteur d'activite :{{entrepriseUser.secteurActivite}}</p>
-              <p>publiee le {{annonce1[2]['publiee_le']}}</p>
+              <p>publiee le {{afficherDateFormat(annonce1[2]['publiee_le'])}}</p>
               <button (click)="annonceStageDetails(annonce1[1]['id'])">consulter</button>
               <button (click)="removeAnnonceEmploi(annonce1[1]['id'])">Delete</button>
             </ion-item>
@@ -359,7 +359,7 @@
               </div>
               <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
                 <strong>{{annonce1[2]['type_contrat']}}</strong><br>
-                <span>A partir de {{annonce1[2]['a_partir_de']}}</span>
+                <span>A partir de {{afficherDateFormat(annonce1[2]['a_partir_de'])}}</span>
               </div>
             </div>
           </div>

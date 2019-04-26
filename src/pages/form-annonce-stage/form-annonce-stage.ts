@@ -54,10 +54,16 @@ export class FormAnnonceStagePage {
       const userId = firebase.auth().currentUser.uid;
       var now = new Date();
       var annee = now.getFullYear();
-      var mois = now.getMonth() + 1;
-      var jour = now.getDate();
-      const dateNow = jour + '/' + mois + '/' + annee;
+      var mois = ("0" + (now.getMonth() + 1)).slice(-2);
+      var jour = ("0" + (now.getDate())).slice(-2);
+      const dateNow = annee+ '-' + mois + '-' + jour ;
       console.log(dateNow);
+      var a_partir_de= new Date(value.a_partir_de);
+    if(a_partir_de.getTime()<now.getTime()){
+      this.alert("Attention il faut saisir une date superieur de date d'Aujourd'hui !");
+      document.getElementById("dateId").style.display="block";
+    }else{
+      document.getElementById("dateId").style.display="none";
       this.annonceStage = {
         titre: value.titre,
         ville: value.ville,
@@ -80,6 +86,7 @@ export class FormAnnonceStagePage {
       itemRef1.set({id: idStage});
       this.alert("bien poster");
       this.navCtrl.setRoot(EntreprisePage);
+    }
     }
     else{
       this.alert("il faut remplir touts les champs !")

@@ -209,7 +209,7 @@
       </ion-avatar>
       <strong>{{annonce[1]['titre']}}</strong>
       <p>{{annonce[2]['entrepriseName']}}</p>
-      <p>publiee le {{annonce[1]['publiee_le']}}</p>
+      <p>publiee le {{aficherDateFormat(annonce[1]['publiee_le'])}}</p>
       <button (click)="annonceDetail(annonce[0])">consulter</button>
       <button (click)="enregistrerAnnonce(annonce[0])">enregistrer</button>
     </ion-item>
@@ -234,7 +234,7 @@
       </div>
     <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
       <strong>{{annonce[1]['duree_stage']}} mois</strong><br>
-      <span>A partir de {{annonce[1]['a_partir_de']}}</span>
+      <span>A partir de {{aficherDateFormat(annonce[1]['a_partir_de'])}}</span>
     </div>
   </div>
   </ion-card>
@@ -251,7 +251,7 @@
       <strong>{{annonce[1]['titre']}}</strong>
       <p>{{annonce[2]['entrepriseName']}}</p>
       <p>secteur d'activite :{{annonce[2]['secteurActivite']}}</p>
-      <p>publiee le {{annonce[1]['publiee_le']}}</p>
+      <p>publiee le {{aficherDateFormat(annonce[1]['publiee_le'])}}</p>
       <button (click)="annonceEmploiDetail(annonce[0])">consulter</button>
       <button (click)="enregistrerAnnonceEmploi(annonce[0])">enregistrer</button>
     </ion-item>
@@ -270,7 +270,7 @@
       </div>
       <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
         <strong>{{annonce[1]['type_contrat']}} mois</strong><br>
-        <span>A partir de {{annonce[1]['a_partir_de']}}</span>
+        <span>A partir de {{aficherDateFormat(annonce[1]['a_partir_de'])}}</span>
       </div>
     </div>
   </ion-card>
@@ -288,7 +288,7 @@
           </ion-avatar>
           <strong>{{annonce[1]['titre']}}</strong>
           <p>{{annonce[2]['entrepriseName']}}</p>
-          <p>publiee le {{annonce[1]['publiee_le']}}</p>
+          <p>publiee le {{aficherDateFormat(annonce[1]['publiee_le'])}}</p>
           <button (click)="annonceDetail(annonce[0])">consulter</button>
           <button (click)="enregistrerAnnonce(annonce[0])">enregistrer</button>
         </ion-item>
@@ -313,7 +313,7 @@
           </div>
           <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
             <strong>{{annonce[1]['duree_stage']}} mois</strong><br>
-            <span>A partir de {{annonce[1]['a_partir_de']}}</span>
+            <span>A partir de {{aficherDateFormat(annonce[1]['a_partir_de'])}}</span>
           </div>
         </div>
       </ion-card>
@@ -329,7 +329,7 @@
             <strong>{{annonce[1]['titre']}}</strong>
             <p>{{annonce[2]['entrepriseName']}}</p>
             <p>secteur d'activite :{{annonce[2]['secteurActivite']}}</p>
-            <p>publiee le {{annonce[1]['publiee_le']}}</p>
+            <p>publiee le {{aficherDateFormat(annonce[1]['publiee_le'])}}</p>
             <button (click)="annonceEmploiDetail(annonce[0])">consulter</button>
             <button (click)="enregistrerAnnonceEmploi(annonce[0])">enregistrer</button>
           </ion-item>
@@ -348,7 +348,7 @@
             </div>
             <div class="col-md-2 col-sm-6 text-center" style="padding-top:8px;width:50%;">
               <strong>{{annonce[1]['type_contrat']}} mois</strong><br>
-              <span>A partir de {{annonce[1]['a_partir_de']}}</span>
+              <span>A partir de {{aficherDateFormat(annonce[1]['a_partir_de'])}}</span>
             </div>
           </div>
         </ion-card>

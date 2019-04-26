@@ -12,7 +12,7 @@
     </ion-avatar>
     <strong>{{annonceStage.titre}}</strong>
     <p>{{entrepriseUser.entrepriseName}}</p>
-    <p>publiee le {{annonceStage.publiee_le}}</p>
+    <p>publiee le {{afficherDateFormat(annonceStage.publiee_le)}}</p>
     </ion-item>
     <ion-item>
 
@@ -29,7 +29,7 @@
 
       <div><strong style="color:darkred; display:inline-block">Durée du stage :</strong> <p style="display: inline">{{annonceStage.duree_stage}} mois</p></div>
 
-      <div><strong style="color:darkred; display:inline-block">A partir de :</strong> <p style="display: inline">{{annonceStage.a_partir_de}}</p></div>
+      <div><strong style="color:darkred; display:inline-block">A partir de :</strong> <p style="display: inline">{{afficherDateFormat(annonceStage.a_partir_de)}}</p></div>
     </ion-item>
     <p class="text">Description Entreprise</p>
     <ion-card padding="">

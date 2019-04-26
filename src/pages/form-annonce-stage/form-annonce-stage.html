@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-navbar>
+  <ion-header>
+  <ion-navbar color="macouleur">
     <ion-title>
       Poster Annonce Stage
     </ion-title>
@@ -85,7 +85,7 @@
             </select>
             <span class="help-block" *ngIf="registerFormAnnonce.get('ville').errors &&
                registerFormAnnonce.get('ville').touched">
-                  <span *ngIf="registerFormAnnonce.get('ville').errors.required">*ville is required</span>
+                  <span *ngIf="registerFormAnnonce.get('ville').errors.required" style="color:red">*ville is required</span>
                 </span>
           </div>
 
@@ -112,7 +112,7 @@
 
             <span class="help-block" *ngIf="registerFormAnnonce.get('type_stage').errors &&
                registerFormAnnonce.get('type_stage').touched">
-                  <span *ngIf="registerFormAnnonce.get('type_stage').errors.required">*type de stage is required</span>
+                  <span *ngIf="registerFormAnnonce.get('type_stage').errors.required" style="color:red">*type de stage is required</span>
                 </span>
           </div>
 
@@ -124,7 +124,7 @@
             </select>
             <span class="help-block" *ngIf="registerFormAnnonce.get('remuneration').errors &&
                registerFormAnnonce.get('remuneration').touched">
-                  <span *ngIf="registerFormAnnonce.get('remuneration').errors.required">*remuneration is required</span>
+                  <span *ngIf="registerFormAnnonce.get('remuneration').errors.required" style="color:red">*remuneration is required</span>
                 </span>
           </div>
 
@@ -155,7 +155,7 @@
             </select>
             <span class="help-block" *ngIf="registerFormAnnonce.get('categorie').errors &&
                registerFormAnnonce.get('categorie').touched">
-                  <span *ngIf="registerFormAnnonce.get('categorie').errors.required">*categorie is required</span>
+                  <span *ngIf="registerFormAnnonce.get('categorie').errors.required" style="color:red">*categorie is required</span>
                 </span>
           </div>
 
@@ -174,11 +174,12 @@
           <div class="form-group" [ngClass]="{'has-error' :registerFormAnnonce.get('a_partir_de').errors &&
                (registerFormAnnonce.get('a_partir_de').touched||registerFormAnnonce.get('a_partir_de').dirty)}">
             <label>A partir de</label>
-            <input type="text" formControlName="a_partir_de" class="form-control">
+            <input type="date" formControlName="a_partir_de" class="form-control">
             <span class="help-block" *ngIf="registerFormAnnonce.get('a_partir_de').errors &&
                (registerFormAnnonce.get('a_partir_de').touched||registerFormAnnonce.get('a_partir_de').dirty)">
                   <span *ngIf="registerFormAnnonce.get('a_partir_de').errors.required">*A partir de is required</span>
             </span>
+            <span style="display: none;color: red;" id="dateId">*Saisir une date sup de date d'aujourd'hui</span>
           </div>
 
 

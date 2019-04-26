@@ -11,8 +11,6 @@ export class HomePage {
 
   @ViewChild('username') uname;
   @ViewChild('password') password;
-  pet: any;
-
   constructor(public navCtrl: NavController) {
 
   }

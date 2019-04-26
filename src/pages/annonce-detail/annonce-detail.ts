@@ -124,6 +124,14 @@ export class AnnonceDetailPage {
     }).present();
   }
 
+  afficherDateFormat(date:string):string{
+    var date1=new Date(date);
+    var annee1 = date1.getFullYear();
+    var mois1 = ("0" + (date1.getMonth() + 1)).slice(-2);
+    var jour1 = ("0" + (date1.getDate())).slice(-2);
+    return  jour1 + '/' + mois1 + '/' + annee1;
+  }
+
 }
 export class CommentaireModel{
   id_ensaiste: string;

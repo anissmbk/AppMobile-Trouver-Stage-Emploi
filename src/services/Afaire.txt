@@ -1,3 +1,6 @@
+changer mon profile ensaiste laffichage de formation !!
+experience competence finahoma f myprofil o modifier profil !!!!!!!
+
 recommandation : si l'entreprise consulte le profile de l'ensaiste il trouve un champs de recommandation
 cette recommandation est visible seulement au autre entreprise et lensaiste elle meme!!
 il faut ajouter une page pour expliquer ca a notre utilisateur apres
@@ -17,13 +20,7 @@ langueexigee wach darori ola optionnel!!! form poster annonce
 
 poster-annonce.html prblm de add icon
 
-a partir de champs verification dans FormAnnonceStagePage date!!!!
-var mois    = now.getMonth() + 1;//le prblm de 04 oubien 4
-var jour    = now.getDate();
-
-dans modify-profile-ensaiste.html on a besoin de filere !! et les champ de date pas encore terminee
-
-supprimer le compte de ensaiste && entrerise
+supprimer le compte de ensaiste && entreprise
 
 fixer le prblm de removeCandidatEnregistre() dans candidats-enregistres.ts .html
 fixer le prblm de removeAnnonceEnregistre(id1:string) dans mes-annonces.ts .html
@@ -37,15 +34,15 @@ omli ndkhol ka entreprise it9leb l'ordre-->
 
 dans auth.service.ts il faut appliquer les trois methodes doFacebook doTwitterLogin doGoogleLogin
 
+comfirmer le mot de passe
+mot de passe oublier
+changer le mot de passe de compte
 
 le grand prblm c'est trouver comment on peut rendre l'application ouverte lorsque il reload la page ou bien redebug
 et ajouter les listners pour savoir toutes les modifications dans la base de donnees et la synchronisation
 
 
 prblm de photo dans le telephone!!
-
-regler l'affichage dans annonce.detail.html && modify profile
-
 
 les msgs lorsque no data exist!!!et aussi dans annoncesEnregistre lorsque no data exist//le prblm est fixee mais il faut bien stylee ca!!
 //fixee------------
@@ -54,3 +51,7 @@ entant qu'ensaiste je peux trouver moi meme consulter moi meme !! supprimer mes 
 entant qu'entreprise je peux trouver moi meme consulter moi meme !!  supprimer mes annonces
 
 le bouton modifier dans entreprise et ensaiste visibilite !!
+
+a partir de champs verification dans FormAnnonceStagePage date!!!!
+var mois    = now.getMonth() + 1;//le prblm de 04 oubien 4
+var jour    = now.getDate();

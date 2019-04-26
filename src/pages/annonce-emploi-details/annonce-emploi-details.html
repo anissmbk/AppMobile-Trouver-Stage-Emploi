@@ -12,7 +12,7 @@
       </ion-avatar>
       <strong>{{annonceEmploi.titre}}</strong>
       <p>{{entrepriseUser.entrepriseName}}</p>
-      <p>publiee le {{annonceEmploi.publiee_le}}</p>
+      <p>publiee le {{afficherDateFormat(annonceEmploi.publiee_le)}}</p>
     </ion-item>
     <ion-item>
 
@@ -29,7 +29,7 @@
 
       <div><strong style="color:darkred; display:inline-block">Niveau d'experience :</strong> <p style="display: inline">{{annonceEmploi.niveau_experience}}</p></div>
 
-      <div><strong style="color:darkred; display:inline-block">A partir de :</strong> <p style="display: inline">{{annonceEmploi.a_partir_de}}</p></div>
+      <div><strong style="color:darkred; display:inline-block">A partir de :</strong> <p style="display: inline">{{afficherDateFormat(annonceEmploi.a_partir_de)}}</p></div>
     </ion-item>
     <p class="text">Description Entreprise</p>
     <ion-card padding="">

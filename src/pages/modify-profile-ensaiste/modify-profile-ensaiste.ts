@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase/app';
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
-import {AngularFireStorage} from "@angular/fire/storage";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
 import {EnsaistePage} from "../ensaiste/ensaiste";
@@ -18,7 +17,6 @@ export class ModifyProfileEnsaistePage  {
   ensaisteProfile:EnsaisteModel=new EnsaisteModel();
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public afStorage:AngularFireStorage,
               public userService:UserService,
               public db:AngularFireDatabase
   ) {
@@ -27,6 +25,14 @@ export class ModifyProfileEnsaistePage  {
       var e = item.payload.toJSON();
       this.ensaisteProfile=e as EnsaisteModel;
     });
+  }
+
+  aficherDateFormat(date:string):string{
+    var date1=new Date(date);
+    var annee1 = date1.getFullYear();
+    var mois1 = ("0" + (date1.getMonth() + 1)).slice(-2);
+    var jour1 = ("0" + (date1.getDate())).slice(-2);
+    return  jour1 + '/' + mois1 + '/' + annee1;
   }
 
   upload(event){
