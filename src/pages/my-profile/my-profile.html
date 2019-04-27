@@ -15,11 +15,15 @@
 </ion-header>
 
 
-<ion-content  class="back" padding>
-  <ion-fab padding="" (click)="change()" *ngIf="id=='true' || id==ensaisteId"><button ion-fab><ion-icon  name="settings" ></ion-icon></button></ion-fab>
+<ion-content class="back" padding>
+  <ion-fab padding="" (click)="change()" *ngIf="id=='true' || id==ensaisteId">
+    <button ion-fab>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+  </ion-fab>
 
   <ion-card style="border-radius:10px; ">
-    <ion-item text-center=""> <img src="{{ensaisteUser.photo}}" class="image">
+    <ion-item text-center=""><img src="{{ensaisteUser.photo}}" class="image">
       <strong>{{ensaisteUser.firstName}} {{ensaisteUser.lastName}}</strong>
       <p>{{ensaisteUser.formation}}</p>
       <p>{{ensaisteUser.city}}</p>
@@ -27,7 +31,7 @@
 
     <ion-card>
       <ion-item padding-left="">
-        <ion-title ><strong>Formation</strong></ion-title>
+        <ion-title><strong>Formation</strong></ion-title>
         <div padding-top="">
           <strong>{{ensaisteUser.zdebut}}-{{ensaisteUser.zfin}}:</strong>
           {{ensaisteUser.formation}}
@@ -38,15 +42,54 @@
 
     <ion-card>
       <ion-item padding-left="">
-        <ion-title ><strong>Contact</strong></ion-title>
+        <ion-title><strong>Contact</strong></ion-title>
         <div padding-top="">
           <strong>Email: </strong>{{ensaisteUser.email}}
         </div>
-        <div >
+        <div>
           <strong>Tel: </strong>{{ensaisteUser.phone}}
         </div>
       </ion-item>
     </ion-card>
-
   </ion-card>
+  <p class="text" *ngIf="id=='true' || id==ensaisteId || entrepriseDisplayName=='entreprise'">
+    Recommandations:</p>
+
+  <div style="color: #f53d3d;margin-top: 17px;text-align:center" *ngIf="entrepriseDisplayName=='entreprise'&& myObject.length==0">
+    Soyez le premier à recommander ce candidat!!
+  </div>
+  <div style="color: #f53d3d;margin-top: 17px;text-align:center" *ngIf="(id=='true' || id==ensaisteId )&& myObject.length==0">
+    Pas de recommandation !!
+  </div>
+
+  <div class="scroll">
+    <ion-list *ngIf="id=='true' || id==ensaisteId || entrepriseDisplayName=='entreprise'">
+      <ion-item-sliding *ngFor="let recommandation of myObject">
+        <ion-item class="comment">
+          <ion-avatar item-start>
+            <img src="{{recommandation[2]['photo']}}" class="imgreduce">
+          </ion-avatar>
+          <div>
+            <h2>{{recommandation[2]['entrepriseName']}}</h2>
+            <p style="white-space: pre-line">{{recommandation[1]['recommandation_text']}}</p>
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="secondary" (click)="consulterEntreprise(recommandation[1]['id_entreprise'])">
+            <ion-icon name="text"></ion-icon>
+            consulter
+          </button>
+          <button ion-button color="danger" *ngIf="id=='true' || id==ensaisteId " (click)="deleteRecommandation(recommandation[0])">
+            <ion-icon name="trash"></ion-icon>
+            delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+
+    </ion-list>
+  </div>
+
+  <button block *ngIf="entrepriseDisplayName=='entreprise'" ion-button item-left (click)="recommanderEnsaiste()">
+    Recommander
+  </button>
 </ion-content>

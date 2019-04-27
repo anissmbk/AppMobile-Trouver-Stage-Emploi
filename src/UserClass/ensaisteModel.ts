@@ -9,10 +9,17 @@ export class EnsaisteModel{
   formation: string;
   experience: string;
   competence: string;
-  evaluation: string;
   zdebut : string;
   zecole : string;
   zfin : string;
+    zz_recommandations:{
+    id_entreprise:string;
+    recommandation_text:string;
+  }[];
+  zz_notifications_recommandations:{
+    id_entreprise:string;
+    recommandation_text:string;
+  }[];
   zz_annonce_stage_enregistre:{
     id:string;
   }[];
@@ -33,12 +40,13 @@ export class EnsaisteModel{
     this.formation='';
     this.experience='';
     this.competence='';
-    this.evaluation='';
     this.zdebut='';
     this.zecole='';
     this.zfin='';
     this.zz_annonce_stage_enregistre= [];
     this.zz_annonce_emploi_enregistre= [];
     this.zz_entreprise_enregistree= [];
+    this.zz_recommandations= [];
+    this.zz_notifications_recommandations= [];
   }
 }

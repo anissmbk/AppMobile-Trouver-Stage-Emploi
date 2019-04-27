@@ -11,6 +11,7 @@ import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profi
 import {EntrepriseEnregistreePage} from "../entreprise-enregistree/entreprise-enregistree";
 import * as firebase from 'firebase/app';
 import {AngularFireDatabase} from "@angular/fire/database";
+import {MesNotificationsPage} from "../mes-notifications/mes-notifications";
 
 @Component({
   selector: 'page-ensaiste',
@@ -36,7 +37,8 @@ export class EnsaistePage {
     this.pages = [
       {title: 'Annonces Enregistrees', component: MesAnnoncesPage},
       {title: 'Entreprise Enregistree', component: EntrepriseEnregistreePage},
-      {title: 'Modifier Profile', component: ModifyProfileEnsaistePage}
+      {title: 'Modifier Profile', component: ModifyProfileEnsaistePage},
+      {title: ' Mes Notifications', component: MesNotificationsPage}
     ];
   }
 

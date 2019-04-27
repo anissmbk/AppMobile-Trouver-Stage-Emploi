@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="macouleur">
+    <ion-title>Mes Notifications</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p class="text">Recommandations:</p>
+
+  <div style="color: #f53d3d;margin-top: 17px;text-align:center" *ngIf="myObject.length==0">
+    Pas de recommandation !!
+  </div>
+
+  <div class="scroll">
+    <ion-list>
+      <ion-item-sliding *ngFor="let recommandation of myObject" class="comment">
+        <ion-item class="comment">
+          <ion-avatar item-start>
+            <img src="{{recommandation[2]['photo']}}" class="imgreduce">
+          </ion-avatar>
+          <div>
+            <h2>{{recommandation[2]['entrepriseName']}}</h2>
+            <p style="white-space: pre-line">{{recommandation[1]['recommandation_text']}}</p>
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="secondary" (click)="acceptRecommandation(recommandation[0],recommandation[1]['id_entreprise'],recommandation[1]['recommandation_text'])">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            accepter
+          </button>
+          <button ion-button color="danger" (click)="rejectRecommandation(recommandation[0])">
+            <ion-icon name="close-circle"></ion-icon>
+            rejeter
+          </button>
+        </ion-item-options>
+        <ion-item-options side="left">
+          <button ion-button color="secondary" (click)="consulterEntreprise(recommandation[1]['id_entreprise'])">
+            <ion-icon name="text"></ion-icon>
+            consulter
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+
+    </ion-list>
+  </div>
+</ion-content>
