@@ -18,7 +18,7 @@ export class ModifyProfileEntreprisePage {
               public userService:UserService,
               public db:AngularFireDatabase
   ) {
-    var x=db.object('/entreprise/'+firebase.auth().currentUser.uid);
+    var x=db.object('/entreprise/'+this.userService.getCurrentUser().uid);
     x.snapshotChanges().subscribe(item=>{
       var e = item.payload.toJSON();
       this.entrepriseProfile=e as EntrepriseModel;

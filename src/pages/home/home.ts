@@ -1,7 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {LoginPage} from "../login/login";
 import {RegisterPage} from "../register/register";
+import {Storage} from "@ionic/storage";
+import {EntreprisePage} from "../entreprise/entreprise";
+import {AuthService} from "../../services/auth.service";
+import {UserService} from "../../services/user.service";
+import {EnsaistePage} from "../ensaiste/ensaiste";
 
 @Component({
   selector: 'page-home',
@@ -11,8 +16,38 @@ export class HomePage {
 
   @ViewChild('username') uname;
   @ViewChild('password') password;
-  constructor(public navCtrl: NavController) {
+  loading: any;
+  videPage:boolean=false;
 
+  constructor(public loadingCtrl: LoadingController,public userService:UserService,public navCtrl: NavController, private storage: Storage,public authService: AuthService) {
+    /*this.storage.get('user').then(val =>{
+      if(val === null){
+        this.videPage=true;
+        console.log("token is null : ",val);
+      }else{
+        this.showLoader();
+        this.authService.doLogin(val.email, val.password).then(
+          data => {
+            this.navCtrl.setRoot(EntreprisePage);
+            this.loading.dismiss();
+          });
+      }
+    }).catch(error=>{
+      console.log(error)
+    });*/
+    if (localStorage.getItem('user')){
+      this.showLoader();
+      if(this.userService.getUserLoggedIn().displayName=='ensaiste'){
+        this.navCtrl.setRoot(EnsaistePage);
+        this.loading.dismiss();
+      }else if(this.userService.getUserLoggedIn().displayName=='entreprise'){
+        this.navCtrl.setRoot(EntreprisePage);
+        this.loading.dismiss();
+      }
+    }else{
+      this.videPage=true;
+      console.log('local storage is empty!!')
+    }
   }
 
   signIn() {
@@ -24,5 +59,8 @@ export class HomePage {
     this.navCtrl.push(RegisterPage);
   }
 
-
+  showLoader(){
+    this.loading = this.loadingCtrl.create({content: 'Authenticating...'});
+    this.loading.present();
+  }
 }

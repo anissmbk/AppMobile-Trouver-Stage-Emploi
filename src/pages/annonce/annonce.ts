@@ -74,7 +74,7 @@ export class AnnoncePage {
     this.navCtrl.push(AnnonceEmploiDetailsPage,id);
   }
   enregistrerAnnonce(id1:string){
-    const userId=firebase.auth().currentUser.uid;
+    const userId=firebase.auth().currentUser.uid;//9leb ==> this.getUserLoggedIn().uid;
     const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_stage_enregistre/'+id1);
     var a={
       id:id1
@@ -84,7 +84,7 @@ export class AnnoncePage {
 
   }
   enregistrerAnnonceEmploi(id1:string){
-    const userId=firebase.auth().currentUser.uid;
+    const userId=firebase.auth().currentUser.uid;//9leb ==> this.getUserLoggedIn().uid;
     const itemRef = this.db.object('/ensaiste/'+userId+'/zz_annonce_emploi_enregistre/'+id1);
     var a={
       id:id1

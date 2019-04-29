@@ -1,10 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {AuthService} from "../../services/auth.service";
 import {EnsaistePage} from "../ensaiste/ensaiste";
 import {UserService} from "../../services/user.service";
 import {EntreprisePage} from "../entreprise/entreprise";
 import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profile-ensaiste";
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,13 +16,16 @@ export class LoginPage {
 
   @ViewChild('email') email;
   @ViewChild('password') password;
-
+  loading: any;
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               public authService: AuthService,
               public navParams: NavParams,
-              public userService: UserService
+              public userService: UserService,
+              private storage: Storage,
+              public loadingCtrl: LoadingController,
   ) {
+
   }
 
   alert(message: string) {
@@ -33,15 +37,18 @@ export class LoginPage {
   }
 
   signInUser() {
-
+    this.showLoader();
     this.authService.doLogin(this.email.value, this.password.value)
       .then(data => {
+        this.authService.getDataFromFirebase();
+        this.loading.dismiss();
         //this.alert('Success! You\'re logged in');
         const user=this.userService.getCurrentUser();
         if(user.displayName==="ensaiste"){
           this.navCtrl.setRoot(EnsaistePage);
         }else if (user.displayName==="entreprise"){
           this.navCtrl.setRoot(EntreprisePage);
+          //this.storage.set('user',{email :this.email.value,password:this.password.value} );
         }else if(user.displayName==="ensaiste1"){
           this.navCtrl.setRoot(ModifyProfileEnsaistePage);
         }
@@ -49,8 +56,12 @@ export class LoginPage {
       })
       .catch(error => {
         console.log('got an error', error);
+        this.loading.dismiss();
         this.alert(error.message);
       });
   }
-
+  showLoader(){
+    this.loading = this.loadingCtrl.create({content: 'Authenticating...'});
+    this.loading.present();
+  }
 }

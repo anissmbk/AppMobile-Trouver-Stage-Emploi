@@ -35,6 +35,9 @@ import {FormAnnonceEmploiPage} from "../pages/form-annonce-emploi/form-annonce-e
 import {AnnonceEmploiDetailsPage} from "../pages/annonce-emploi-details/annonce-emploi-details";
 import {MesNotificationsPage} from "../pages/mes-notifications/mes-notifications";
 
+//local storage pour notre app
+import { IonicStorageModule } from '@ionic/storage';
+
 const firebase= {
   apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
   authDomain: "employemanagment-914b8.firebaseapp.com",
@@ -78,8 +81,8 @@ const firebase= {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireAuthModule,
-    AngularFireStorageModule// imports firebase/auth, only needed for auth features
-
+    AngularFireStorageModule,// imports firebase/auth, only needed for auth features
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

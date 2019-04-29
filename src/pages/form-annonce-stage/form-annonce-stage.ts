@@ -51,7 +51,7 @@ export class FormAnnonceStagePage {
     if (value.a_partir_de != '' && value.titre != '' && value.ville != '' && value.contexte_mission != '' &&
       value.categorie != '' && value.profil_recherche != '' && value.type_stage!= '' && value.remuneration != '' &&
       value.duree_stage != '' && value.stagiaire_demande != '') {
-      const userId = firebase.auth().currentUser.uid;
+      const userId = this.userService.getCurrentUser().uid;
       var now = new Date();
       var annee = now.getFullYear();
       var mois = ("0" + (now.getMonth() + 1)).slice(-2);

@@ -9,9 +9,9 @@ import {AnnonceEmploiModel} from "../AnnonceClass/AnnonceEmploiModel";
 
 @Injectable()
 export class UserService {
+  //user: User;
 
-  constructor(public db: AngularFireDatabase) {
-  }
+  constructor(public db: AngularFireDatabase) {}
 
 
   updateEntreprise(value: EntrepriseModel) {
@@ -60,7 +60,7 @@ export class UserService {
 
   getEnsaiste(): EnsaisteModel {
     let ensaiste: EnsaisteModel = new EnsaisteModel();
-    const userId = firebase.auth().currentUser.uid;
+    const userId = this.getUserLoggedIn().uid;
     var ref = firebase.database().ref('/ensaiste/' + userId);
     ref.once("value").then(function (snapshot) {
       var result = snapshot.val();
@@ -116,7 +116,7 @@ export class UserService {
 
   getEntreprise(): EntrepriseModel {
     let entreprise: EntrepriseModel = new EntrepriseModel();
-    const userId = firebase.auth().currentUser.uid;
+    const userId = this.getUserLoggedIn().uid;
     var ref = firebase.database().ref('/entreprise/' + userId);
     ref.once("value").then(function (snapshot) {
       var result = snapshot.val();
@@ -220,7 +220,7 @@ export class UserService {
   }
 
   addCommentaireStage(id: string, commentaire_text: string, disponibilite: string) {
-    const userId = firebase.auth().currentUser.uid;
+    const userId = firebase.auth().currentUser.uid;//9leb ==> this.getUserLoggedIn().uid;
     const idAleatoir = Math.random().toString(36).substring(2);
     this.db.object('/annonceStage/' + id + '/z_commentaires/' + idAleatoir).set({
       commentaire_text: commentaire_text,
@@ -230,7 +230,7 @@ export class UserService {
   }
 
   addCommentaireEmploi(id: string, commentaire_text: string, disponibilite: string) {
-    const userId = firebase.auth().currentUser.uid;
+    const userId = firebase.auth().currentUser.uid;//9leb ==> this.getUserLoggedIn().uid;
     const idAleatoir = Math.random().toString(36).substring(2);
     this.db.object('/annonceEmploi/' + id + '/z_commentaires/' + idAleatoir).set({
       commentaire_text: commentaire_text,
@@ -240,7 +240,7 @@ export class UserService {
   }
 
   sendRecommandation(id: string, recommandation_text: string) {
-    const entrepriseId = firebase.auth().currentUser.uid;
+    const entrepriseId = firebase.auth().currentUser.uid;//9leb ==> this.getUserLoggedIn().uid;
     const idAleatoir = Math.random().toString(36).substring(2);
     this.db.object('/ensaiste/' + id + '/zz_notifications_recommandations/' + idAleatoir).set({
       recommandation_text: recommandation_text,
@@ -248,4 +248,32 @@ export class UserService {
     });
   }
 
+  // Set data on localStorage
+  setUserLoggedIn(user: UserModel) {
+    localStorage.setItem('user', JSON.stringify(user));
+    console.log('saved on localStorage');
+  }
+  // get data on localStorage
+  getUserLoggedIn() {
+    //console.log(firebase.auth().currentUser.displayName);
+    /*if (localStorage.getItem('user')) {
+     this.user=JSON.parse(localStorage.getItem('user'));
+    } else {
+      console.log('localStorage empty');
+      this.user=firebase.auth().currentUser;
+    }*/
+    return JSON.parse(localStorage.getItem('user'));
+  }
+  // Optional: clear localStorage
+  clearLocalStorage() {
+    localStorage.clear();
+  }
+
+}
+
+export interface UserModel {
+  uid?: string;
+  displayName?: string;
+  email?: string;
+  photoURL?: string;
 }

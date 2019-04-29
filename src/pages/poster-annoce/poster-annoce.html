@@ -220,7 +220,7 @@
         <strong>{{annonce[2]['titre']}}</strong>
         <p>{{entrepriseUser.entrepriseName}}</p>
         <p>publiee le {{afficherDateFormat(annonce[2]['publiee_le'])}}</p>
-        <button (click)="annonceEmploiDetails(annonce[1]['id'])">consulter</button>
+        <button (click)="annonceStageDetails(annonce[1]['id'])">consulter</button>
         <button (click)="removeAnnonce(annonce[1]['id'])">Delete</button>
       </ion-item>
       <ion-card-content>
@@ -265,7 +265,7 @@
         <p>{{entrepriseUser.entrepriseName}}</p>
         <p>Secteur d'activite :{{entrepriseUser.secteurActivite}}</p>
         <p>publiee le {{afficherDateFormat(annonce1[2]['publiee_le'])}}</p>
-        <button (click)="annonceStageDetails(annonce1[1]['id'])">consulter</button>
+        <button (click)="annonceEmploiDetails(annonce1[1]['id'])">consulter</button>
         <button (click)="removeAnnonceEmploi(annonce1[1]['id'])">Delete</button>
       </ion-item>
       <ion-card-content>

@@ -12,6 +12,7 @@ import {EntrepriseEnregistreePage} from "../entreprise-enregistree/entreprise-en
 import * as firebase from 'firebase/app';
 import {AngularFireDatabase} from "@angular/fire/database";
 import {MesNotificationsPage} from "../mes-notifications/mes-notifications";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'page-ensaiste',
@@ -27,7 +28,8 @@ export class EnsaistePage {
               public authService: AuthService,
               private alertCtrl: AlertController,
               public navCtrl: NavController,
-              public db: AngularFireDatabase) {
+              public db: AngularFireDatabase,
+              public userService: UserService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -62,7 +64,7 @@ export class EnsaistePage {
     this.authService.doLogout()
       .then(data => {
         this.alert('Success! You\'re Deconnect');
-
+        this.userService.clearLocalStorage();
         this.navCtrl.setRoot(HomePage);
       })
       .catch(error => {
@@ -91,6 +93,7 @@ export class EnsaistePage {
             const user = firebase.auth().currentUser;
             user.delete().then(function() {
               this.alert("bien supprimee");
+              this.userService.clearLocalStorage();
               this.navCtrl.setRoot(HomePage);
             }.bind(this)).catch(function(error) {
               // An error happened.

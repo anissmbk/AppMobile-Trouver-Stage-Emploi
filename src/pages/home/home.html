@@ -1,13 +1,15 @@
-<ion-content id="welcome">
-  <div class="message">
-    <h5>Find your way <br> here!</h5>
-    <p id="text">Retrouver les offres d'Emploi et de Stage avec un clic</p>
-  </div>
-  <div class="buttons">
-    <button type="button" name="button" (click)="signup()">Sign Up</button>
-    <p>
-      Have an account? Cool!<br>
-      <a id="login" (click)="signIn()">Login in Then</a>
-    </p>
+<ion-content id="welcome" *ngIf="videPage==true">
+  <div>
+    <div class="message">
+      <h5>Find your way <br> here!</h5>
+      <p id="text">Retrouver les offres d'Emploi et de Stage avec un clic</p>
+    </div>
+    <div class="buttons">
+      <button type="button" name="button" (click)="signup()">Sign Up</button>
+      <p>
+        Have an account? Cool!<br>
+        <a id="login" (click)="signIn()">Login in Then</a>
+      </p>
+    </div>
   </div>
 </ion-content>

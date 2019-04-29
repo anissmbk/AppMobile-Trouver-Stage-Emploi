@@ -26,8 +26,10 @@ export class AnnonceDetailPage {
   deletemyObject= [];
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,public userService:UserService, public db: AngularFireDatabase) {
     this.id=this.navParams.data;
-    this.userDisplayName=this.userService.getCurrentUserDisplayName();
-    this.userUid=this.userService.getCurrentUser().uid;
+    console.log(this.id);
+    this.userDisplayName=this.userService.getUserLoggedIn().displayName;
+    console.log("display name is :"+this.userDisplayName);
+    this.userUid=this.userService.getUserLoggedIn().uid;
     this.annonceStage= this.userService.getAnnonceStageById(this.id);
 
     this.commentairesList=this.db.object('/annonceStage/'+this.id+'/z_commentaires');

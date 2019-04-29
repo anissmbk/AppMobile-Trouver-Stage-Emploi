@@ -1,11 +1,10 @@
+modify profile khass lemail mayb9aach + ville twli select feeha ga3 les villes dyal lmaroc +okhass les validators
++ etablissements twli select feeha gaa3 les ensa dyal lmaroc  + champ dyal competence + formation && experience it9ado
+
 notification 3nd entreprise ila chi 7ed commenta liha lannonce!!
 
 changer mon profile ensaiste laffichage de formation !!
 experience competence finahoma f myprofil o modifier profil !!!!!!!
-
-recommandation : si l'entreprise consulte le profile de l'ensaiste il trouve un champs de recommandation
-cette recommandation est visible seulement au autre entreprise et lensaiste elle meme!!
-il faut ajouter une page pour expliquer ca a notre utilisateur apres
 
 
 getEntreprise makhdamach f annonceEnregistrees!!
@@ -41,14 +40,22 @@ comfirmer le mot de passe
 mot de passe oublier
 changer le mot de passe de compte
 
-le grand prblm c'est trouver comment on peut rendre l'application ouverte lorsque il reload la page ou bien redebug
 et ajouter les listners pour savoir toutes les modifications dans la base de donnees et la synchronisation
 
 
 prblm de photo dans le telephone!!
 
+
+//prblm fixee------------
+
 les msgs lorsque no data exist!!!et aussi dans annoncesEnregistre lorsque no data exist//le prblm est fixee mais il faut bien stylee ca!!
-//fixee------------
+
+recommandation : si l'entreprise consulte le profile de l'ensaiste il trouve un champs de recommandation
+cette recommandation est visible seulement au autre entreprise et lensaiste elle meme!!
+il faut ajouter une page pour expliquer ca a notre utilisateur apres
+
+//resolu storage npm install --save @ionic/storage !!
+le grand prblm c'est trouver comment on peut rendre l'application ouverte lorsque il reload la page ou bien redebug
 
 entant qu'ensaiste je peux trouver moi meme consulter moi meme !! supprimer mes commentaires
 entant qu'entreprise je peux trouver moi meme consulter moi meme !!  supprimer mes annonces

@@ -4,7 +4,6 @@ import {AngularFireDatabase,AngularFireObject} from "@angular/fire/database";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
-import * as firebase from 'firebase/app';
 import {MyProfilePage} from "../my-profile/my-profile";
 import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
 
@@ -79,7 +78,7 @@ export class UsersPage {
 
   }
   enregistrerCandidat(id1:string){
-    const userId=firebase.auth().currentUser.uid;
+    const userId=this.userService.getCurrentUser().uid;
     const itemRef = this.db.object('/entreprise/'+userId+'/zz_candidats_enregistree/'+id1);
     var a={
       id:id1
@@ -88,7 +87,7 @@ export class UsersPage {
     this.alert("bien enregistrer");
   }
   enregistrerEntreprise(id1:string){
-    const userId=firebase.auth().currentUser.uid;
+    const userId=this.userService.getCurrentUser().uid;
     const itemRef = this.db.object('/ensaiste/'+userId+'/zz_entreprise_enregistree/'+id1);
     var a={
       id:id1

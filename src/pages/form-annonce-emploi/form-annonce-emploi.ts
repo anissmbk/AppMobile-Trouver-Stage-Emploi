@@ -57,7 +57,7 @@ export class FormAnnonceEmploiPage {
     if (value.a_partir_de != '' && value.titre != '' && value.ville != '' && value.contexte_mission != '' &&
       value.categorie != '' && value.profil_recherche != '' && value.nbr_poste_proposes != '' && value.type_contrat != '' &&
       value.niveau_experience != '' && value.niveau_etude != '' && value.langues_exigees != '') {
-      const userId = firebase.auth().currentUser.uid;
+      const userId = this.userService.getCurrentUser().uid;
       var now = new Date();
       var annee = now.getFullYear();
       var mois = ("0" + (now.getMonth() + 1)).slice(-2);

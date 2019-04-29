@@ -34,8 +34,8 @@ export class AnnonceEmploiDetailsPage {
   deletemyObject= [];
   constructor(private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,public userService:UserService, public db: AngularFireDatabase) {
     this.id=this.navParams.data;
-    this.userDisplayName=this.userService.getCurrentUserDisplayName();
-    this.userUid=this.userService.getCurrentUser().uid;
+    this.userDisplayName=this.userService.getCurrentUserDisplayName();//9leb
+    this.userUid=this.userService.getCurrentUser().uid;//9leb
 
     this.annonceEmploi= this.userService.getAnnonceEmploiById(this.id);
 

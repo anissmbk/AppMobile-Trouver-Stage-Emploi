@@ -11,6 +11,7 @@ import {FormAnnonceEmploiPage} from "../form-annonce-emploi/form-annonce-emploi"
 import {EntreprisePage} from "../entreprise/entreprise";
 import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
 import {AnnonceEmploiDetailsPage} from "../annonce-emploi-details/annonce-emploi-details";
+import {AuthService} from "../../services/auth.service";
 
 @IonicPage()
 @Component({
@@ -40,10 +41,11 @@ export class PosterAnnocePage {
     Categorie:"0"
   };
 
-  constructor(public alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
-
+  constructor( public authService: AuthService,public alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
+    //this.getUserLoggedIn();
     this.entrepriseUser=this.userService.getEntreprise();
-    this.mesAnnoncesStageList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces_stage');
+    console.log(this.userService.getUserLoggedIn().uid);
+    this.mesAnnoncesStageList=this.db.object('/entreprise/'+this.userService.getUserLoggedIn().uid+'/zz_mes_annonces_stage');
     this.mesAnnoncesStageList.snapshotChanges().subscribe(action => {
       this.itemArray.push(action.payload.val() as {id:string});
       if(this.itemArray[0]!=null){
@@ -51,12 +53,13 @@ export class PosterAnnocePage {
       }
       for (let annonce of this.myObject) {
         var x = this.userService.getAnnonceStageById(annonce[1]['id']);
+        console.log(annonce[1]['id']);
         annonce.push(x as AnnonceStageModel);
       }
       console.log(this.myObject);
     });
 
-    this.mesAnnoncesEmploiList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_mes_annonces_emploi');
+    this.mesAnnoncesEmploiList=this.db.object('/entreprise/'+this.userService.getUserLoggedIn().uid+'/zz_mes_annonces_emploi');
     this.mesAnnoncesEmploiList.snapshotChanges().subscribe(action => {
       this.itemArrayEmploi.push(action.payload.val() as {id:string});
       if(this.itemArrayEmploi[0]!=null){
@@ -64,11 +67,15 @@ export class PosterAnnocePage {
       }
       for (let annonce1 of this.myObjectEmploi) {
         var x = this.userService.getAnnonceEmploiById(annonce1[1]['id']);
+        console.log(annonce1[1]['id']);
         annonce1.push(x as AnnonceEmploiModel);
       }
       console.log(this.myObjectEmploi);
     });
   }
+  /*getUserLoggedIn() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+  }*/
 
   removeAnnonce(id1:string){//Attention il faut supprimer dans deux places diferrents entreprise=>zz_mes_annonces_stage et dans annonceStage
 
@@ -84,7 +91,7 @@ export class PosterAnnocePage {
         {
           text: 'Oui',
           handler: () => {
-            const userId=firebase.auth().currentUser.uid;
+            const userId=firebase.auth().currentUser.uid;// 9leb==> this.userService.getUserLoggedIn().uid
             const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+id1);
             itemRef.remove();
             const annonce = this.db.object('/annonceStage/'+id1);
@@ -110,7 +117,9 @@ export class PosterAnnocePage {
         {
           text: 'Oui',
           handler: () => {
-            const userId=firebase.auth().currentUser.uid;
+            //Attentien firebase.auth().currentUser.uid makatkhdemch f local storage mli yalah lconstructor kiycharga khass 7ta yt loada kolchi
+
+            const userId=firebase.auth().currentUser.uid;// 9leb==> this.userService.getUserLoggedIn().uid
             const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_emploi/'+id1);
             itemRef.remove();
             const annonce = this.db.object('/annonceEmploi/'+id1);
@@ -132,6 +141,7 @@ export class PosterAnnocePage {
   }
 
   annonceStageDetails(id:string){
+    console.log(id);
     this.navCtrl.push(AnnonceDetailPage,id);
   }
 

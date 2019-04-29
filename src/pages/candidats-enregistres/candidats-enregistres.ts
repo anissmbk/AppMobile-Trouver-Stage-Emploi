@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {UserService} from "../../services/user.service";
-import * as firebase from 'firebase/app';
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {MyProfilePage} from "../my-profile/my-profile";
 
@@ -21,7 +20,7 @@ export class CandidatsEnregistresPage {
   searchTab=[];
   constructor(private alertCtrl: AlertController,public db: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams,public userService:UserService) {
     this.id=this.navParams.data;
-    this.candidatsEnregistreesList=this.db.object('/entreprise/'+firebase.auth().currentUser.uid+'/zz_candidats_enregistree');
+    this.candidatsEnregistreesList=this.db.object('/entreprise/'+this.userService.getCurrentUser().uid+'/zz_candidats_enregistree');
     this.candidatsEnregistreesList.snapshotChanges().subscribe(action => {
 
       this.itemArray.push(action.payload.val() as {id:string});
@@ -54,7 +53,7 @@ export class CandidatsEnregistresPage {
         {
           text: 'Oui',
           handler: () => {
-            const userId=firebase.auth().currentUser.uid;
+            const userId=this.userService.getCurrentUser().uid;
             const itemRef = this.db.object('/entreprise/'+userId+'/zz_candidats_enregistree/'+id1);
             itemRef.remove();
             // fixer le prbleme il faut cliquer deux fois !!!
