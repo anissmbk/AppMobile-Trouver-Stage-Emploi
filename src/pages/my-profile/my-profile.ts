@@ -6,6 +6,7 @@ import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profi
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
+import * as firebase from 'firebase/app';
 
 @IonicPage()
 @Component({
@@ -20,8 +21,45 @@ export class MyProfilePage {
   recommandationsList:AngularFireObject<any>;
   itemArray=[];
   myObject= [];
+  private FormationList: AngularFireObject<any>;
+  itemArray1 = [];
+  myObject1 = [];
+
+  private experienceList: AngularFireObject<any>;
+  itemArray2 = [];
+  myObject2 = [];
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,
               public userser:UserService, public db: AngularFireDatabase) {
+    this.FormationList = this.db.object('/ensaiste/' + firebase.auth().currentUser.uid + '/formation/');
+    this.experienceList = this.db.object('/ensaiste/' + firebase.auth().currentUser.uid + '/experience/');
+
+    this.FormationList.snapshotChanges().subscribe(action => {
+
+      this.itemArray1.push(action.payload.val());
+      if (this.itemArray1[0] != null) {
+        this.myObject1 = Object.entries(this.itemArray1[0]);
+      }
+
+      for (let f of this.myObject1) {
+
+
+      }
+
+    });
+
+    this.experienceList.snapshotChanges().subscribe(action => {
+
+      this.itemArray2.push(action.payload.val());
+      if (this.itemArray2[0] != null) {
+        this.myObject2 = Object.entries(this.itemArray2[0]);
+      }
+
+      for (let f of this.myObject2) {
+
+
+      }
+
+    });
     this.entrepriseDisplayName=this.userser.getCurrentUser().displayName;
     this.id=this.navParams.data;
     this.ensaisteId=this.userser.getCurrentUser().uid;
@@ -117,5 +155,24 @@ export class MyProfilePage {
       ]
     });
     confirm.present();
+  }
+  supprimer(idformation:string){
+    const userId = firebase.auth().currentUser.uid;
+    const itemRef1 = this.db.object('/ensaiste/' + userId + '/formation/' + idformation);
+    itemRef1.remove();
+  }
+
+  supprimerexp(idexperience:string){
+    const userId = firebase.auth().currentUser.uid;
+    const itemRef1 = this.db.object('/ensaiste/' + userId + '/experience/' + idexperience);
+    itemRef1.remove();
+  }
+
+  afficherDateFormat(date:string):string{
+    var date1=new Date(date);
+    var annee1 = date1.getFullYear();
+    var mois1 = ("0" + (date1.getMonth() + 1)).slice(-2);
+    var jour1 = ("0" + (date1.getDate())).slice(-2);
+    return  jour1 + '/' + mois1 + '/' + annee1;
   }
 }

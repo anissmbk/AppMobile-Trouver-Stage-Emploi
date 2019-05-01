@@ -76,9 +76,6 @@ export class UserService {
         ensaiste.lastName = result[keys[7]];
         ensaiste.phone = result[keys[8]];
         ensaiste.photo = result[keys[9]];
-        ensaiste.zdebut = result[keys[10]];
-        ensaiste.zecole = result[keys[11]];
-        ensaiste.zfin = result[keys[12]];
       }
     }, function (error) {
       return error;
@@ -103,9 +100,6 @@ export class UserService {
         ensaiste.lastName = result[keys[7]];
         ensaiste.phone = result[keys[8]];
         ensaiste.photo = result[keys[9]];
-        ensaiste.zdebut = result[keys[10]];
-        ensaiste.zecole = result[keys[11]];
-        ensaiste.zfin = result[keys[12]];
       }
     }, function (error) {
       return error;

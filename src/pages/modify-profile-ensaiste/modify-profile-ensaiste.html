@@ -40,6 +40,8 @@
       <div padding-bottom="12px;"><input required="" type="text" name="email" ngModel class="form-control" value="{{ensaisteProfile.email}}">
       </div></ion-item>
 
+
+
     <ion-item>
       <ion-title text-left="" padding-bottom="">
         <strong>Ville :</strong></ion-title>
@@ -58,32 +60,138 @@
       <div padding-bottom="12px;"><input required="" type="date" name="datenaissance" ngModel class="form-control" value="{{ensaisteProfile.date_naissance}}">
       </div></ion-item>
 
-    <ion-item>
-      <ion-title text-left="" padding-bottom="">
-        <strong>Etablissement:</strong></ion-title>
-      <div padding-bottom="12px;"><input required="" type="text" name="ecole" ngModel class="form-control" value="{{ensaisteProfile.zecole}}">
-      </div></ion-item>
-
-    <ion-item>
-      <ion-title text-left="" padding-bottom="">
-        <strong>Formation:</strong></ion-title>
-      <div padding-bottom="12px;"><input required="" type="text" name="formation" ngModel class="form-control" value="{{ensaisteProfile.formation}}">
-      </div></ion-item>
-
-    <ion-item>
-      <ion-title text-left="" padding-bottom="">
-        <strong>Debut de formation:</strong></ion-title>
-      <div padding-bottom="12px;"><input required="" type="date" name="debut" ngModel class="form-control" value="{{ensaisteProfile.zdebut}}">
-      </div></ion-item>
-
-    <ion-item>
-      <ion-title text-left="" padding-bottom="">
-        <strong>Fin de formation:</strong></ion-title>
-      <div padding-bottom="12px;"><input required="" type="date" name="fin" ngModel class="form-control" value="{{ensaisteProfile.zfin}}">
-      </div></ion-item>
 
     <ion-item text-center="">
       <button class="btn btn-primary btn-lg btn-block"  type="submit" >Modifier</button>
     </ion-item>
   </form>
+
+
+
+
+  <ion-title text-left="" padding-bottom="">
+    <strong>Formation :</strong></ion-title>
+
+  <ion-card padding="" text-center="" *ngFor="let f of myObject">
+    <div text-center="">
+      <strong>Etablissement: </strong>{{f[1]["ecole"]}}<br>
+      <strong>Filiere: </strong>{{f[1]["filiere"]}}<br>
+      <strong>Date debut: </strong>{{f[1]["date_debut"]}}<br>
+      <strong>Date fin: </strong>{{f[1]["date_fin"]}}
+    </div>
+    <button><ion-icon (click)="supprimer(f[0])" name="trash"></ion-icon></button>
+  </ion-card>
+
+
+  <ion-item>
+
+    <div padding-bottom="12px;">
+      <form #f1="ngForm" (ngSubmit)="Ajouterformation(f1.value)" >
+        <ion-title text-left="" padding-top="">
+          <strong>Date_debut :</strong></ion-title>
+        <input required="" type="date" name="date_debut" ngModel class="form-control" value="date de debut">
+        <ion-title text-left="" padding-top="">
+          <strong>Date_fin :</strong></ion-title>
+        <input required="" type="date" name="date_fin" ngModel class="form-control" >
+        <ion-title text-left="" padding-top="">
+          <strong>Filiere :</strong></ion-title>
+        <select name="filiere" ngModel class="form-control">
+          <option value="Génie informatique">Génie informatique</option>
+          <option value="Génie industriel">Génie industriel</option>
+          <option value="Génie des procédés de l'énergie et de l'environnement">Génie des procédés de l'énergie et de l'environnement</option>
+          <option value="Génie Mécanique">Génie Mécanique</option>
+          <option value="Génie civil">Génie civil</option>
+          <option value="Génie Électrique">Génie Électrique</option>
+          <option value="Génie agro-alimentaire ">Génie agro-alimentaire </option>
+          <option value="Génie des systèmes de télécommunications et réseaux">Génie des systèmes de télécommunications et réseaux</option>
+          <option value="Génie des systèmes électroniques et automatique">Génie des systèmes électroniques et automatique</option>
+          <option value="Génie industriel et logistique">Génie industriel et logistique</option>
+          <option value="Génie Eco-Énergétique et Environnement Industriel">Génie Eco-Énergétique et Environnement Industriel</option>
+          <option value="Génie télécommunication et réseaux">Génie télécommunication et réseaux</option>
+          <option value="Génie électronique et Informatique industrielle ">Génie électronique et Informatique industrielle </option>
+          <option value="Génie mécatronique ">Génie mécatronique </option>
+          <option value="Génie des procédés et matériaux céramiques">Génie des procédés et matériaux céramiques</option>
+          <option value="Génie Mécanique et Systèmes automatisés">Génie Mécanique et Systèmes automatisés</option>
+          <option value="Génie des Systèmes Embarqués et Informatique Industrielle">Génie des Systèmes Embarqués et Informatique Industrielle</option>
+          <option value="Génie énergétique et énergies renouvelables">Génie énergétique et énergies renouvelables</option>
+          <option value="Génie de l'eau et de l'environnement">Génie de l'eau et de l'environnement</option>
+          <option value="Ingénierie des Systèmes d’Information et de Communication">Ingénierie des Systèmes d’Information et de Communication</option>
+          <option value="Génie Enérgétique et Eléctrique">Génie Enérgétique et Eléctrique</option>
+          <option value="Ingénierie Informatique et Technologies Emergentes ">Ingénierie Informatique et Technologies Emergentes </option>
+          <option value="Génie des procédés de l'énergie et de l'environnement">Génie des procédés de l'énergie et de l'environnement</option>
+          <option value="Supply Chain Management">Supply Chain Management</option>
+        </select>        <ion-title text-left="" padding-top="">
+        <strong>Ecole :</strong></ion-title>
+        <select name="ecole" ngModel class="form-control">
+          <option value="Genie">Ensa de Marrakech</option>
+          <option value="Ensa de Tanger">Ensa de Tanger</option>
+          <option value="Ensa de Agadir">Ensa de Agadir</option>
+          <option value="Ensa de d'Oujda">Ensa d'Oujda</option>
+          <option value="Ensa de Safi">Ensa de Safi</option>
+          <option value="Ensa de Fes">Ensa de Fes</option>
+          <option value="Ensa de Khouribga">Ensa de Khouribga</option>
+          <option value="Ensa d'Al Hoceima">Ensa d'Al Hoceima</option>
+          <option value="Ensa d'El Jadida">Ensa d'El Jadida</option>
+          <option value="Ensa de Kenitra">Ensa de Kenitra</option>
+          <option value="Ensa de Tetouan">Ensa de Tetouan</option>
+        </select>
+        <button block ion-button type="submit" item-left>+</button>
+
+      </form>
+    </div></ion-item>
+
+  <ion-title text-left="" padding-bottom="">
+    <strong>Experience :</strong></ion-title>
+
+  <ion-card text-center="" *ngFor="let f of myObject2">
+    <div text-center="">
+      <strong>Etablissement: </strong>{{f[1]["ecole"]}}<br>
+      <strong>Type: </strong>{{f[1]["type"]}}<br>
+      <strong>Mission: </strong>{{f[1]["mission"]}}<br>
+
+      <strong>Date debut: </strong>{{f[1]["date_debut"]}}<br>
+      <strong>Date fin: </strong>{{f[1]["date_fin"]}}
+    </div>
+    <button><ion-icon (click)="supprimerexp(f[0])" name="trash"></ion-icon></button>
+  </ion-card>
+
+  <ion-item>
+
+    <div padding-bottom="12px;">
+      <form #f2="ngForm" (ngSubmit)="Ajouterexperience(f2.value)" >
+        <ion-title text-left="" padding-top="">
+          <strong>Date_debut :</strong></ion-title>
+        <input required="" type="date" name="date_debut" ngModel class="form-control" value="date de debut">
+        <ion-title text-left="" padding-top="">
+          <strong>Date_fin :</strong></ion-title>
+        <input required="" type="date" name="date_fin" ngModel class="form-control" >
+        <ion-title text-left="" padding-top="">
+          <strong>Type :</strong></ion-title>
+        <select name="type" ngModel class="form-control">
+          <option value="stage">Stage </option>
+          <option value="emploi">Emploi </option>
+
+        </select>        <ion-title text-left="" padding-top="">
+        <strong>Etablissement :</strong></ion-title>
+        <select name="ecole" ngModel class="form-control">
+          <option value="Genie">Ensa de Marrakech</option>
+          <option value="Ensa de Tanger">Ensa de Tanger</option>
+          <option value="Ensa de Agadir">Ensa de Agadir</option>
+          <option value="Ensa de d'Oujda">Ensa d'Oujda</option>
+          <option value="Ensa de Safi">Ensa de Safi</option>
+          <option value="Ensa de Fes">Ensa de Fes</option>
+          <option value="Ensa de Khouribga">Ensa de Khouribga</option>
+          <option value="Ensa d'Al Hoceima">Ensa d'Al Hoceima</option>
+          <option value="Ensa d'El Jadida">Ensa d'El Jadida</option>
+          <option value="Ensa de Kenitra">Ensa de Kenitra</option>
+          <option value="Ensa de Tetouan">Ensa de Tetouan</option>
+        </select>
+        <ion-title text-left="" padding-top="">
+          <strong>Mission :</strong></ion-title>
+        <input required="" name="mission" ngModel class="form-control" >
+        <button block ion-button type="submit" item-left>+</button>
+
+      </form>
+    </div></ion-item>
+
 </ion-content>

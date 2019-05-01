@@ -9,10 +9,7 @@ export class EnsaisteModel{
   formation: string;
   experience: string;
   competence: string;
-  zdebut : string;
-  zecole : string;
-  zfin : string;
-    zz_recommandations:{
+  zz_recommandations:{
     id_entreprise:string;
     recommandation_text:string;
   }[];
@@ -40,9 +37,6 @@ export class EnsaisteModel{
     this.formation='';
     this.experience='';
     this.competence='';
-    this.zdebut='';
-    this.zecole='';
-    this.zfin='';
     this.zz_annonce_stage_enregistre= [];
     this.zz_annonce_emploi_enregistre= [];
     this.zz_entreprise_enregistree= [];

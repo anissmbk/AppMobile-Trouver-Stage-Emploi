@@ -25,7 +25,6 @@
   <ion-card style="border-radius:10px; ">
     <ion-item text-center=""><img src="{{ensaisteUser.photo}}" class="image">
       <strong>{{ensaisteUser.firstName}} {{ensaisteUser.lastName}}</strong>
-      <p>{{ensaisteUser.formation}}</p>
       <p>{{ensaisteUser.city}}</p>
     </ion-item>
 
@@ -33,9 +32,17 @@
       <ion-item padding-left="">
         <ion-title><strong>Formation</strong></ion-title>
         <div padding-top="">
-          <strong>{{ensaisteUser.zdebut}}-{{ensaisteUser.zfin}}:</strong>
-          {{ensaisteUser.formation}}
-          <p>{{ensaisteUser.zecole}}</p>
+          <ion-card padding="" text-center="" *ngFor="let f of myObject1">
+            <div text-center="">
+              <strong>Etablissement: </strong>{{f[1]["ecole"]}}<br>
+              <strong>Filiere: </strong>{{f[1]["filiere"]}}<br>
+              <strong>Date debut: </strong>{{afficherDateFormat(f[1]["date_debut"])}}<br>
+              <strong>Date fin: </strong>{{afficherDateFormat(f[1]["date_fin"])}}
+            </div>
+            <button><ion-icon (click)="supprimer(f[0])" name="trash"></ion-icon></button>
+          </ion-card>
+          <!-- <strong>{{ensaisteUser.zdebut}}-{{ensaisteUser.zfin}}:</strong>-->
+          <!--   <p>{{ensaisteUser.zecole}}</p>-->
         </div>
       </ion-item>
     </ion-card>
@@ -51,6 +58,25 @@
         </div>
       </ion-item>
     </ion-card>
+  </ion-card>
+
+
+
+
+
+  <ion-title text-left="" padding-bottom="">
+    <strong>Experience :</strong></ion-title>
+
+  <ion-card padding="" text-center="" *ngFor="let f of myObject2">
+    <div text-center="">
+      <strong>Etablissement: </strong>{{f[1]["ecole"]}}<br>
+      <strong>Type: </strong>{{f[1]["type"]}}<br>
+      <strong>Mission: </strong>{{f[1]["mission"]}}<br>
+
+      <strong>Date debut: </strong>{{f[1]["date_debut"]}}<br>
+      <strong>Date fin: </strong>{{f[1]["date_fin"]}}
+    </div>
+    <button><ion-icon (click)="supprimerexp(f[0])" name="trash"></ion-icon></button>
   </ion-card>
   <p class="text" *ngIf="id=='true' || id==ensaisteId || entrepriseDisplayName=='entreprise'">
     Recommandations:</p>
