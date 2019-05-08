@@ -1,9 +1,3 @@
-<!--
-  Generated template for the DiscussionPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar color="macouleur">
     <ion-title>Discussions</ion-title>
@@ -12,10 +6,79 @@
     </button>
 
   </ion-navbar>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar placeholder="chercher Sujet.." (ionInput)="chercherSujet($event)"></ion-searchbar>
 </ion-header>
 
 
 <ion-content padding>
 
+  <ion-fab right bottom>
+    <button ion-fab color="dark" (click)="showPrompt()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <div *ngIf="isSearch==false; else trueSearch">
+
+    <ion-card *ngFor="let sujet of myObject">
+
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{sujet[2]['photo']}}">
+        </ion-avatar>
+        <h2>{{sujet[2]['lastName']}} {{sujet[2]['firstName']}}</h2><!--ensaisteName-->
+        <p>publiee le :{{afficherDateFormat(sujet[1]['publiee_le'])}}</p><!--publiee le-->
+      </ion-item>
+
+      <ion-card-content>
+        <p>{{sujet[1]['sujet_text']}}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{sujet[1]['nbr_like']}} Likes</div><!--nombre de likes-->
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small (click)="consulterDetails(sujet[0])">
+            <ion-icon name="text"></ion-icon>
+            <div>{{sujet[1]['nbr_comment']}} Comments</div><!--nombre de comments-->
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </div>
+  <ng-template #trueSearch>
+    <ion-card *ngFor="let sujet of searchTab">
+
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{sujet[2]['photo']}}">
+        </ion-avatar>
+        <h2>{{sujet[2]['lastName']}} {{sujet[2]['firstName']}}</h2><!--ensaisteName-->
+        <p>publiee le :{{afficherDateFormat(sujet[1]['publiee_le'])}}</p><!--publiee le-->
+      </ion-item>
+
+      <ion-card-content>
+        <p>{{sujet[1]['sujet_text']}}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{sujet[1]['nbr_like']}} Likes</div><!--nombre de likes-->
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>{{sujet[1]['nbr_comment']}} Comments</div><!--nombre de comments-->
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </ng-template>
 </ion-content>

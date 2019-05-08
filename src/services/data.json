@@ -354,5 +354,22 @@
       "photo" : "../../assets/imgs/entreprise.jpg",
       "secteurActivite" : "info"
     }
+  },
+
+  "discussion" : {
+    "WxXDUTBZKTYKOmtP90ivFYhp3z12" : {
+      "publiee_le" : "2019-03-30",
+      "id_ensaiste" : "OZzqYbwlNAQspbbZZyDZxGKjTcr2",
+      "sujet_text" : "hello gys svp qlq infos",
+      "nbr_like" : 4,
+      "nbr_comment" : 4
+    },
+    "WszdxXDUTBZKTYKOmtP90ivFYhp3z12" : {
+      "publiee_le" : "2019-03-30",
+      "id_ensaiste" : "OZzqYbwlNAQspbbZZyDZxGKjTcr2",
+      "sujet_text" : "hello gys svp qlq infos",
+      "nbr_like" : 4,
+      "nbr_comment" : 4
+    }
   }
 }

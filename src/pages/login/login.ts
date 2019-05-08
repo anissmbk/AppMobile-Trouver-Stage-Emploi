@@ -5,7 +5,6 @@ import {EnsaistePage} from "../ensaiste/ensaiste";
 import {UserService} from "../../services/user.service";
 import {EntreprisePage} from "../entreprise/entreprise";
 import {ModifyProfileEnsaistePage} from "../modify-profile-ensaiste/modify-profile-ensaiste";
-import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -22,7 +21,6 @@ export class LoginPage {
               public authService: AuthService,
               public navParams: NavParams,
               public userService: UserService,
-              private storage: Storage,
               public loadingCtrl: LoadingController,
   ) {
 

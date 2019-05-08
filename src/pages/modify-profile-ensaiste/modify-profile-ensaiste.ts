@@ -5,11 +5,6 @@ import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {EnsaistePage} from "../ensaiste/ensaiste";
-import {EntreprisePage} from "../entreprise/entreprise";
-import {EntrepriseModel} from "../../UserClass/entrepriseModel";
-
-
-
 
 class FormationModel {
   date_debut:string;
@@ -68,11 +63,6 @@ export class ModifyProfileEnsaistePage {
         this.myObject = Object.entries(this.itemArray[0]);
       }
 
-      for (let f of this.myObject) {
-
-
-      }
-
     });
 
     this.experienceList.snapshotChanges().subscribe(action => {
@@ -80,11 +70,6 @@ export class ModifyProfileEnsaistePage {
       this.itemArray2.push(action.payload.val());
       if (this.itemArray2[0] != null) {
         this.myObject2 = Object.entries(this.itemArray2[0]);
-      }
-
-      for (let f of this.myObject2) {
-
-
       }
 
     });
@@ -123,8 +108,6 @@ export class ModifyProfileEnsaistePage {
       this.itemArray.push(action.payload.val() as FormationModel);
       if (this.itemArray[0] != null) {
         this.myObject = Object.entries(this.itemArray[0]);
-      }
-      for (let f of this.myObject) {
       }
     });
   }

@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
 import {AnnonceStageModel} from "../../AnnonceClass/annonceStageModel";
-import * as firebase from 'firebase/app';
 import {EntreprisePage} from "../entreprise/entreprise";
 
 

@@ -1,10 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import {LoadingController, NavController, NavParams} from 'ionic-angular';
+import {LoadingController, NavController} from 'ionic-angular';
 import {LoginPage} from "../login/login";
 import {RegisterPage} from "../register/register";
-import {Storage} from "@ionic/storage";
 import {EntreprisePage} from "../entreprise/entreprise";
-import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";
 import {EnsaistePage} from "../ensaiste/ensaiste";
 
@@ -19,7 +17,7 @@ export class HomePage {
   loading: any;
   videPage:boolean=false;
 
-  constructor(public loadingCtrl: LoadingController,public userService:UserService,public navCtrl: NavController, private storage: Storage,public authService: AuthService) {
+  constructor(public loadingCtrl: LoadingController,public userService:UserService,public navCtrl: NavController) {
     /*this.storage.get('user').then(val =>{
       if(val === null){
         this.videPage=true;

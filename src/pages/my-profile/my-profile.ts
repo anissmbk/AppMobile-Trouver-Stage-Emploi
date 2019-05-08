@@ -40,11 +40,6 @@ export class MyProfilePage {
         this.myObject1 = Object.entries(this.itemArray1[0]);
       }
 
-      for (let f of this.myObject1) {
-
-
-      }
-
     });
 
     this.experienceList.snapshotChanges().subscribe(action => {
@@ -54,10 +49,6 @@ export class MyProfilePage {
         this.myObject2 = Object.entries(this.itemArray2[0]);
       }
 
-      for (let f of this.myObject2) {
-
-
-      }
 
     });
     this.entrepriseDisplayName=this.userser.getCurrentUser().displayName;

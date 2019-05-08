@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>SujetDetailsPage</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{ensaisteUser.photo}}">
+      </ion-avatar>
+      <h2>{{ensaisteUser.lastName}} {{ensaisteUser.firstName}}</h2>
+      <p>publiee le :{{sujet.publiee_le}}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <p>{{sujet.sujet_text}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>{{sujet.nbr_like}} Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{sujet.nbr_comment}} Comments</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <p class="text">Commentaires:</p>
+  <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0">Soyez le premier à commenter ce Sujet !!</div>
+  <div class="scroll">
+    <ion-list>
+      <ion-item-sliding *ngFor="let commentaire of myObject">
+        <ion-item class="comment">
+          <ion-avatar item-start>
+            <img src="{{commentaire[2]['photo']}}" class="imgreduce">
+          </ion-avatar>
+          <div>
+            <h2>{{commentaire[2]['firstName']}} {{commentaire[2]['lastName']}}</h2>
+            <p style="white-space: pre-line">{{commentaire[1]['commentaire_text']}}</p>
+          </div>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="secondary" (click)="consulterEnsaiste(commentaire[1]['id_ensaiste'])" >
+            <ion-icon name="text"></ion-icon>
+            Consulter
+          </button>
+          <button ion-button color="danger" *ngIf="userUid==commentaire[1]['id_ensaiste']" (click)="deleteComment(commentaire[0])" >
+            <ion-icon name="trash"></ion-icon>
+            delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+  <button block ion-button (click)="showPrompt()" item-left><ion-icon name="send"></ion-icon></button>
+</ion-content>

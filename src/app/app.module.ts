@@ -37,6 +37,7 @@ import {MesNotificationsPage} from "../pages/mes-notifications/mes-notifications
 
 //local storage pour notre app
 import { IonicStorageModule } from '@ionic/storage';
+import {SujetDetailsPage} from "../pages/sujet-details/sujet-details";
 
 const firebase= {
   apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
@@ -73,7 +74,8 @@ const firebase= {
     FormAnnonceStagePage,
     FormAnnonceEmploiPage,
     AnnonceEmploiDetailsPage,
-    MesNotificationsPage
+    MesNotificationsPage,
+    SujetDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -109,7 +111,8 @@ const firebase= {
     FormAnnonceStagePage,
     FormAnnonceEmploiPage,
     AnnonceEmploiDetailsPage,
-    MesNotificationsPage
+    MesNotificationsPage,
+    SujetDetailsPage
   ],
   providers: [
     AngularFireDatabase,//a voir

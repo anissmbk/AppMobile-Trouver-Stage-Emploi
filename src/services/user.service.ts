@@ -6,13 +6,14 @@ import {EnsaisteModel} from "../UserClass/ensaisteModel";
 import {EntrepriseModel} from "../UserClass/entrepriseModel";
 import {AnnonceStageModel} from "../AnnonceClass/annonceStageModel";
 import {AnnonceEmploiModel} from "../AnnonceClass/AnnonceEmploiModel";
+import {DiscussionModel} from "../DiscussionClass/DiscussionModel";
 
 @Injectable()
 export class UserService {
   //user: User;
 
-  constructor(public db: AngularFireDatabase) {}
-
+  constructor(public db: AngularFireDatabase) {
+  }
 
   updateEntreprise(value: EntrepriseModel) {
     return new Promise<any>((resolve, reject) => {
@@ -184,6 +185,26 @@ export class UserService {
 
   }
 
+  getSujetById(id:string):DiscussionModel{
+    let sujet: DiscussionModel = new DiscussionModel();
+    var ref = firebase.database().ref('/discussion/'+id);
+    ref.once("value").then(function (snapshot) {
+      var result = snapshot.val();
+      if (result != null) {
+        var keys = Object.keys(result);
+        sujet.id_ensaiste = result[keys[0]];
+        sujet.nbr_comment = result[keys[1]];
+        sujet.nbr_like = result[keys[2]];
+        sujet.publiee_le = result[keys[3]];
+        sujet.sujet_text = result[keys[4]];
+      }
+    }, function (error) {
+
+      return error;
+    });
+    return sujet;
+  }
+
   getAnnonceEmploiById(id: string): AnnonceEmploiModel {
     let annonceEmploi: AnnonceEmploiModel = new AnnonceEmploiModel();
     var ref = firebase.database().ref('/annonceEmploi/' + id);
@@ -247,6 +268,7 @@ export class UserService {
     localStorage.setItem('user', JSON.stringify(user));
     console.log('saved on localStorage');
   }
+
   // get data on localStorage
   getUserLoggedIn() {
     //console.log(firebase.auth().currentUser.displayName);
@@ -258,9 +280,27 @@ export class UserService {
     }*/
     return JSON.parse(localStorage.getItem('user'));
   }
+
   // Optional: clear localStorage
   clearLocalStorage() {
     localStorage.clear();
+  }
+
+
+  addSujet(idUser: string, sujet_text: string) {
+    var now = new Date();
+    var annee = now.getFullYear();
+    var mois = ("0" + (now.getMonth() + 1)).slice(-2);
+    var jour = ("0" + (now.getDate())).slice(-2);
+    const dateNow = annee + '-' + mois + '-' + jour;
+    const idAleatoir = Math.random().toString(36).substring(2);
+    this.db.object('/discussion/' + idAleatoir).set({
+      id_ensaiste: idUser,
+      nbr_comment: 0,
+      nbr_like: 0,
+      publiee_le: dateNow,
+      sujet_text: sujet_text,
+    });
   }
 
 }

@@ -1,3 +1,5 @@
+mes sujets de discussion ensaiste
+
 modify profile khass lemail mayb9aach + ville twli select feeha ga3 les villes dyal lmaroc +okhass les validators
 + etablissements twli select feeha gaa3 les ensa dyal lmaroc  + champ dyal competence + formation && experience it9ado
 

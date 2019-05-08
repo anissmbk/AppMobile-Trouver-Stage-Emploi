@@ -5,7 +5,6 @@ import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
 import {EntreprisePage} from "../entreprise/entreprise";
 import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
-import * as firebase from 'firebase/app';
 
 @IonicPage()
 @Component({
