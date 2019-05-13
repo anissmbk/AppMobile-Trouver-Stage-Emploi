@@ -9,6 +9,9 @@ export class DiscussionModel{
     id_ensaiste:string;
     commentaire_text:string;
   }[];
+  z_like_ensaiste:{
+    id_ensaiste:string;
+  }[];
   constructor(){
     this.nbr_comment=0;
     this.nbr_like=0;
@@ -18,6 +21,9 @@ export class DiscussionModel{
     this.z_commentaires=[{
       id_ensaiste:'',
       commentaire_text:''
+    }];
+    this.z_like_ensaiste=[{
+      id_ensaiste:''
     }];
   }
 }

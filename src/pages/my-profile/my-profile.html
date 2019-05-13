@@ -73,8 +73,8 @@
       <strong>Type: </strong>{{f[1]["type"]}}<br>
       <strong>Mission: </strong>{{f[1]["mission"]}}<br>
 
-      <strong>Date debut: </strong>{{f[1]["date_debut"]}}<br>
-      <strong>Date fin: </strong>{{f[1]["date_fin"]}}
+      <strong>Date debut: </strong>{{afficherDateFormat(f[1]["date_debut"])}}<br>
+      <strong>Date fin: </strong>{{afficherDateFormat(f[1]["date_fin"])}}
     </div>
     <button><ion-icon (click)="supprimerexp(f[0])" name="trash"></ion-icon></button>
   </ion-card>

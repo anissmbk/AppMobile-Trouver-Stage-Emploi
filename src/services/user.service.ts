@@ -205,6 +205,27 @@ export class UserService {
     return sujet;
   }
 
+
+  addCommentSujet(id: string, userId: string, commentaire_text: string,nbrComment:number) {
+    const idAleatoir = Math.random().toString(36).substring(2);
+    nbrComment++;
+    this.db.object('/discussion/' + id + '/z_commentaires/' + idAleatoir).set({
+      commentaire_text: commentaire_text,
+      id_ensaiste: userId
+    });
+    this.db.object('/discussion/' + id + '/nbr_comment').set(nbrComment);
+  }
+
+  addLike(id:string,nbr:number,idUser:string){
+    this.db.object('/discussion/' + id + '/nbr_like').set(nbr);
+    this.db.object('/discussion/' + id + '/z_like_ensaiste/'+idUser).set({id_ensaiste:idUser});
+  }
+
+  removeLike(id:string,nbr:number,idUser:string){
+    this.db.object('/discussion/' + id + '/nbr_like').set(nbr);
+    this.db.object('/discussion/' + id + '/z_like_ensaiste/'+idUser).remove();
+  }
+
   getAnnonceEmploiById(id: string): AnnonceEmploiModel {
     let annonceEmploi: AnnonceEmploiModel = new AnnonceEmploiModel();
     var ref = firebase.database().ref('/annonceEmploi/' + id);

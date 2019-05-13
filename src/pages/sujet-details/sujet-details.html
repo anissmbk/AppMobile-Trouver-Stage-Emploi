@@ -12,7 +12,7 @@
         <img src="{{ensaisteUser.photo}}">
       </ion-avatar>
       <h2>{{ensaisteUser.lastName}} {{ensaisteUser.firstName}}</h2>
-      <p>publiee le :{{sujet.publiee_le}}</p>
+      <p>publiee le :{{afficherDateFormat(sujet.publiee_le)}}</p>
     </ion-item>
 
     <ion-card-content>
@@ -21,7 +21,7 @@
 
     <ion-row>
       <ion-col>
-        <button ion-button icon-start clear small>
+        <button ion-button icon-start small (click)="addLike(id,sujet.nbr_like)" [ngClass]="{'my-class': like=='null'}">
           <ion-icon name="thumbs-up"></ion-icon>
           <div>{{sujet.nbr_like}} Likes</div>
         </button>
@@ -55,7 +55,7 @@
             <ion-icon name="text"></ion-icon>
             Consulter
           </button>
-          <button ion-button color="danger" *ngIf="userUid==commentaire[1]['id_ensaiste']" (click)="deleteComment(commentaire[0])" >
+          <button ion-button color="danger" *ngIf="sujet.id_ensaiste==userUid || userUid==commentaire[1]['id_ensaiste']" (click)="deleteComment(commentaire[0])" >
             <ion-icon name="trash"></ion-icon>
             delete
           </button>

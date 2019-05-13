@@ -22,4 +22,12 @@ page-sujet-details {
     font-family: fantasy;
     font-size: large;
   }
+  .my-class{
+    border-color: transparent;
+    color: #488aff;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: 1
+  }
 }
