@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
@@ -6,8 +6,7 @@ import {UserService} from "../../services/user.service";
 import {DiscussionModel} from "../../DiscussionClass/DiscussionModel";
 import {MyProfilePage} from "../my-profile/my-profile";
 import * as firebase from 'firebase/app';
-
-
+import {EnsaistePage} from "../ensaiste/ensaiste";
 @IonicPage()
 @Component({
   selector: 'page-sujet-details',
@@ -101,7 +100,7 @@ export class SujetDetailsPage {
 
   showPrompt() {
     const prompt = this.alertCtrl.create({
-      title: 'Add Sujet',
+      title: 'Ajouter Commentaire',
       //message: "Enter a name for this new album you're so keen on adding",
       inputs: [
         {
@@ -121,7 +120,8 @@ export class SujetDetailsPage {
           text: 'Send',
           handler: data => {
             if(data.sujet_text!=''){
-              this.userService.addCommentSujet(this.id,this.userUid,data.sujet_text,this.sujet.nbr_comment);
+                   this.userService.addCommentSujet(this.id,this.userUid,data.sujet_text,this.sujet.nbr_comment);
+              this.navCtrl.setRoot(EnsaistePage);//solution Temporaire
             }
             console.log('Saved clicked');
           }
@@ -143,10 +143,12 @@ export class SujetDetailsPage {
     nbr++;
     this.userService.addLike(id,nbr,this.userUid);
     this.like=this.userUid;
+    this.sujet.nbr_like=this.sujet.nbr_like+1;
     }else{
       nbr--;
       this.userService.removeLike(id,nbr,this.userUid);
       this.like='null';
+      this.sujet.nbr_like=this.sujet.nbr_like-1;
     }
   }
 }

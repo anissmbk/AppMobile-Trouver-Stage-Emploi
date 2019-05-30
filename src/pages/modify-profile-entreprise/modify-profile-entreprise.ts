@@ -4,6 +4,7 @@ import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase} from "@angular/fire/database";
 import * as firebase from 'firebase/app';
+import {EntreprisePage} from "../entreprise/entreprise";
 
 @IonicPage()
 @Component({
@@ -56,6 +57,7 @@ export class ModifyProfileEntreprisePage {
     if(value.tel) this.entrepriseProfile.phone=value.tel;
     if(value.description) this.entrepriseProfile.description=value.description;
     this.userService.updateEntreprise(this.entrepriseProfile);
+    this.navCtrl.setRoot(EntreprisePage);
   }
 
 }

@@ -18,21 +18,6 @@ export class HomePage {
   videPage:boolean=false;
 
   constructor(public loadingCtrl: LoadingController,public userService:UserService,public navCtrl: NavController) {
-    /*this.storage.get('user').then(val =>{
-      if(val === null){
-        this.videPage=true;
-        console.log("token is null : ",val);
-      }else{
-        this.showLoader();
-        this.authService.doLogin(val.email, val.password).then(
-          data => {
-            this.navCtrl.setRoot(EntreprisePage);
-            this.loading.dismiss();
-          });
-      }
-    }).catch(error=>{
-      console.log(error)
-    });*/
     if (localStorage.getItem('user')){
       this.showLoader();
       if(this.userService.getUserLoggedIn().displayName=='ensaiste'){

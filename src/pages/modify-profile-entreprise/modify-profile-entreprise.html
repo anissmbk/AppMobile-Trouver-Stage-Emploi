@@ -21,32 +21,41 @@
   </ion-item-sliding>
 
   <form #f="ngForm" (ngSubmit)="modifier(f.value)" >
-    <ion-row>
+    <ion-item>
+        <ion-title text-left="" padding-bottom=""><strong>Nom Entreprise:</strong></ion-title>
+      <div padding-bottom="12px;">
+      <input required="" type="text" name="nomentreprise" ngModel class="form-control" value="{{entrepriseProfile.entrepriseName}}">
+      </div>
+    </ion-item>
 
-      <strong padding="" padding-vertical="6px;">Nom Entreprise:</strong>
-      <ion-col>
-        <input required="" type="text" name="nomentreprise" ngModel class="form-control" value="{{entrepriseProfile.entrepriseName}}">
-      </ion-col></ion-row>
+    <ion-item>
+       <ion-title text-left="" padding-bottom=""><strong>Email:</strong></ion-title>
+      <div padding-bottom="12px;">
+      <input required="" type="text" name="email" ngModel class="form-control" value="{{entrepriseProfile.email}}">
+      </div>
+    </ion-item>
 
-    <ion-row>
-      <strong padding="" padding-vertical="6px;">email:</strong>
-      <ion-col><input required="" type="text" name="email" ngModel class="form-control" value="{{entrepriseProfile.email}}">
-      </ion-col></ion-row>
+    <ion-item>
+      <ion-title text-left="" padding-bottom=""><strong>Tel:</strong></ion-title>
+      <div padding-bottom="12px;">
+      <input required="" type="text" name="tel" ngModel class="form-control" value="{{entrepriseProfile.phone}}">
+      </div>
+    </ion-item>
 
-    <ion-row>
-      <strong padding="" padding-vertical="6px;">tel:</strong>
-      <ion-col><input required="" type="text" name="tel" ngModel class="form-control" value="{{entrepriseProfile.phone}}">
-      </ion-col></ion-row>
-    <ion-row>
-      <strong padding="" padding-vertical="6px;">ville:</strong>
-      <ion-col><input required="" type="text" name="ville" ngModel class="form-control" value="{{entrepriseProfile.city}}">
-      </ion-col></ion-row>
+    <ion-item>
+      <ion-title text-left="" padding-bottom=""><strong>ville:</strong></ion-title>
+      <div padding-bottom="12px;">
+      <input required="" type="text" name="ville" ngModel class="form-control" value="{{entrepriseProfile.city}}">
+      </div>
+    </ion-item>
 
-    <ion-row>
-      <strong padding="" padding-vertical="6px;">description:</strong>
-      <ion-col><textarea required="" type="textarea" name="tel" ngModel class="form-control" value="{{entrepriseProfile.description}}">
-      </textarea></ion-col></ion-row>
-
+    <ion-item>
+      <ion-title text-left="" padding-bottom=""><strong>description:</strong></ion-title>
+      <div padding-bottom="12px;">
+      <textarea required="" type="textarea" name="tel" ngModel class="form-control" value="{{entrepriseProfile.description}}">
+      </textarea>
+      </div>
+    </ion-item>
 
     <ion-item text-center="">
       <button class="btn btn-primary btn-lg btn-block"  type="submit" >Modifier</button>

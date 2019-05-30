@@ -6,6 +6,7 @@ import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import * as firebase from 'firebase/app';
 import {SujetDetailsPage} from "../sujet-details/sujet-details";
 import {DiscussionModel} from "../../DiscussionClass/DiscussionModel";
+import {EnsaistePage} from "../ensaiste/ensaiste";
 @IonicPage()
 @Component({
   selector: 'page-discussion',
@@ -22,10 +23,10 @@ export class DiscussionPage {
   constructor(private alertCtrl: AlertController, public db: AngularFireDatabase, public navCtrl: NavController,
               public navParams: NavParams, public userService: UserService) {
 
-    this.idUser=firebase.auth().currentUser.uid;
-    this.sujetList=db.object('/discussion');
-    this.sujetList.snapshotChanges().subscribe(action=>{
-      this.itemArray.push(action.payload.val() as DiscussionModel);
+     this.idUser=firebase.auth().currentUser.uid;
+     this.sujetList=db.object('/discussion');
+     this.sujetList.snapshotChanges().subscribe(action=>{
+       this.itemArray.push(action.payload.val() as DiscussionModel);
       // pour savoir la methode entries il faut ajouter au tsconfig.json dans lib"es2017.object","es2016.array.include"
       this.myObject=Object.entries(this.itemArray[0]);
 
@@ -36,6 +37,7 @@ export class DiscussionPage {
 
     });
   }
+
   afficherDateFormat(date:string):string{
     var date1=new Date(date);
     var annee1 = date1.getFullYear();
@@ -67,6 +69,7 @@ export class DiscussionPage {
           handler: data => {
             if(data.sujet_text!=''){
               this.userService.addSujet(this.idUser,data.sujet_text);
+              this.navCtrl.setRoot(EnsaistePage);//solution Temporaire
             }
             console.log('Saved clicked');
           }

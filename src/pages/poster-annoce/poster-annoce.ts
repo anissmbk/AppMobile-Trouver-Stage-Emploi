@@ -91,10 +91,10 @@ export class PosterAnnocePage {
         {
           text: 'Oui',
           handler: () => {
-            const userId=firebase.auth().currentUser.uid;// 9leb==> this.userService.getUserLoggedIn().uid
-            const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+id1);
+            let userId=firebase.auth().currentUser.uid;// 9leb==> this.userService.getUserLoggedIn().uid
+            let itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_stage/'+id1);
             itemRef.remove();
-            const annonce = this.db.object('/annonceStage/'+id1);
+            let annonce = this.db.object('/annonceStage/'+id1);
             annonce.remove();
             this.alert("bien supprimee");
             this.navCtrl.setRoot(EntreprisePage);
@@ -119,10 +119,10 @@ export class PosterAnnocePage {
           handler: () => {
             //Attentien firebase.auth().currentUser.uid makatkhdemch f local storage mli yalah lconstructor kiycharga khass 7ta yt loada kolchi
 
-            const userId=firebase.auth().currentUser.uid;// 9leb==> this.userService.getUserLoggedIn().uid
-            const itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_emploi/'+id1);
+            let userId=firebase.auth().currentUser.uid;// 9leb==> this.userService.getUserLoggedIn().uid
+            let itemRef = this.db.object('/entreprise/'+userId+'/zz_mes_annonces_emploi/'+id1);
             itemRef.remove();
-            const annonce = this.db.object('/annonceEmploi/'+id1);
+            let annonce = this.db.object('/annonceEmploi/'+id1);
             annonce.remove();
             this.alert("bien supprimee");
             this.navCtrl.setRoot(EntreprisePage);

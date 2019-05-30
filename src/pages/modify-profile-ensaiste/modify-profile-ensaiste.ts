@@ -5,6 +5,7 @@ import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {UserService} from "../../services/user.service";
 import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {EnsaistePage} from "../ensaiste/ensaiste";
+import {AuthService} from "../../services/auth.service";
 
 class FormationModel {
   date_debut:string;
@@ -32,12 +33,13 @@ export class ModifyProfileEnsaistePage {
     ecole: string;
     date_fin:string };
 
-  public experience: {
+  public experience:{
     date_fin:string;
     date_debut: string;
     ecole: string;
-    type:string,
-    mission:string};
+    type:string;
+    mission:string
+  };
 
   private FormationList: AngularFireObject<any>;
   itemArray = [];
@@ -51,7 +53,8 @@ export class ModifyProfileEnsaistePage {
               public navCtrl: NavController,
               public navParams: NavParams,
               public userService: UserService,
-              public db: AngularFireDatabase
+              public db: AngularFireDatabase,
+              public authService: AuthService
   ) {
     this.FormationList = this.db.object('/ensaiste/' + firebase.auth().currentUser.uid + '/formation/');
     this.experienceList = this.db.object('/ensaiste/' + firebase.auth().currentUser.uid + '/experience/');
@@ -82,7 +85,7 @@ export class ModifyProfileEnsaistePage {
 
 
   upload(event) {
-    const id = Math.random().toString(36).substring(2);
+    let id = Math.random().toString(36).substring(2);
     var storageRef = firebase.storage().ref();
     var task = storageRef.child(id).put(event.target.files[0]);
     task.on('state_changed', function (snapshot) {
@@ -118,14 +121,17 @@ export class ModifyProfileEnsaistePage {
     if (value.formation) this.ensaisteProfile.formation = value.formation;
     if (value.ville) this.ensaisteProfile.city = value.ville;
     if (value.email) this.ensaisteProfile.email = value.email;
-    if (value.datedenaissance) this.ensaisteProfile.date_naissance = value.datedenaissance;
+    if (value.datenaissance) this.ensaisteProfile.date_naissance = value.datenaissance;
     if (value.tel) this.ensaisteProfile.phone = value.tel;
     this.userService.updateEnsaiste(this.ensaisteProfile);
-    const user = this.userService.getCurrentUser();
-    if (user.displayName === "ensaiste1") {
-      this.userService.updateCurrentBasicProfile('ensaiste');
+    let user = this.userService.getCurrentUser();
+    console.log('hhhhhhrrf');
+    if (user.displayName == "ensaiste1") {
+      this.userService.updateCurrentBasicProfile("ensaiste");
+      this.authService.getDataFromFirebase();
       this.navCtrl.setRoot(EnsaistePage);
     }
+    this.navCtrl.setRoot(EnsaistePage);
   }
 
 
@@ -139,19 +145,19 @@ export class ModifyProfileEnsaistePage {
 
 
   supprimer(idformation:string){
-    const userId = firebase.auth().currentUser.uid;
-    const itemRef1 = this.db.object('/ensaiste/' + userId + '/formation/' + idformation);
+    let userId = firebase.auth().currentUser.uid;
+    let itemRef1 = this.db.object('/ensaiste/' + userId + '/formation/' + idformation);
     itemRef1.remove();
   }
 
   supprimerexp(idexperience:string){
-    const userId = firebase.auth().currentUser.uid;
-    const itemRef1 = this.db.object('/ensaiste/' + userId + '/experience/' + idexperience);
+    let userId = firebase.auth().currentUser.uid;
+    let itemRef1 = this.db.object('/ensaiste/' + userId + '/experience/' + idexperience);
     itemRef1.remove();
   }
   Ajouterformation(value) {
     if (value.date_debut != '' && value.date_fin != '' && value.ecole != '' && value.filiere != '') {
-      const userId = firebase.auth().currentUser.uid;
+      let userId = firebase.auth().currentUser.uid;
 
       console.log(value.a_partir_de);
       var date_debut = new Date(value.date_debut);
@@ -165,8 +171,8 @@ export class ModifyProfileEnsaistePage {
           ecole: value.ecole,
           filiere: value.filiere
         };
-        const idformation = Math.random().toString(36).substring(2);
-        const itemRef1 = this.db.object('/ensaiste/' + userId + '/formation/' + idformation);
+        let idformation = Math.random().toString(36).substring(2);
+        let itemRef1 = this.db.object('/ensaiste/' + userId + '/formation/' + idformation);
         itemRef1.set(this.formation);
         console.log(this.formation.ecole)
         this.alert("bien poster");
@@ -180,7 +186,7 @@ export class ModifyProfileEnsaistePage {
 
   Ajouterexperience(value) {
     if (value.date_debut != '' && value.date_fin != '' && value.ecole != '' && value.filiere != '') {
-      const userId = firebase.auth().currentUser.uid;
+      let userId = firebase.auth().currentUser.uid;
 
       console.log(value.a_partir_de);
       var date_debut = new Date(value.date_debut);
@@ -195,8 +201,8 @@ export class ModifyProfileEnsaistePage {
           type: value.type,
           mission:value.mission
         };
-        const idexperience = Math.random().toString(36).substring(2);
-        const itemRef1 = this.db.object('/ensaiste/' + userId + '/experience/' + idexperience);
+        let idexperience = Math.random().toString(36).substring(2);
+        let itemRef1 = this.db.object('/ensaiste/' + userId + '/experience/' + idexperience);
         itemRef1.set(this.experience);
         this.alert("experience ajouter");
       }

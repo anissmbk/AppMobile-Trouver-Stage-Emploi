@@ -4,6 +4,7 @@ import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {UserService} from "../../services/user.service";
 import {EnsaisteModel} from "../../UserClass/ensaisteModel";
 import {MyProfilePage} from "../my-profile/my-profile";
+import {EntreprisePage} from "../entreprise/entreprise";
 
 @IonicPage()
 @Component({
@@ -53,14 +54,15 @@ export class CandidatsEnregistresPage {
         {
           text: 'Oui',
           handler: () => {
-            const userId=this.userService.getCurrentUser().uid;
-            const itemRef = this.db.object('/entreprise/'+userId+'/zz_candidats_enregistree/'+id1);
+            let userId=this.userService.getCurrentUser().uid;
+            let itemRef = this.db.object('/entreprise/'+userId+'/zz_candidats_enregistree/'+id1);
             itemRef.remove();
             // fixer le prbleme il faut cliquer deux fois !!!
             /*    var a=document.getElementById(id1) as HTMLDivElement;
                 a.remove();*/
             //this.navCtrl.setRoot(this.navCtrl.getActive().component);
             this.alert("bien supprimee");
+            this.navCtrl.setRoot(EntreprisePage);
           }
         }
       ]

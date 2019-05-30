@@ -4,6 +4,7 @@ import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 import {UserService} from "../../services/user.service";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
+import {EnsaistePage} from "../ensaiste/ensaiste";
 
 @IonicPage()
 @Component({
@@ -62,6 +63,7 @@ export class MesNotificationsPage {
             const itemRef = this.db.object('/ensaiste/'+this.ensaisteId+'/zz_notifications_recommandations/'+id);
             itemRef.remove();
             this.alert("bien supprimee");
+            this.navCtrl.setRoot(EnsaistePage);
           }
         }
       ]
@@ -77,6 +79,8 @@ export class MesNotificationsPage {
 
     const itemRef = this.db.object('/ensaiste/'+this.ensaisteId+'/zz_notifications_recommandations/'+id);
     itemRef.remove();
+
+    this.navCtrl.setRoot(EnsaistePage);
   }
 
 }

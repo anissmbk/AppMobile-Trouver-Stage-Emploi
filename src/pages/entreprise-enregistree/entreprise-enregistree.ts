@@ -5,6 +5,7 @@ import {UserService} from "../../services/user.service";
 import * as firebase from 'firebase/app';
 import {EntrepriseProfilePage} from "../entreprise-profile/entreprise-profile";
 import {EntrepriseModel} from "../../UserClass/entrepriseModel";
+import {EnsaistePage} from "../ensaiste/ensaiste";
 
 @IonicPage()
 @Component({
@@ -60,6 +61,7 @@ export class EntrepriseEnregistreePage {
                 a.remove();*/
             //this.navCtrl.setRoot(this.navCtrl.getActive().component);
             this.alert("bien supprimee");
+            this.navCtrl.setRoot(EnsaistePage);
           }
         }
       ]

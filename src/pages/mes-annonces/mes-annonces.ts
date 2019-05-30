@@ -8,6 +8,7 @@ import {EntrepriseModel} from "../../UserClass/entrepriseModel";
 import {AnnonceDetailPage} from "../annonce-detail/annonce-detail";
 import {AnnonceEmploiModel} from "../../AnnonceClass/AnnonceEmploiModel";
 import {AnnonceEmploiDetailsPage} from "../annonce-emploi-details/annonce-emploi-details";
+import {EnsaistePage} from "../ensaiste/ensaiste";
 @IonicPage()
 @Component({
   selector: 'page-mes-annonces',
@@ -96,6 +97,7 @@ export class MesAnnoncesPage {
             a.remove();*/
             //this.navCtrl.setRoot(this.navCtrl.getActive().component);
             this.alert("bien supprimee");
+            this.navCtrl.setRoot(EnsaistePage);
           }
         }
       ]
