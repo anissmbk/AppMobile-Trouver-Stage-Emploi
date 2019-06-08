@@ -79,10 +79,13 @@ export class SujetDetailsPage {
           text: 'Oui',
           handler: () => {
             const itemRef = this.db.object('/discussion/'+this.id+'/z_commentaires/'+id);
+            this.sujet.nbr_comment--;
+            this.db.object('/discussion/' + this.id + '/nbr_comment').set(this.sujet.nbr_comment);
             itemRef.remove();
             // fixer le prbleme il faut cliquer deux fois !!!
             //this.navCtrl.setRoot(this.navCtrl.getActive().component);
             this.alert("bien supprimee");
+            this.navCtrl.setRoot(EnsaistePage,this.id);
           }
         }
       ]
@@ -120,8 +123,9 @@ export class SujetDetailsPage {
           text: 'Send',
           handler: data => {
             if(data.sujet_text!=''){
+              this.sujet.nbr_comment++;
                    this.userService.addCommentSujet(this.id,this.userUid,data.sujet_text,this.sujet.nbr_comment);
-              this.navCtrl.setRoot(EnsaistePage);//solution Temporaire
+              this.navCtrl.setRoot(EnsaistePage,this.id);
             }
             console.log('Saved clicked');
           }

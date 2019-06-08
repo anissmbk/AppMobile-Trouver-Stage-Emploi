@@ -19,7 +19,7 @@
   <div *ngIf="isSearch==false; else trueSearch">
 
     <ion-card *ngFor="let sujet of myObject">
-
+<div (click)="consulterDetails(sujet[0])">
       <ion-item>
         <ion-avatar item-start>
           <img src="{{sujet[2]['photo']}}">
@@ -46,12 +46,13 @@
           </button>
         </ion-col>
       </ion-row>
-
+</div>
     </ion-card>
+
   </div>
   <ng-template #trueSearch>
     <ion-card *ngFor="let sujet of searchTab">
-
+<div (click)="consulterDetails(sujet[0])">
       <ion-item>
         <ion-avatar item-start>
           <img src="{{sujet[2]['photo']}}">
@@ -78,7 +79,7 @@
           </button>
         </ion-col>
       </ion-row>
-
+</div>
     </ion-card>
   </ng-template>
 </ion-content>

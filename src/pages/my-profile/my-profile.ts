@@ -30,9 +30,37 @@ export class MyProfilePage {
   myObject2 = [];
   constructor(public alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams,
               public userser:UserService, public db: AngularFireDatabase) {
-    this.FormationList = this.db.object('/ensaiste/' + firebase.auth().currentUser.uid + '/formation/');
-    this.experienceList = this.db.object('/ensaiste/' + firebase.auth().currentUser.uid + '/experience/');
 
+    this.entrepriseDisplayName=this.userser.getCurrentUser().displayName;
+    this.id=this.navParams.data;
+    this.ensaisteId=this.userser.getCurrentUser().uid;
+    if(typeof this.id === "object"){
+      this.ensaisteUser=this.userser.getEnsaiste();
+      this.id='true';
+      this.recommandationsList=this.db.object('/ensaiste/'+this.ensaisteId+'/zz_recommandations');
+      this.FormationList = this.db.object('/ensaiste/' + this.ensaisteId + '/formation/');
+      this.experienceList = this.db.object('/ensaiste/' + this.ensaisteId + '/experience/');
+    }else {
+      this.ensaisteUser=this.userser.getEnsaisteById(this.id);
+      this.FormationList = this.db.object('/ensaiste/' + this.id + '/formation/');
+      this.experienceList = this.db.object('/ensaiste/' + this.id + '/experience/');
+      this.recommandationsList=this.db.object('/ensaiste/'+this.id+'/zz_recommandations');
+    }
+
+    this.recommandationsList.snapshotChanges().subscribe(action => {
+
+      this.itemArray.push(action.payload.val() as {id_entreprise:string,recommandation_text:string});
+
+      if(this.itemArray[0]!=null){
+        this.myObject = Object.entries(this.itemArray[0]);
+      }
+
+      for (let recommandation of this.myObject) {
+        var x = this.userser.getEntrepriseById(recommandation[1]['id_entreprise']);
+        recommandation.push(x as EntrepriseModel);
+      }
+
+    });
     this.FormationList.snapshotChanges().subscribe(action => {
 
       this.itemArray1.push(action.payload.val());
@@ -49,32 +77,6 @@ export class MyProfilePage {
         this.myObject2 = Object.entries(this.itemArray2[0]);
       }
 
-
-    });
-    this.entrepriseDisplayName=this.userser.getCurrentUser().displayName;
-    this.id=this.navParams.data;
-    this.ensaisteId=this.userser.getCurrentUser().uid;
-    if(typeof this.id === "object"){
-      this.ensaisteUser=this.userser.getEnsaiste();
-      this.id='true';
-      this.recommandationsList=this.db.object('/ensaiste/'+this.ensaisteId+'/zz_recommandations');
-    }else {
-      this.ensaisteUser=this.userser.getEnsaisteById(this.id);
-      this.recommandationsList=this.db.object('/ensaiste/'+this.id+'/zz_recommandations');
-    }
-
-    this.recommandationsList.snapshotChanges().subscribe(action => {
-
-      this.itemArray.push(action.payload.val() as {id_entreprise:string,recommandation_text:string});
-
-      if(this.itemArray[0]!=null){
-        this.myObject = Object.entries(this.itemArray[0]);
-      }
-
-      for (let recommandation of this.myObject) {
-        var x = this.userser.getEntrepriseById(recommandation[1]['id_entreprise']);
-        recommandation.push(x as EntrepriseModel);
-      }
 
     });
   }

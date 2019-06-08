@@ -49,15 +49,6 @@
                 </span>
               </div>
 
-              <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('secteurActivite').errors &&
-               (registerFormEntreprise.get('secteurActivite').touched||registerFormEntreprise.get('secteurActivite').dirty)}">
-                <label>secteur d'Activité</label>
-                <input type="text" formControlName="secteurActivite" class="form-control">
-                <span class="help-block" *ngIf="registerFormEntreprise.get('secteurActivite').errors &&
-               (registerFormEntreprise.get('secteurActivite').touched||registerFormEntreprise.get('secteurActivite').dirty)">
-                  <span *ngIf="registerFormEntreprise.get('secteurActivite').errors.required">*Secteur d'activite is required</span>
-                </span>
-              </div>
 
               <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('tel').errors &&
                (registerFormEntreprise.get('tel').touched||registerFormEntreprise.get('tel').dirty)}">
@@ -78,6 +69,94 @@
                 </div>
               </div>
 
+
+              <div class="form-group">
+                <label>secteur d'Activité</label><br />
+                <select name="secteurActivite" formControlName="secteurActivite" class="form-control" >
+                  <option value="0" selected="selected">Categorie</option>
+                  <option value="Informatique/ Réseaux/ Télécoms">Informatique/ Réseaux/ Télécoms</option>
+                  <option value="Import/ Export/ Commerce">Import/ Export/ Commerce</option>
+                  <option value="Direction générale">Direction générale</option>
+                  <option value="Distribution/ Logistique/ Transport">Distribution/ Logistique/ Transport</option>
+                  <option value="Commercial/ Vente">Commercial/ Vente</option>
+                  <option value="Comptabilité/ Finance/ Audit">Comptabilité/ Finance/ Audit</option>
+                  <option value="Administration/ Secrétariat">Administration/ Secrétariat</option>
+                  <option value="Internet/ E-commerce/ E-reputation">Internet/ E-commerce/ E-reputation</option>
+                  <option value="Juridique/ Droit">Juridique/ Droit</option>
+                  <option value="Marketing/ Communication/ Publicité">Marketing/ Communication/ Publicité</option>
+                  <option value="Organisation/ Gestion/ Stratégie">Organisation/ Gestion/ Stratégie</option>
+                  <option value="Recherche & Développement">Recherche & Développement</option>
+                  <option value="Évenementiel">Évenementiel</option>
+                  <option value="Système d'information ">Système d'information </option>
+                  <option value="Qualité/ Production">Qualité/ Production</option>
+                  <option value="Ressources Humaines">Ressources Humaines</option>
+                  <option value="Services Généraux">Services Généraux</option>
+                  <option value="Tourisme/ Hôtellerie/ Restauration">Tourisme/ Hôtellerie/ Restauration</option>
+                  <option value="Maintenance/ Réparation">Maintenance/ Réparation</option>
+                  <option value="Enseignement /Formation /Education">Enseignement /Formation /Education</option>
+                  <option value="Art graphique/ Photographie/ Son">Art graphique/ Photographie/ Son</option>
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+                <label>Ville</label><br />
+                <select name="ville" formControlName="city" class="form-control" >
+                <option value="0" selected="selected">Ville</option>
+                <option value="Agadir">Agadir</option>
+                <option value="Al-Hoceima">Al-Hoceima</option>
+                <option value="Arfoud">Arfoud</option>
+                <option value="Asilah">Asilah</option>
+                <option value="Azrou">Azrou</option>
+                <option value="Ben Slimane">Ben Slimane</option>
+                <option value="Benguerir">Benguerir</option>
+                <option value="Beni Mellal">Beni Mellal</option>
+                <option value="Berkane">Berkane</option>
+                <option value="Berrechid">Berrechid</option>
+                <option value="Boujdour">Boujdour</option>
+                <option value="Bouznika">Bouznika</option>
+                <option value="Casablanca">Casablanca</option>
+                <option value="Chefchaouen">Chefchaouen</option>
+                <option value="Dakhla">Dakhla</option>
+                <option value="El Jadida">El Jadida</option>
+                <option value="Errachidia">Errachidia</option>
+                <option value="Essaouira">Essaouira</option>
+                <option value="Fès">Fès</option>
+                <option value="Fquih BenSalah">Fquih BenSalah</option>
+                <option value="Guelmim">Guelmim</option>
+                <option value="Ifrane">Ifrane</option>
+                <option value="Jerada">Jerada</option>
+                <option value="Kénitra">Kénitra</option>
+                <option value="Khémisset">Khémisset</option>
+                <option value="Khénifra">Khénifra</option>
+                <option value="Khouribga">Khouribga</option>
+                <option value="Ksar el-Kébir">Ksar el-Kébir</option>
+                <option value="Laâyoune">Laâyoune </option>
+                <option value="Lagouira">Lagouira</option>
+                <option value="Larache">Larache</option>
+                <option value="Marrakech">Marrakech</option>
+                <option value="Mehdia">Mehdia</option>
+                <option value="Meknès">Meknès</option>
+                <option value="Mohammédia">Mohammédia</option>
+                <option value="Nador">Nador</option>
+                <option value="Ouarzazate">Ouarzazate</option>
+                <option value="Oujda">Oujda</option>
+                <option value="OuedZem">OuedZem</option>
+                <option value="Rabat">Rabat</option>
+                <option value="Safi">Safi</option>
+                <option value="Sala El Jadida">Sala El Jadida</option>
+                <option value="Salé">Salé</option>
+                <option value="Sefrou">Sefrou</option>
+                <option value="Settat">Settat</option>
+                <option value="Sidi Slimane">Sidi Slimane</option>
+                <option value="Skhirat">Skhirat</option>
+                <option value="Tanger">Tanger</option>
+                <option value="Taza">Taza</option>
+                <option value="Temara">Temara</option>
+                <option value="Tétouan">Tétouan</option>
+              </select>
+              </div>
               <div class="form-group" [ngClass]="{'has-error' :registerFormEntreprise.get('password').errors &&
                (registerFormEntreprise.get('password').touched||registerFormEntreprise.get('password').dirty)}">
                 <label>Password</label>

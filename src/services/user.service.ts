@@ -68,15 +68,14 @@ export class UserService {
       if (result != null) {
         var keys = Object.keys(result);
         ensaiste.city = result[keys[0]];
-        ensaiste.competence = result[keys[1]];
-        ensaiste.date_naissance = result[keys[2]];
-        ensaiste.email = result[keys[3]];
-        ensaiste.experience = result[keys[4]];
-        ensaiste.firstName = result[keys[5]];
-        ensaiste.formation = result[keys[6]];
-        ensaiste.lastName = result[keys[7]];
-        ensaiste.phone = result[keys[8]];
-        ensaiste.photo = result[keys[9]];
+        ensaiste.date_naissance = result[keys[1]];
+        ensaiste.email = result[keys[2]];
+        ensaiste.experience = result[keys[3]];
+        ensaiste.firstName = result[keys[4]];
+        ensaiste.formation = result[keys[5]];
+        ensaiste.lastName = result[keys[6]];
+        ensaiste.phone = result[keys[7]];
+        ensaiste.photo = result[keys[8]];
       }
     }, function (error) {
       return error;
@@ -92,15 +91,17 @@ export class UserService {
       if (result != null) {
         var keys = Object.keys(result);
         ensaiste.city = result[keys[0]];
-        ensaiste.competence = result[keys[1]];
-        ensaiste.date_naissance = result[keys[2]];
-        ensaiste.email = result[keys[3]];
-        ensaiste.experience = result[keys[4]];
-        ensaiste.firstName = result[keys[5]];
-        ensaiste.formation = result[keys[6]];
-        ensaiste.lastName = result[keys[7]];
-        ensaiste.phone = result[keys[8]];
-        ensaiste.photo = result[keys[9]];
+        console.log(result[keys[0]]);
+        ensaiste.date_naissance = result[keys[1]];
+        console.log(result[keys[1]]);
+        ensaiste.email = result[keys[2]];
+        console.log(result[keys[2]]);
+        ensaiste.experience = result[keys[3]];
+        ensaiste.firstName = result[keys[4]];
+        ensaiste.formation = result[keys[5]];
+        ensaiste.lastName = result[keys[6]];
+        ensaiste.phone = result[keys[7]];
+        ensaiste.photo = result[keys[8]];
       }
     }, function (error) {
       return error;
@@ -208,7 +209,6 @@ export class UserService {
 
   addCommentSujet(id: string, userId: string, commentaire_text: string,nbrComment:number) {
     const idAleatoir = Math.random().toString(36).substring(2);
-    nbrComment++;
     this.db.object('/discussion/' + id + '/z_commentaires/' + idAleatoir).set({
       commentaire_text: commentaire_text,
       id_ensaiste: userId

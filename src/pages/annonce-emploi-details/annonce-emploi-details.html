@@ -55,7 +55,8 @@
   </ion-card>
 
   <p class="text">Commentaires:</p>
-  <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0">Soyez le premier à commenter cette annonce !!</div>
+  <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0 && userDisplayName=='ensaiste' ">Soyez le premier à commenter cette annonce !!</div>
+  <div style="color: #f53d3d;margin-top: 35px;text-align:center " *ngIf="myObject.length==0 ">Pas de commentaire !!</div>
   <div class="scroll">
     <ion-list>
       <ion-item-sliding *ngFor="let commentaire of myObject">

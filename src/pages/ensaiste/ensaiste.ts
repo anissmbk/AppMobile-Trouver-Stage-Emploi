@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, Platform} from 'ionic-angular';
+import {AlertController, NavParams, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {NavController} from 'ionic-angular';
@@ -13,6 +13,7 @@ import * as firebase from 'firebase/app';
 import {AngularFireDatabase} from "@angular/fire/database";
 import {MesNotificationsPage} from "../mes-notifications/mes-notifications";
 import {UserService} from "../../services/user.service";
+import {SujetDetailsPage} from "../sujet-details/sujet-details";
 
 @Component({
   selector: 'page-ensaiste',
@@ -21,7 +22,7 @@ import {UserService} from "../../services/user.service";
 export class EnsaistePage {
   rootPage: any = TabsPage;
   pages: Array<{ title: string, component: any }>;
-
+  id:any;
   constructor(platform: Platform,
               statusBar: StatusBar,
               splashScreen: SplashScreen,
@@ -29,19 +30,25 @@ export class EnsaistePage {
               private alertCtrl: AlertController,
               public navCtrl: NavController,
               public db: AngularFireDatabase,
-              public userService: UserService) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
-    this.pages = [
-      {title: 'Annonces Enregistrees', component: MesAnnoncesPage},
-      {title: 'Entreprise Enregistree', component: EntrepriseEnregistreePage},
-      {title: 'Modifier Profile', component: ModifyProfileEnsaistePage},
-      {title: ' Mes Notifications', component: MesNotificationsPage}
-    ];
+              public userService: UserService,public navParams: NavParams) {
+    this.id = this.navParams.data;
+    if(typeof this.id === "object") {
+      platform.ready().then(() => {
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        statusBar.styleDefault();
+        splashScreen.hide();
+      });
+      this.pages = [
+        {title: 'Annonces Enregistrees', component: MesAnnoncesPage},
+        {title: 'Entreprise Enregistree', component: EntrepriseEnregistreePage},
+        {title: 'Modifier Profile', component: ModifyProfileEnsaistePage},
+        {title: ' Mes Notifications', component: MesNotificationsPage}
+      ];
+
+    }else{
+      this.navCtrl.push(SujetDetailsPage,this.id);
+    }
   }
 
   alert(message: string) {

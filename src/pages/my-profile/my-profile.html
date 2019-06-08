@@ -39,7 +39,7 @@
               <strong>Date debut: </strong>{{afficherDateFormat(f[1]["date_debut"])}}<br>
               <strong>Date fin: </strong>{{afficherDateFormat(f[1]["date_fin"])}}
             </div>
-            <button><ion-icon (click)="supprimer(f[0])" name="trash"></ion-icon></button>
+            <button><ion-icon *ngIf="id=='true' || id==ensaisteId " (click)="supprimer(f[0])" name="trash"></ion-icon></button>
           </ion-card>
           <!-- <strong>{{ensaisteUser.zdebut}}-{{ensaisteUser.zfin}}:</strong>-->
           <!--   <p>{{ensaisteUser.zecole}}</p>-->
@@ -58,26 +58,29 @@
         </div>
       </ion-item>
     </ion-card>
+
+  <ion-card>
+    <ion-item padding-left="">
+      <ion-title><strong>Experience</strong></ion-title>
+      <div padding-top="">
+        <ion-card padding="" text-center="" *ngFor="let f of myObject2">
+          <div text-center="">
+            <strong>Etablissement: </strong>{{f[1]["ecole"]}}<br>
+            <strong>Type:</strong>{{f[1]["type"]}}<br>
+            <strong>Mission: </strong><p style="white-space: pre-line">{{f[1]["mission"]}}</p><br>
+            <strong>Date debut: </strong>{{afficherDateFormat(f[1]["date_debut"])}}<br>
+            <strong>Date fin: </strong>{{afficherDateFormat(f[1]["date_fin"])}}
+          </div>
+          <button><ion-icon *ngIf="id=='true' || id==ensaisteId " (click)="supprimer(f[0])" name="trash"></ion-icon></button>
+        </ion-card>
+        <!-- <strong>{{ensaisteUser.zdebut}}-{{ensaisteUser.zfin}}:</strong>-->
+        <!--   <p>{{ensaisteUser.zecole}}</p>-->
+      </div>
+    </ion-item>
+  </ion-card>
   </ion-card>
 
 
-
-
-
-  <ion-title text-left="" padding-bottom="">
-    <strong>Experience :</strong></ion-title>
-
-  <ion-card padding="" text-center="" *ngFor="let f of myObject2">
-    <div text-center="">
-      <strong>Etablissement: </strong>{{f[1]["ecole"]}}<br>
-      <strong>Type: </strong>{{f[1]["type"]}}<br>
-      <strong>Mission: </strong>{{f[1]["mission"]}}<br>
-
-      <strong>Date debut: </strong>{{afficherDateFormat(f[1]["date_debut"])}}<br>
-      <strong>Date fin: </strong>{{afficherDateFormat(f[1]["date_fin"])}}
-    </div>
-    <button><ion-icon (click)="supprimerexp(f[0])" name="trash"></ion-icon></button>
-  </ion-card>
   <p class="text" *ngIf="id=='true' || id==ensaisteId || entrepriseDisplayName=='entreprise'">
     Recommandations:</p>
 

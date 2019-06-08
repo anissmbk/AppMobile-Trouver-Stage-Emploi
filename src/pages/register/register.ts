@@ -49,8 +49,9 @@ export class RegisterPage {
     this.registerFormEntreprise=this.fb.group({
       nomEntreprise: ['', Validators.required ],
       email: ['', [Validators.required,Validators.email]],
-      secteurActivite: ['', Validators.required ],
+      secteurActivite: [''],
       description: [''],
+      city: [''],
       tel: ['', [Validators.required,Validators.pattern("[0-9][0-9]*"),Validators.minLength(10)]],
       password: ['', [Validators.required,Validators.minLength(6)]]
     });
@@ -83,6 +84,7 @@ export class RegisterPage {
         this.entrepriseUser.secteurActivite=value.secteurActivite;
         this.entrepriseUser.email=value.email;
         this.entrepriseUser.phone=value.tel;
+        this.entrepriseUser.city=value.city;
         this.entrepriseUser.description=value.description;
         //ajout l'objet this.entrepriseUser to firebase
         const userId=firebase.auth().currentUser.uid;
@@ -95,6 +97,7 @@ export class RegisterPage {
       }, err => {
         this.alert(err.message);
       });
+
   }
 
 }

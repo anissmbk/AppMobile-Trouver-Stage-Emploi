@@ -26,6 +26,9 @@ export class HomePage {
       }else if(this.userService.getUserLoggedIn().displayName=='entreprise'){
         this.navCtrl.setRoot(EntreprisePage);
         this.loading.dismiss();
+      }else{
+        this.videPage=true;
+        this.loading.dismiss();
       }
     }else{
       this.videPage=true;
