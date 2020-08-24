@@ -40,12 +40,6 @@ import { IonicStorageModule } from '@ionic/storage';
 import {SujetDetailsPage} from "../pages/sujet-details/sujet-details";
 
 const firebase= {
-  apiKey: "AIzaSyC7gHkY0Zfs7PC919tuBKWt_DevuucmKEg",
-  authDomain: "employemanagment-914b8.firebaseapp.com",
-  databaseURL: "https://employemanagment-914b8.firebaseio.com",
-  projectId: "employemanagment-914b8",
-  storageBucket: "employemanagment-914b8.appspot.com",
-  messagingSenderId: "662820019254"
 };
 
 
